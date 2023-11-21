@@ -1,0 +1,2432 @@
+{
+    "data_statistics": {
+        "total_image_num": 100,
+        "ok_image_num": 79,
+        "ng_image_num": 21,
+        "total_instance_num": 32,
+        "image_statistics_by_calss_name": {
+            "Edge_Defect": 21,
+            "maosi": 21,
+            "NG": 21
+        },
+        "instance_statistics_by_calss_name": {
+            "NG": 21,
+            "Edge_Defect": 21,
+            "maosi": 21
+        }
+    },
+    "record": [
+        {
+            "info": {
+                "uuid": "762c07b4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/762c07b4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2891,
+                    1369,
+                    3115,
+                    1593
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "764b6226a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/764b6226a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2886,
+                    1257,
+                    3110,
+                    1481
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "76731168a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/76731168a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2872,
+                    1146,
+                    3096,
+                    1370
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "769a689ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/769a689ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2848,
+                    1036,
+                    3072,
+                    1260
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "76d2edcca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/76d2edcca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2816,
+                    929,
+                    3040,
+                    1153
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "76fd2b6ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/76fd2b6ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2774,
+                    825,
+                    2998,
+                    1049
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7726a0dea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7726a0dea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2724,
+                    725,
+                    2948,
+                    949
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "774d43c4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/774d43c4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2666,
+                    629,
+                    2890,
+                    853
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "777ae78ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/777ae78ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2600,
+                    539,
+                    2824,
+                    763
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "778e984ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/778e984ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2526,
+                    454,
+                    2750,
+                    678
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "77bc7032a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/77bc7032a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2446,
+                    376,
+                    2670,
+                    600
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "77f05aaaa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/77f05aaaa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2360,
+                    305,
+                    2584,
+                    529
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "78206ff6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/78206ff6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2267,
+                    242,
+                    2491,
+                    466
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "787317eca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/787317eca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2170,
+                    186,
+                    2394,
+                    410
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "788f8422a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/788f8422a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2068,
+                    139,
+                    2292,
+                    363
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "78cb4f16a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/78cb4f16a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1963,
+                    101,
+                    2187,
+                    325
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "78f954c4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/78f954c4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1855,
+                    72,
+                    2079,
+                    296
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "791ed51ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/791ed51ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1745,
+                    51,
+                    1969,
+                    275
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "794704d0a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/794704d0a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1634,
+                    41,
+                    1858,
+                    265
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "79777b60a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/79777b60a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1522,
+                    39,
+                    1746,
+                    263
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7988f8fea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7988f8fea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1410,
+                    47,
+                    1634,
+                    271
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "79bd6e7ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/79bd6e7ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1299,
+                    64,
+                    1523,
+                    288
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "79dda3a4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/79dda3a4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1191,
+                    91,
+                    1415,
+                    315
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7a04c6aaa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7a04c6aaa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1084,
+                    127,
+                    1308,
+                    351
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7a23ec56a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7a23ec56a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    982,
+                    171,
+                    1206,
+                    395
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7a4a0508a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7a4a0508a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    883,
+                    224,
+                    1107,
+                    448
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7a7158e2a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7a7158e2a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    789,
+                    285,
+                    1013,
+                    509
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7a9ceafca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7a9ceafca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    701,
+                    354,
+                    925,
+                    578
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7ac33cfca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7ac33cfca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    618,
+                    430,
+                    842,
+                    654
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7b00390ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7b00390ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    543,
+                    512,
+                    767,
+                    736
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7b1e209aa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7b1e209aa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    474,
+                    601,
+                    698,
+                    825
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7b2e8f8ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7b2e8f8ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    414,
+                    695,
+                    638,
+                    919
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7b5639eea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7b5639eea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    361,
+                    794,
+                    585,
+                    1018
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7b9f0f3ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7b9f0f3ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    317,
+                    897,
+                    541,
+                    1121
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7bb6147ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7bb6147ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    282,
+                    1003,
+                    506,
+                    1227
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7be72bd4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7be72bd4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    256,
+                    1112,
+                    480,
+                    1336
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7c0c4f5ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7c0c4f5ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    239,
+                    1222,
+                    463,
+                    1446
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7c30433ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7c30433ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    231,
+                    1334,
+                    455,
+                    1558
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7c4daa94a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7c4daa94a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    233,
+                    1446,
+                    457,
+                    1670
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7c77cad6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7c77cad6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    244,
+                    1558,
+                    468,
+                    1782
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7c97a8cea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7c97a8cea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    265,
+                    1668,
+                    489,
+                    1892
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7ccacc2ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7ccacc2ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    294,
+                    1776,
+                    518,
+                    2000
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7cefef66a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7cefef66a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    333,
+                    1881,
+                    557,
+                    2105
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7d19b008a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7d19b008a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    380,
+                    1982,
+                    604,
+                    2206
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7d42928ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7d42928ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    436,
+                    2079,
+                    660,
+                    2303
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7d690126a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7d690126a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    500,
+                    2171,
+                    724,
+                    2395
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7d985426a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7d985426a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    571,
+                    2258,
+                    795,
+                    2482
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "811a1760a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/811a1760a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2791,
+                    1872,
+                    3015,
+                    2096
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "814f64f6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/814f64f6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2829,
+                    1767,
+                    3053,
+                    1991
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "816e2eaea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/816e2eaea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2858,
+                    1659,
+                    3082,
+                    1883
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "81a8e666a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/81a8e666a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2878,
+                    1549,
+                    3102,
+                    1773
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "81c284fea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/81c284fea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2889,
+                    1437,
+                    3113,
+                    1661
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "81fad14ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/81fad14ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2616,
+                    1369,
+                    2840,
+                    1593
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "81fb3556a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe534e5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "97.000000+0.000000,97.000000+3.000000,99.000000+11.000000,100.000000+21.000000,102.000000+41.000000,104.000000+60.000000,107.000000+90.000000,107.000000+102.000000,108.000000+103.000000,108.000000+110.000000,110.000000+108.000000,110.000000+107.000000,113.000000+104.000000,115.000000+101.000000,115.000000+83.000000,114.000000+46.000000,113.000000+24.000000,112.000000+17.000000,110.000000+10.000000,110.000000+4.000000,109.000000+3.000000,109.000000+0.000000,97.000000+0.000000"
+                },
+                {
+                    "uuid": "81fb3be6a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe5e985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "112.000000+148.000000,111.000000+150.000000,109.000000+152.000000,108.000000+154.000000,107.000000+158.000000,106.000000+165.000000,103.000000+187.000000,100.000000+211.000000,100.000000+223.000000,108.000000+223.000000,108.000000+217.000000,111.000000+202.000000,112.000000+191.000000,113.000000+177.000000,113.000000+160.000000,112.000000+159.000000,112.000000+148.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "821476a6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/821476a6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2610,
+                    1257,
+                    2834,
+                    1481
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8214d358a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe534e5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "83.000000+0.000000,84.000000+6.000000,90.000000+32.000000,92.000000+44.000000,104.000000+116.000000,105.000000+123.000000,106.000000+133.000000,108.000000+153.000000,110.000000+172.000000,113.000000+202.000000,113.000000+214.000000,114.000000+215.000000,114.000000+222.000000,116.000000+220.000000,116.000000+219.000000,119.000000+216.000000,121.000000+213.000000,121.000000+195.000000,120.000000+158.000000,119.000000+136.000000,118.000000+129.000000,114.000000+102.000000,107.000000+55.000000,105.000000+42.000000,104.000000+36.000000,102.000000+27.000000,97.000000+5.000000,96.000000+0.000000,83.000000+0.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "822dff36a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/822dff36a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2592,
+                    1146,
+                    2816,
+                    1370
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "822e7010a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe534e5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "74.000000+0.000000,75.000000+2.000000,77.000000+8.000000,79.000000+16.000000,86.000000+43.000000,95.000000+79.000000,97.000000+89.000000,102.000000+113.000000,108.000000+143.000000,110.000000+155.000000,119.000000+214.000000,120.000000+215.000000,120.000000+220.000000,121.000000+221.000000,121.000000+223.000000,133.000000+223.000000,133.000000+220.000000,132.000000+213.000000,128.000000+192.000000,125.000000+166.000000,123.000000+153.000000,122.000000+147.000000,120.000000+138.000000,116.000000+120.000000,106.000000+75.000000,97.000000+38.000000,89.000000+6.000000,88.000000+2.000000,87.000000+0.000000,74.000000+0.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "8258414ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/8258414ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2562,
+                    1038,
+                    2786,
+                    1262
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8258a614a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe534e5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "98.000000+66.000000,95.000000+67.000000,92.000000+67.000000,90.000000+68.000000,91.000000+70.000000,93.000000+78.000000,103.000000+104.000000,107.000000+116.000000,109.000000+124.000000,116.000000+151.000000,125.000000+187.000000,127.000000+197.000000,130.000000+216.000000,131.000000+220.000000,132.000000+221.000000,132.000000+223.000000,144.000000+223.000000,144.000000+219.000000,142.000000+210.000000,136.000000+183.000000,127.000000+146.000000,119.000000+114.000000,118.000000+110.000000,113.000000+97.000000,105.000000+79.000000,104.000000+74.000000,102.000000+69.000000,100.000000+65.000000,98.000000+66.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "82855e16a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/82855e16a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2470,
+                    834,
+                    2694,
+                    1058
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "82c8c32ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/82c8c32ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2409,
+                    741,
+                    2633,
+                    965
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "82ef29a4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/82ef29a4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2337,
+                    655,
+                    2561,
+                    879
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "831956aca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/831956aca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2257,
+                    576,
+                    2481,
+                    800
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "83461570a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/83461570a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2169,
+                    507,
+                    2393,
+                    731
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "83465fd0a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe95b65fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "18.000000+50.000000,15.000000+54.000000,14.000000+56.000000,18.000000+59.000000,23.000000+62.000000,31.000000+66.000000,35.000000+62.000000,32.000000+58.000000,30.000000+56.000000,18.000000+50.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "8375646aa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/8375646aa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2075,
+                    447,
+                    2299,
+                    671
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8375e9a8a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe47c85fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "0.000000+56.000000,0.000000+67.000000,2.000000+68.000000,4.000000+69.000000,9.000000+71.000000,14.000000+73.000000,17.000000+74.000000,25.000000+76.000000,36.000000+78.000000,39.000000+79.000000,52.000000+86.000000,54.000000+87.000000,53.000000+85.000000,52.000000+83.000000,50.000000+81.000000,49.000000+78.000000,48.000000+77.000000,46.000000+76.000000,42.000000+74.000000,32.000000+69.000000,15.000000+61.000000,4.000000+57.000000,2.000000+57.000000,0.000000+56.000000"
+                },
+                {
+                    "uuid": "8375f132a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe95b65fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "112.000000+110.000000,109.000000+114.000000,108.000000+116.000000,112.000000+119.000000,117.000000+122.000000,125.000000+126.000000,129.000000+122.000000,126.000000+118.000000,124.000000+116.000000,112.000000+110.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "83a531aea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/83a531aea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1974,
+                    398,
+                    2198,
+                    622
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "83a5b886a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe47c85fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "0.000000+69.000000,0.000000+81.000000,2.000000+81.000000,12.000000+85.000000,20.000000+87.000000,43.000000+92.000000,46.000000+93.000000,49.000000+94.000000,65.000000+100.000000,74.000000+104.000000,83.000000+109.000000,93.000000+113.000000,105.000000+118.000000,110.000000+120.000000,115.000000+122.000000,118.000000+123.000000,126.000000+125.000000,137.000000+127.000000,140.000000+128.000000,153.000000+135.000000,155.000000+136.000000,154.000000+134.000000,153.000000+132.000000,151.000000+130.000000,150.000000+127.000000,149.000000+126.000000,147.000000+125.000000,143.000000+123.000000,133.000000+118.000000,116.000000+110.000000,105.000000+106.000000,74.000000+96.000000,63.000000+92.000000,55.000000+89.000000,21.000000+75.000000,13.000000+72.000000,10.000000+71.000000,3.000000+70.000000,2.000000+69.000000,0.000000+69.000000"
+                },
+                {
+                    "uuid": "83a5be9ea95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe95b65fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "213.000000+159.000000,210.000000+163.000000,209.000000+165.000000,213.000000+168.000000,218.000000+171.000000,223.000000+173.000000,223.000000+164.000000,221.000000+163.000000,213.000000+159.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "83c8a09ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/83c8a09ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1869,
+                    360,
+                    2093,
+                    584
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "83c941fca95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe3c245fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "0.000000+80.000000,0.000000+94.000000,3.000000+94.000000,4.000000+95.000000,8.000000+95.000000,36.000000+103.000000,48.000000+106.000000,53.000000+107.000000,54.000000+105.000000,55.000000+103.000000,55.000000+101.000000,57.000000+97.000000,55.000000+96.000000,52.000000+95.000000,47.000000+94.000000,44.000000+92.000000,24.000000+85.000000,15.000000+82.000000,10.000000+81.000000,5.000000+81.000000,4.000000+80.000000,0.000000+80.000000"
+                },
+                {
+                    "uuid": "83c946caa95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe47c85fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "90.000000+103.000000,90.000000+114.000000,92.000000+115.000000,95.000000+116.000000,101.000000+118.000000,104.000000+118.000000,117.000000+123.000000,125.000000+125.000000,148.000000+130.000000,151.000000+131.000000,154.000000+132.000000,170.000000+138.000000,179.000000+142.000000,188.000000+147.000000,198.000000+151.000000,210.000000+156.000000,220.000000+160.000000,223.000000+161.000000,223.000000+149.000000,221.000000+148.000000,218.000000+147.000000,213.000000+146.000000,210.000000+144.000000,179.000000+134.000000,168.000000+130.000000,160.000000+127.000000,126.000000+113.000000,118.000000+110.000000,115.000000+109.000000,107.000000+107.000000,95.000000+104.000000,90.000000+103.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "83f5e4b4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/83f5e4b4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1760,
+                    333,
+                    1984,
+                    557
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "83f67578a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe3c245fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "0.000000+92.000000,1.000000+103.000000,7.000000+104.000000,18.000000+105.000000,24.000000+107.000000,30.000000+108.000000,36.000000+109.000000,43.000000+110.000000,66.000000+112.000000,74.000000+113.000000,80.000000+114.000000,94.000000+117.000000,117.000000+122.000000,145.000000+130.000000,157.000000+133.000000,162.000000+134.000000,163.000000+132.000000,164.000000+130.000000,164.000000+128.000000,166.000000+124.000000,164.000000+123.000000,161.000000+122.000000,156.000000+121.000000,153.000000+119.000000,133.000000+112.000000,124.000000+109.000000,119.000000+108.000000,107.000000+106.000000,53.000000+97.000000,44.000000+96.000000,34.000000+95.000000,12.000000+93.000000,2.000000+92.000000,0.000000+92.000000"
+                },
+                {
+                    "uuid": "83f67b0ea95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe47c85fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "199.000000+130.000000,199.000000+141.000000,201.000000+142.000000,204.000000+143.000000,210.000000+145.000000,223.000000+149.000000,223.000000+136.000000,221.000000+136.000000,220.000000+135.000000,216.000000+134.000000,204.000000+131.000000,199.000000+130.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "8427c7aea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/8427c7aea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1650,
+                    317,
+                    1874,
+                    541
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "842804a8a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe3c245fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "107.000000+108.000000,107.000000+113.000000,108.000000+114.000000,108.000000+118.000000,110.000000+118.000000,111.000000+119.000000,116.000000+119.000000,117.000000+120.000000,128.000000+121.000000,134.000000+123.000000,140.000000+124.000000,146.000000+125.000000,153.000000+126.000000,176.000000+128.000000,184.000000+129.000000,190.000000+130.000000,204.000000+133.000000,218.000000+137.000000,223.000000+138.000000,223.000000+123.000000,218.000000+123.000000,211.000000+121.000000,163.000000+113.000000,154.000000+112.000000,144.000000+111.000000,122.000000+109.000000,112.000000+108.000000,107.000000+108.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "844b8fcca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/844b8fcca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1538,
+                    314,
+                    1762,
+                    538
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "844c1d70a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe2f185fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "0.000000+67.000000,0.000000+80.000000,3.000000+82.000000,10.000000+85.000000,17.000000+89.000000,45.000000+117.000000,53.000000+123.000000,57.000000+122.000000,63.000000+120.000000,61.000000+118.000000,61.000000+117.000000,58.000000+113.000000,52.000000+106.000000,52.000000+105.000000,50.000000+103.000000,49.000000+103.000000,42.000000+97.000000,38.000000+95.000000,27.000000+86.000000,5.000000+70.000000,2.000000+68.000000,0.000000+67.000000"
+                },
+                {
+                    "uuid": "844c246ea95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe3c245fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "219.000000+111.000000,219.000000+116.000000,220.000000+117.000000,220.000000+121.000000,223.000000+122.000000,223.000000+111.000000,219.000000+111.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "847d7384a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/847d7384a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1426,
+                    322,
+                    1650,
+                    546
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "847df138a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe2f185fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "55.000000+28.000000,54.000000+30.000000,53.000000+34.000000,53.000000+40.000000,55.000000+41.000000,59.000000+43.000000,76.000000+51.000000,92.000000+60.000000,122.000000+77.000000,129.000000+81.000000,157.000000+109.000000,165.000000+115.000000,169.000000+114.000000,175.000000+112.000000,173.000000+110.000000,173.000000+109.000000,170.000000+105.000000,164.000000+98.000000,164.000000+97.000000,162.000000+95.000000,161.000000+95.000000,154.000000+89.000000,150.000000+87.000000,139.000000+78.000000,117.000000+62.000000,114.000000+60.000000,106.000000+55.000000,80.000000+39.000000,76.000000+37.000000,70.000000+34.000000,61.000000+31.000000,55.000000+28.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "8495ce70a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/8495ce70a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1316,
+                    342,
+                    1540,
+                    566
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "84961a42a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe2f185fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "165.000000+8.000000,164.000000+10.000000,163.000000+14.000000,163.000000+20.000000,165.000000+21.000000,169.000000+23.000000,186.000000+31.000000,202.000000+40.000000,218.000000+50.000000,223.000000+52.000000,222.000000+39.000000,221.000000+39.000000,216.000000+35.000000,190.000000+19.000000,186.000000+17.000000,180.000000+14.000000,171.000000+11.000000,165.000000+8.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "84bfdde6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/84bfdde6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1209,
+                    374,
+                    1433,
+                    598
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "84ccb93aa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/84ccb93aa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1105,
+                    417,
+                    1329,
+                    641
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "84f98b7ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/84f98b7ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1007,
+                    470,
+                    1231,
+                    694
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "85251ab2a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/85251ab2a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    915,
+                    534,
+                    1139,
+                    758
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8525662aa95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe81665fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "82.000000+140.000000,79.000000+141.000000,74.000000+142.000000,72.000000+143.000000,70.000000+144.000000,59.000000+152.000000,55.000000+155.000000,52.000000+158.000000,49.000000+163.000000,45.000000+167.000000,42.000000+171.000000,40.000000+174.000000,39.000000+176.000000,38.000000+178.000000,38.000000+180.000000,37.000000+182.000000,40.000000+179.000000,41.000000+179.000000,47.000000+174.000000,60.000000+163.000000,67.000000+157.000000,75.000000+150.000000,80.000000+145.000000,83.000000+141.000000,84.000000+139.000000,82.000000+140.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "854e182ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/854e182ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    830,
+                    607,
+                    1054,
+                    831
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "854e7c86a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe81665fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "167.000000+67.000000,164.000000+68.000000,159.000000+69.000000,157.000000+70.000000,155.000000+71.000000,144.000000+79.000000,140.000000+82.000000,137.000000+85.000000,134.000000+90.000000,130.000000+94.000000,127.000000+98.000000,125.000000+101.000000,124.000000+103.000000,123.000000+105.000000,123.000000+107.000000,122.000000+109.000000,125.000000+106.000000,126.000000+106.000000,132.000000+101.000000,145.000000+90.000000,152.000000+84.000000,160.000000+77.000000,165.000000+72.000000,168.000000+68.000000,169.000000+66.000000,167.000000+67.000000"
+                },
+                {
+                    "uuid": "854e81eaa95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe8b985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "48.000000+185.000000,46.000000+186.000000,44.000000+187.000000,42.000000+189.000000,37.000000+191.000000,34.000000+194.000000,31.000000+198.000000,28.000000+202.000000,26.000000+205.000000,25.000000+207.000000,25.000000+210.000000,24.000000+211.000000,24.000000+213.000000,46.000000+191.000000,47.000000+189.000000,47.000000+187.000000,48.000000+185.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "858bcb0ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/858bcb0ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    754,
+                    689,
+                    978,
+                    913
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "858c5196a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe770c5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "67.000000+170.000000,66.000000+171.000000,63.000000+171.000000,57.000000+176.000000,51.000000+182.000000,47.000000+189.000000,37.000000+206.000000,31.000000+218.000000,29.000000+220.000000,28.000000+223.000000,40.000000+223.000000,42.000000+220.000000,45.000000+215.000000,55.000000+199.000000,58.000000+194.000000,70.000000+170.000000,67.000000+170.000000"
+                },
+                {
+                    "uuid": "858c5646a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe81665fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "216.000000+0.000000,213.000000+3.000000,210.000000+8.000000,206.000000+12.000000,203.000000+16.000000,201.000000+19.000000,200.000000+21.000000,199.000000+23.000000,199.000000+25.000000,198.000000+27.000000,201.000000+24.000000,202.000000+24.000000,208.000000+19.000000,215.000000+13.000000,221.000000+8.000000,223.000000+6.000000,223.000000+0.000000,216.000000+0.000000"
+                },
+                {
+                    "uuid": "858c59a2a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe8b985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "124.000000+103.000000,122.000000+104.000000,120.000000+105.000000,118.000000+107.000000,113.000000+109.000000,110.000000+112.000000,107.000000+116.000000,104.000000+120.000000,102.000000+123.000000,101.000000+125.000000,101.000000+128.000000,100.000000+129.000000,100.000000+131.000000,122.000000+109.000000,123.000000+107.000000,123.000000+105.000000,124.000000+103.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "85ce7346a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/85ce7346a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    686,
+                    778,
+                    910,
+                    1002
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "85ced02aa95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe770c5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "135.000000+81.000000,134.000000+82.000000,131.000000+82.000000,125.000000+87.000000,119.000000+93.000000,115.000000+100.000000,105.000000+117.000000,94.000000+136.000000,92.000000+140.000000,89.000000+146.000000,86.000000+153.000000,84.000000+160.000000,83.000000+162.000000,82.000000+164.000000,87.000000+159.000000,87.000000+158.000000,98.000000+147.000000,105.000000+139.000000,110.000000+131.000000,123.000000+110.000000,126.000000+105.000000,138.000000+81.000000,135.000000+81.000000"
+                },
+                {
+                    "uuid": "85ced5c0a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe8b985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "192.000000+14.000000,190.000000+15.000000,188.000000+16.000000,186.000000+18.000000,181.000000+20.000000,178.000000+23.000000,175.000000+27.000000,172.000000+31.000000,170.000000+34.000000,169.000000+36.000000,169.000000+39.000000,168.000000+40.000000,168.000000+42.000000,190.000000+20.000000,191.000000+18.000000,191.000000+16.000000,192.000000+14.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "860cd47ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/860cd47ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    628,
+                    874,
+                    852,
+                    1098
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "860d1d12a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe770c5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "175.000000+1.000000,175.000000+2.000000,173.000000+4.000000,170.000000+9.000000,163.000000+21.000000,152.000000+40.000000,150.000000+44.000000,147.000000+50.000000,144.000000+57.000000,142.000000+64.000000,141.000000+66.000000,140.000000+68.000000,145.000000+63.000000,145.000000+62.000000,156.000000+51.000000,163.000000+43.000000,168.000000+35.000000,181.000000+14.000000,184.000000+9.000000,188.000000+0.000000,175.000000+1.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "86282526a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/86282526a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    581,
+                    976,
+                    805,
+                    1200
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "865872b2a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/865872b2a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    545,
+                    1082,
+                    769,
+                    1306
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "866ba9cca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/866ba9cca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    521,
+                    1191,
+                    745,
+                    1415
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "868a4d64a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/868a4d64a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    508,
+                    1302,
+                    732,
+                    1526
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "86b1f6b6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/86b1f6b6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    506,
+                    1414,
+                    730,
+                    1638
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "86f3ad0ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/86f3ad0ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    517,
+                    1526,
+                    741,
+                    1750
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "871b5eb2a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/871b5eb2a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    540,
+                    1635,
+                    764,
+                    1859
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "8757adf4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/8757adf4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    574,
+                    1742,
+                    798,
+                    1966
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "87778acaa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/87778acaa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    619,
+                    1844,
+                    843,
+                    2068
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "87c050caa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/87c050caa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    675,
+                    1941,
+                    899,
+                    2165
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "87d392a2a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/87d392a2a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    740,
+                    2032,
+                    964,
+                    2256
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "880f9fb8a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/880f9fb8a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    815,
+                    2115,
+                    1039,
+                    2339
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "8845681ea95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/8845681ea95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    899,
+                    2190,
+                    1123,
+                    2414
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "888069c8a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/888069c8a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    1517,
+                    2423,
+                    1741,
+                    2647
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "88b244d4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/88b244d4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2460,
+                    1920,
+                    2684,
+                    2144
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "88d0b3f6a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/88d0b3f6a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2513,
+                    1822,
+                    2737,
+                    2046
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "8906cfa4a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/8906cfa4a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2556,
+                    1718,
+                    2780,
+                    1942
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "89399a4ca95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/89399a4ca95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2587,
+                    1611,
+                    2811,
+                    1835
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8939c468a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe5e985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "127.000000+0.000000,127.000000+5.000000,126.000000+6.000000,126.000000+14.000000,125.000000+22.000000,121.000000+44.000000,119.000000+60.000000,118.000000+69.000000,118.000000+73.000000,123.000000+73.000000,123.000000+71.000000,124.000000+70.000000,124.000000+66.000000,126.000000+61.000000,127.000000+56.000000,128.000000+50.000000,129.000000+44.000000,130.000000+37.000000,131.000000+29.000000,133.000000+12.000000,134.000000+4.000000,134.000000+0.000000,127.000000+0.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "89447bd8a95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/89447bd8a95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2607,
+                    1501,
+                    2831,
+                    1725
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "8944b378a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe5e985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "121.000000+16.000000,120.000000+18.000000,118.000000+20.000000,117.000000+22.000000,116.000000+26.000000,115.000000+33.000000,112.000000+55.000000,109.000000+79.000000,108.000000+92.000000,108.000000+106.000000,107.000000+115.000000,106.000000+124.000000,105.000000+132.000000,101.000000+154.000000,99.000000+170.000000,98.000000+179.000000,98.000000+183.000000,103.000000+183.000000,103.000000+181.000000,104.000000+180.000000,104.000000+176.000000,106.000000+171.000000,107.000000+166.000000,108.000000+160.000000,109.000000+154.000000,110.000000+147.000000,111.000000+139.000000,112.000000+123.000000,114.000000+107.000000,120.000000+70.000000,121.000000+59.000000,122.000000+45.000000,122.000000+28.000000,121.000000+27.000000,121.000000+16.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "895ec24aa95611ebbc0055dc73c3c9f6",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ng/895ec24aa95611ebbc0055dc73c3c9f6.png",
+                "parent_uuid": "bfbe20ae5fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119141224_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2615,
+                    1389,
+                    2839,
+                    1613
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119141224"
+            },
+            "instances": [
+                {
+                    "uuid": "895ef1c0a95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe534e5fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "100.000000+0.000000,101.000000+10.000000,103.000000+30.000000,105.000000+40.000000,108.000000+70.000000,108.000000+82.000000,109.000000+83.000000,109.000000+90.000000,111.000000+88.000000,111.000000+87.000000,114.000000+84.000000,116.000000+81.000000,116.000000+63.000000,115.000000+26.000000,114.000000+4.000000,113.000000+3.000000,113.000000+0.000000,100.000000+0.000000"
+                },
+                {
+                    "uuid": "895ef3dca95611ebbc0055dc73c3c9f6",
+                    "parent_uuid": "bfbe5e985fbb11ebb16e931a7a181c93",
+                    "distribution": "1,1,0,0,0,0,1,0,0,0,0,0,0",
+                    "shape_type": "polygon",
+                    "points": "113.000000+128.000000,112.000000+130.000000,110.000000+132.000000,109.000000+134.000000,108.000000+138.000000,107.000000+145.000000,104.000000+167.000000,101.000000+191.000000,100.000000+204.000000,99.000000+219.000000,99.000000+223.000000,106.000000+223.000000,106.000000+219.000000,107.000000+218.000000,108.000000+211.000000,109.000000+204.000000,112.000000+182.000000,113.000000+171.000000,114.000000+157.000000,114.000000+140.000000,113.000000+139.000000,113.000000+128.000000"
+                }
+            ]
+        },
+        {
+            "info": {
+                "uuid": "758adc72a95611eba6053b705aaaa559",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/758adc72a95611eba6053b705aaaa559.png",
+                "parent_uuid": "bfc32c025fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119154227_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2805,
+                    1392,
+                    3029,
+                    1616
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119154227"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "7594fd7ea95611eba6053b705aaaa559",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/7594fd7ea95611eba6053b705aaaa559.png",
+                "parent_uuid": "bfc32c025fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119154227_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2800,
+                    1280,
+                    3024,
+                    1504
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119154227"
+            },
+            "instances": []
+        },
+        {
+            "info": {
+                "uuid": "759ec9f8a95611eba6053b705aaaa559",
+                "image_path": "data/2021-05-01/edge_grid_ori_224/grid/data/2020-01-22/mini/image/zhengfan/ok/759ec9f8a95611eba6053b705aaaa559.png",
+                "parent_uuid": "bfc32c025fbb11ebb16e931a7a181c93",
+                "parent_image_path": "data/2020-01-22/giant/image/zhengfan/20210119154227_3.jpg",
+                "width": 224,
+                "height": 224,
+                "roi": [
+                    2786,
+                    1169,
+                    3010,
+                    1393
+                ],
+                "parent_width": 4096,
+                "parent_height": 3000,
+                "lightening": "zhengfan",
+                "workpiece_id": "20210119154227"
+            },
+            "instances": []
+        }
+    ],
+    "class_dict": [
+        {
+            "class_id": 0,
+            "class_name": "NG",
+            "parent": null
+        },
+        {
+            "class_id": 1,
+            "class_name": "Edge_Defect",
+            "parent": "NG"
+        },
+        {
+            "class_id": 2,
+            "class_name": "Face_Defect",
+            "parent": "NG"
+        },
+        {
+            "class_id": 3,
+            "class_name": "Foreign_Object",
+            "parent": "NG"
+        },
+        {
+            "class_id": 4,
+            "class_name": "pengshang",
+            "parent": "Edge_Defect"
+        },
+        {
+            "class_id": 5,
+            "class_name": "maotou",
+            "parent": "Edge_Defect"
+        },
+        {
+            "class_id": 6,
+            "class_name": "maosi",
+            "parent": "Edge_Defect"
+        },
+        {
+            "class_id": 7,
+            "class_name": "huashang",
+            "parent": "Face_Defect"
+        },
+        {
+            "class_id": 8,
+            "class_name": "caizhibuliang",
+            "parent": "Face_Defect"
+        },
+        {
+            "class_id": 9,
+            "class_name": "moweiquan",
+            "parent": "Face_Defect"
+        },
+        {
+            "class_id": 10,
+            "class_name": "huangban",
+            "parent": "Foreign_Object"
+        },
+        {
+            "class_id": 11,
+            "class_name": "wuzi",
+            "parent": "Foreign_Object"
+        },
+        {
+            "class_id": 12,
+            "class_name": "yiwu",
+            "parent": "Foreign_Object"
+        }
+    ]
+}

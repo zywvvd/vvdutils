@@ -1,0 +1,182 @@
+{
+    "data_statistics": {
+        "image_number": 10
+    },
+    "record": [
+        {
+            "info": {
+                "uuid": "14f63e1c86d1389b8b0d89ec21cad96d",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112712A/2AI05QUM2/HJB169-19-G6/raw__MP2112712A_HJB169-19-G6_UBM_46_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "1.023294e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,3.321942e-02,1.023294e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "d30325693fcb340e43c014bd5e61c242",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112720A/2AI05QUM2/HJB297-17-A4/raw__MP2112720A_HJB297-17-A4_UBM_39_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "3.321461e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,8.473802e-02,3.321461e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "59fe019ce0722fad5ae2b6fcba9b68a9",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112712A/2AI05QUM2/HJB169-04-F3/raw__MP2112712A_HJB169-04-F3_UBM_9_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "1.636875e-01,0.000000e+00,0.000000e+00,6.946061e-02,1.636875e-01,0.000000e+00,1.226363e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "b87377146ea89366a7cdbb61cc38efd6",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-SM3519ZR8-UBM/NP2142533A/2AI05BUM2/X26477-01B4/raw__X26477-01B4_X_71_Y_76_131_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "7.909959e-01,5.806851e-02,0.000000e+00,0.000000e+00,8.341695e-02,3.754802e-02,1.164899e-01,0.000000e+00,7.909959e-01,1.063930e-01,0.000000e+00,7.685424e-02,0.000000e+00,5.878732e-02"
+            }
+        },
+        {
+            "info": {
+                "uuid": "98139f4e6532c8abe7d75254cab58244",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112707A/2AI05QUM2/HJA520-21-B1/raw__MP2112707A_HJA520-21-B1_UBM_30_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "7.993133e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,7.993133e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "44f08433528a9b4a6144f2e16dbdeb2b",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112712A/2AI05QUM2/HJB169-02-A5/raw__MP2112712A_HJB169-02-A5_UBM_20_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "1.195040e-01,4.365104e-02,0.000000e+00,1.195040e-01,7.273903e-02,0.000000e+00,3.986906e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "c63f5c10a1e6059d3b9ae05fa429b3f9",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112720A/2AI05QUM2/HJB297-15-D1/raw__MP2112720A_HJB297-15-D1_UBM_17_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "6.088228e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,4.620979e-02,6.088228e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "cb353fb43af7bae8c7b7bc824dbf43e8",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112707A/2AI05QUM2/HJA520-21-B1/raw__MP2112707A_HJA520-21-B1_UBM_41_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "1.733019e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,1.733019e-01,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "50e927806eccdd5d2e35762b662ea7fb",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-ST3099R5-UBM/MP2112707A/2AI05QUM2/HJA520-22-D4/raw__MP2112707A_HJA520-22-D4_UBM_25_1_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "6.600737e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,2.443003e-02,6.600737e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        },
+        {
+            "info": {
+                "uuid": "bff6e80a1b0ad51f60ab6159a64d411f",
+                "image_path": "changdian/2022-01-27/attention/normal/1PxM/MPS-SM3519ZR8-UBM/NP2142533A/2AI05BUM2/X26477-01B4/raw__X26477-01B4_X_74_Y_75_215_1.jpg",
+                "height": 600,
+                "width": 600,
+                "scores": "8.266689e-01,0.000000e+00,0.000000e+00,0.000000e+00,4.889707e-02,4.368331e-02,9.424161e-02,0.000000e+00,8.266689e-01,6.326669e-02,0.000000e+00,0.000000e+00,0.000000e+00,0.000000e+00"
+            }
+        }
+    ],
+    "class_dict": [
+        {
+            "class_id": 0,
+            "class_name": "NG",
+            "parent": null
+        },
+        {
+            "class_id": 1,
+            "class_name": "MAB",
+            "parent": "NG",
+            "alias": "Misalignment Bump"
+        },
+        {
+            "class_id": 2,
+            "class_name": "SBD",
+            "parent": "NG",
+            "alias": "Small Black Dot"
+        },
+        {
+            "class_id": 3,
+            "class_name": "BD",
+            "parent": "NG",
+            "alias": "Bump Damage"
+        },
+        {
+            "class_id": 4,
+            "class_name": "AUR",
+            "parent": "NG",
+            "alias": "Au Residue"
+        },
+        {
+            "class_id": 5,
+            "class_name": "BDG",
+            "parent": "NG",
+            "alias": "Bridging"
+        },
+        {
+            "class_id": 6,
+            "class_name": "FM",
+            "parent": "NG",
+            "alias": "Fororeign Material"
+        },
+        {
+            "class_id": 7,
+            "class_name": "FM_Blank",
+            "parent": "NG",
+            "alias": "Fororeign Material"
+        },
+        {
+            "class_id": 8,
+            "class_name": "BS_White",
+            "parent": "NG",
+            "alias": "Bump Strach"
+        },
+        {
+            "class_id": 9,
+            "class_name": "SN_R",
+            "parent": "NG",
+            "alias": "Sn residue"
+        },
+        {
+            "class_id": 10,
+            "class_name": "IBT",
+            "parent": "NG",
+            "alias": "Irregular Bump"
+        },
+        {
+            "class_id": 11,
+            "class_name": "MB",
+            "parent": "NG",
+            "alias": "Missing Bump"
+        },
+        {
+            "class_id": 12,
+            "class_name": "IB",
+            "parent": "NG",
+            "alias": "Incomplete Bump"
+        },
+        {
+            "class_id": 13,
+            "class_name": "Others",
+            "parent": "NG",
+            "alias": "CRK,PR_R,PIB,RSS,RDLS,EB,SS,MS,INKD,IBC,PAD"
+        }
+    ]
+}
