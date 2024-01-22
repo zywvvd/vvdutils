@@ -1,0 +1,10 @@
+numba
+func_timeout
+pypinyin
+opencv-python
+scikit-learn
+pathlib2
+tqdm
+pytest
+matplotlib
+pandas

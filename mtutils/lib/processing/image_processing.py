@@ -149,7 +149,7 @@ def image_resize(img_source, shape=None, factor=None, unique_check=False, interp
             shape = [shape] * 2
         shape = vvd_round(shape)
 
-        resized_image = cv2.resize(img_source, shape, interpolation=interpolation)
+        resized_image = cv2.resize(img_source, tuple(shape), interpolation=interpolation)
 
     elif factor is not None:
         if iterable(factor):
@@ -161,7 +161,7 @@ def image_resize(img_source, shape=None, factor=None, unique_check=False, interp
         resized_H = int(round(image_H * factor_y))
         resized_W = int(round(image_W * factor_x))
 
-        resized_image = cv2.resize(img_source, [resized_W, resized_H], interpolation=interpolation)
+        resized_image = cv2.resize(img_source, (resized_W, resized_H), interpolation=interpolation)
 
     elif shape is None and factor is None:
         resized_image = img_source
@@ -1508,12 +1508,26 @@ def image_center_paste(image, canvas):
     canvas[top:down, left:right, ...] = image
     return canvas
 
-def puzzle(image_list):
-    image_num = len(image_list)
-    col_num = int(np.ceil(image_num**0.5))
-    row_num = int(np.ceil(image_num/col_num))
 
-    margin = 20 
+def puzzle(image_list, col_num = None, row_num = None, margin = 20, white_edge=False):
+
+    image_num = len(image_list)
+    if col_num is not None and row_num is not None:
+        raise RuntimeError(f"At most one of row_num and col_num could be set. col_num: {col_num}, row_num: {row_num}")
+    else:
+        if col_num is not None:
+            col_num = max(1, col_num)
+            assert row_num is None, "Bug of data num settings"
+            row_num = int(np.ceil(image_num/col_num))
+        elif row_num is not None:
+            row_num = max(1, row_num)
+            assert col_num is None, "Bug of data num settings"
+            col_num = int(np.ceil(image_num/row_num))
+        else:
+            col_num = int(np.ceil(image_num**0.5))
+            row_num = int(np.ceil(image_num/col_num))
+
+    
 
     col_size = [ -1 for _ in range(col_num)]
     row_size = [ -1 for _ in range(row_num)]
@@ -1555,11 +1569,20 @@ def puzzle(image_list):
             down = top + row_size[row_index]
             left = np.sum(col_size[:col_index]).astype('int') + col_index * margin
             right = left + col_size[col_index]
-            
+
             crop = image[top:down, left:right, ...]
+
             cur_image = image_list[image_index]
             if ndim == 3:
                 cur_image = to_colorful_image(cur_image)
+
+            if white_edge:
+                cur_image = cur_image.copy()
+                cur_image[0, :, ...] = 255
+                cur_image[-1, :, ...] = 255
+                cur_image[:, 0, ...] = 255
+                cur_image[:, -1, ...] = 255
+
             image_center_paste(cur_image, crop)
 
     return image
