@@ -781,8 +781,8 @@ def change_file_name_for_path(file_path, new_name=None, new_suffix=None):
     new_path = uniform_split_char(str(new_path))
     return new_path
 
-def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=False, overwrite=False):
-    """[复制文件从源到目标, 如果目标已经存在则跳过]]
+def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=False, overwrite=False, keep_all_files=False):
+    """[复制文件从源到目标, 如果目标已经存在则跳过(默认), 如果 keep_all_files 为 True 会保留所有文件]]
 
     Args:
         source_file_path ([str]): [源文件路径]
@@ -796,7 +796,10 @@ def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=
         target_path = OS_join(target_path, OS_basename(source_file_path))
     exists = OS_exists(target_path)
     if exists and not overwrite:
-        if verbose:
+        if keep_all_files:
+            target_path = save_file_path_check(target_path, False, False)
+            shutil.copy(source_file_path, target_path)
+        elif verbose:
             print("{} already exists! skip copying.".format(target_path))
     else:
         dir_check(Path(target_path).parent)

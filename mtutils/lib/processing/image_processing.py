@@ -1262,7 +1262,9 @@ def draw_boxes(image, bboxes, color=None, thickness=1, fill=False):
         thickness = -1
     for box in bboxes:
         box = vvd_round(box)
-        image = cv2.rectangle(image, box[:2], box[2:4], color, thickness)
+        box[2] = box[2] - box[0]
+        box[3] = box[3] - box[1]
+        image = cv2.rectangle(image, box, color, thickness=thickness)
     return image
 
 def get_xyxys_from_mask(mask):
