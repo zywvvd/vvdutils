@@ -1,6 +1,6 @@
 import numpy as np
 import re
-
+import hashlib
 from numpy.core.fromnumeric import argmax
 
 
@@ -25,6 +25,12 @@ def get_Several_MinMax_Array(np_arr, several):
             index_pos = np.argpartition(np_arr, several)[several:]
     several_min_or_max = np_arr[index_pos]
     return index_pos, several_min_or_max
+
+def array_md5(array, dtype=None):
+    float_array = np.array(array, dtype=dtype)
+    array_str = float_array.tobytes().hex()
+    md5_str = hashlib.md5(array_str.encode()).hexdigest()
+    return md5_str
 
 def data_L_n_normalize(data, Ln=2, target = 1):
     assert target > 0

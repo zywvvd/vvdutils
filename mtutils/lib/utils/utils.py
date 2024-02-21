@@ -810,6 +810,7 @@ def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=
             shutil.move(source_file_path, target_path)
         else:
             shutil.copy(source_file_path, target_path)
+    return target_path
 
 
 def json_load(json_path, verbose=False):
@@ -854,15 +855,24 @@ def json_save(json_dict, json_path, overwrite=False, verbose=False):
         json.dump(json_dict, fp, ensure_ascii=False, sort_keys=False, indent=4, cls=MyEncoder)
 
 
-def glob_recursively(path, extension, recursively=True):
+def glob_recursively(path, extensions, recursively=True):
     """
-    在path 路径中递归查找所有扩展名为extension的文件, 返回完整路径名列表
+    extensions 为 extension 的列表，例如 ['png', 'jpeg'], 函数会返回两种格式的数据
+    如果输入的数据为字符串，会自动转换为列表
+    在path 路径中递归查找所有扩展名为 extensions 的文件, 返回完整路径名列表
     """
     path = str(path).replace('\\', '/')
-    if recursively:
-        return glob(OS_join(path, '**', '*.' + extension), recursive=True)
-    else:
-        return glob(OS_join(path, '*.' + extension), recursive=True)
+
+    if not isinstance(extensions, list):
+        extensions = [extensions]
+
+    file_list = list()
+    for extension in extensions:
+        if recursively:
+            file_list += glob(OS_join(path, '**', '*.' + extension), recursive=True)
+        else:
+            file_list += glob(OS_join(path, '*.' + extension), recursive=True)
+    return file_list
 
 
 def is_integer(num):
