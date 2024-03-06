@@ -875,6 +875,16 @@ def glob_recursively(path, extensions, recursively=True):
     return file_list
 
 
+def glob_images(path, recursively=True):
+    """
+    在 glob_recursively 基础上进行封装，获取 path 路径下常见图像格式的图像
+    extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
+    返回完整路径名列表
+    """
+    popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
+    return  glob_recursively(path, popular_image_extensions, recursively=recursively)
+
+
 def is_integer(num):
     """
     是否是整数, 返回bool结果

@@ -160,5 +160,5 @@ def get_start_and_end(data):
     signal = data != 0
     length = len(signal)
     start = np.argmax(signal)
-    end = length - np.argmax(signal[::-1]) - 1
+    end = length - np.argmax(signal[::-1])
     return start, end
