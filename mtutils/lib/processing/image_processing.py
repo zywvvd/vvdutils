@@ -636,11 +636,17 @@ def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cm
             if isinstance(image_item[1], str):
                 current_name = image_item[1]
                 print_name = current_name
-                image = np.array(image_item[0])
+                cur_image = image_item[0]
+                image = np.array(cur_image)
             else:
                 image = np.array(image_item)
         else:
-            image = image_item
+            image = np.array(image_item)
+
+        if image.ndim == 3:
+            if image.shape[0] == 3 and image.shape[-1] != 3:
+                # guess it is a tensor image
+                image = np.transpose(image, [1, 2 ,0])
 
         if iterable(ax):
             if ax.ndim == 1:

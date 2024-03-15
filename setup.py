@@ -5,7 +5,7 @@ from numpy.distutils.core import setup
 from numpy.distutils.misc_util import Configuration
 from os.path import join, dirname, realpath
 
-str_version = '2.1.78'
+str_version = '2.1.79'
 
 
 
@@ -36,5 +36,5 @@ if __name__ == '__main__':
         license='MIT',
         packages=['mtutils'],
         zip_safe=False,
-        install_requires= ['numba', 'func_timeout', 'pypinyin', 'opencv-python', 'scikit-learn', 'pathlib2', 'tqdm', 'pytest', 'matplotlib', 'pandas'],
+        install_requires= ['numba', 'func_timeout', 'pypinyin','scikit-learn', 'pathlib2', 'tqdm', 'pytest', 'matplotlib', 'pandas'],
         python_requires='>=3')
