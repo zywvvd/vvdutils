@@ -631,6 +631,8 @@ def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cm
     plt.subplots_adjust(top=0.95, bottom=0.05, left=0.05, right=0.95, hspace=0.2, wspace=0.05)
 
     for index, image_item in enumerate(image_list):
+        if image_item is None:
+            continue
         print_name = window_name
         if isinstance(image_item, tuple) or isinstance(image_item, list):
             if isinstance(image_item[1], str):
@@ -678,6 +680,7 @@ def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cm
             elif 'bool' in image.dtype.__str__():
                 cur_ax.imshow(image.astype('float32'), cmap=cmap, vmax=np.max(image), vmin=np.min(image))
             elif 'float' in image.dtype.__str__():
+                image = np.squeeze(image)
                 if norm_float:
                     cur_ax.imshow((image - np.min(image)) / (max(1, np.max(image)) - np.min(image)), cmap=cmap)
                 else:
@@ -1184,6 +1187,8 @@ def bbox2polygon(bbox):
 
 def polygon2bbox(polygon):
     array = np.array(polygon)
+    if array.ndim == 3 and array.shape[1] == 1:
+        array = array[:, 0, :]
     return np.min(array, axis=0).tolist() + np.max(array, axis=0).tolist()
 
 
@@ -1249,14 +1254,26 @@ def draw_polygons(mask, polygons, color=None, thickness=5, fill=False):
     mask = mask.copy()
     if color is None:
         color = [255, 255, 255]
-    if np.array(polygons).ndim == 2:
-        polygons = [polygons]
+    try:
+        if np.array(polygons).ndim == 2:
+            polygons = [polygons]
+    except:
+        pass
+
     if fill:
         mask = cv2.fillPoly(mask, [np.array(p).astype('int32') for p in polygons], color)
     else:
         mask = cv2.polylines(mask, [np.array(p).astype('int32') for p in polygons], True, color=color, thickness=thickness)
 
     return mask
+
+def xyxy_to_yolo_label(bbox, class_id, image_width, image_height):
+    x1, y1, x2, y2 = bbox
+    x_center = (x1 + x2) / (2 * image_width)
+    y_center = (y1 + y2) / (2 * image_height)
+    width = (x2 - x1) / image_width
+    height = (y2 - y1) / image_height
+    return [class_id, x_center, y_center, width, height]
 
 def draw_boxes(image, bboxes, color=None, thickness=1, fill=False):
     image = image.copy()

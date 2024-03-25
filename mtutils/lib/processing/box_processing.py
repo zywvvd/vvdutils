@@ -266,8 +266,13 @@ def adjust_bbox(bbox, offset_list):
     ]
     
     return new_box
-   
+
 def xywh2xyxy(xywh):
     assert len(xywh) == 4
     bbox = [xywh[0], xywh[1], xywh[0] + xywh[2], xywh[1] + xywh[3]]
     return bbox
+
+def xyxy2xywh(bbox):
+    assert len(bbox) == 4
+    xywh = [bbox[0], bbox[1], bbox[2] - bbox[0], bbox[3] - bbox[1]]
+    return xywh

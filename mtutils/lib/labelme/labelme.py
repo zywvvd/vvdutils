@@ -7,6 +7,7 @@ import os, cv2, copy
 import os.path as osp
 import json
 from ..utils import MyEncoder
+from ..utils import json_load
 
 from .polygon import Polygon
 
@@ -40,12 +41,7 @@ class Labelme(object):
 
     @staticmethod
     def parse_json(labelme_json):
-        try:
-            with open(labelme_json, encoding='gbk') as fid:
-                obj = json.load(fid)
-        except:
-            with open(labelme_json, encoding='utf-8') as fid:
-                obj = json.load(fid)
+        obj = json_load(labelme_json)
 
         # get shapes
         shapes = list()
@@ -83,7 +79,7 @@ class Labelme(object):
         os.makedirs(json_dir, exist_ok=True)
 
         self.kwargs.update({
-            'version': '4.4.0',
+            'version': '5.1.1',
             'flags': {},
             'shapes': [shp.json_format() for shp in self.shape_list],
             'imagePath': self.image_path,

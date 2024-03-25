@@ -781,7 +781,7 @@ def change_file_name_for_path(file_path, new_name=None, new_suffix=None):
     new_path = uniform_split_char(str(new_path))
     return new_path
 
-def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=False, overwrite=False, keep_all_files=False):
+def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=False, overwrite=False, keep_all_files=False, build_dir=False):
     """[复制文件从源到目标, 如果目标已经存在则跳过(默认), 如果 keep_all_files 为 True 会保留所有文件]]
 
     Args:
@@ -792,8 +792,13 @@ def smart_copy(source_file_path, target_path, verbose=False, remove_source_file=
     source_file_path = str(source_file_path).replace('\\', '/')
     target_path = str(target_path).replace('\\', '/')
     assert OS_exists(source_file_path)
+
+    if build_dir:
+        dir_check(target_path)
+
     if OS_isdir(target_path):
         target_path = OS_join(target_path, OS_basename(source_file_path))
+
     exists = OS_exists(target_path)
     if exists and not overwrite:
         if keep_all_files:
@@ -1664,6 +1669,21 @@ def line_merge(line_list):
             if Add:
                 line_1D_list.append([min_v, max_v])
     return line_1D_list
+
+def random_sample(data, sample_num, remove_data=False):
+    sample_num = int(sample_num)
+    assert sample_num > 0 and sample_num <= len(data)
+
+    if not remove_data:
+        return random.sample(data, sample_num)
+    else:
+        # return data not sampled
+        collection_list = list()
+        picked_index_list = random.sample(range(len(data)), sample_num)
+        picked_index_list.sort(reverse=True)
+        for index in picked_index_list:
+            collection_list.append(data.pop(index))
+        return collection_list
 
 
 if __name__ == '__main__':

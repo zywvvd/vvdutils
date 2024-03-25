@@ -27,6 +27,7 @@ def make_ok_labelme_json(image_path):
 
             labelme_info = Labelme(info, [])
             labelme_info.save_json(str(json_path))
+        return json_path
 
 
 def make_ok_labelme_for_dir(root_dir, img_suffix='png'):
