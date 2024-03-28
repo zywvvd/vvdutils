@@ -5,7 +5,7 @@ from numpy.distutils.core import setup
 from numpy.distutils.misc_util import Configuration
 from os.path import join, dirname, realpath
 
-str_version = '2.1.80'
+str_version = '2.1.81'
 
 
 

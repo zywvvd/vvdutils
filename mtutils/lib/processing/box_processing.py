@@ -276,3 +276,9 @@ def xyxy2xywh(bbox):
     assert len(bbox) == 4
     xywh = [bbox[0], bbox[1], bbox[2] - bbox[0], bbox[3] - bbox[1]]
     return xywh
+
+def cxcywh2xyxy(cxcywh):
+    assert len(cxcywh) == 4
+    cx, cy, w, h = cxcywh
+    bbox = [cx - w/2, cy - h/2, cx + w/2, cy + h/2]
+    return bbox
