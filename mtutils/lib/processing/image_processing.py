@@ -600,6 +600,8 @@ def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cm
     更加鲁棒地显示图像包括二维图像,第三维度为1的图像
     '''
     image_list = list(image)
+    if len(image_list) == 0:
+        return
     # temp_image = extend_image_channel(image)
     image_num = len(image_list)
     if col_num is None and row_num is None:
