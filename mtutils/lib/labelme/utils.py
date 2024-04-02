@@ -6,7 +6,7 @@ from tqdm import tqdm
 from .labelme import Labelme
 
 
-def make_ok_labelme_json(image_path):
+def make_ok_labelme_obj(image_path):
     if Path(image_path).exists():
         json_path = Path(image_path).with_suffix('.json')
         if not json_path.exists():
@@ -26,6 +26,15 @@ def make_ok_labelme_json(image_path):
             }
 
             labelme_info = Labelme(info, [])
+            
+        return labelme_info
+
+
+def make_ok_labelme_json(image_path):
+    if Path(image_path).exists():
+        json_path = Path(image_path).with_suffix('.json')
+        if not json_path.exists():
+            labelme_info = make_ok_labelme_obj(image_path)
             labelme_info.save_json(str(json_path))
         return json_path
 

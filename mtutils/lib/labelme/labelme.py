@@ -11,6 +11,7 @@ from ..utils import json_load
 
 from .polygon import Polygon
 
+
 class Labelme(object):
     def __init__(self, image_info, shapes, **kwargs):
         self.shape_list = shapes
@@ -38,6 +39,13 @@ class Labelme(object):
 
     def clone(self):
         return copy.deepcopy(self)
+
+    def add_shape(self, points, label, shape_type='polygon'):
+        self.shape_list.append(Polygon(points=points, class_name=label, shape_type=shape_type))
+
+    def add_polygon(self, polygon):
+        assert isinstance(polygon, Polygon)
+        self.shape_list.append(polygon)
 
     @staticmethod
     def parse_json(labelme_json):
