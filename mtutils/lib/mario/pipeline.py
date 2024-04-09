@@ -9,11 +9,11 @@ import json
 from multiprocessing import Pool
 from concurrent.futures import ThreadPoolExecutor
 
-from mtutils import strong_printing
-from mtutils import try_exc_handler
-from mtutils import is_integer
-from mtutils import is_bool
-import mtutils as mt
+from .. import strong_printing
+from .. import try_exc_handler
+from .. import is_integer
+from .. import is_bool
+from .. import MyEncoder
 # Flask packages
 #
 from flask import Flask
@@ -115,7 +115,7 @@ class Pipeline(object):
                     input_string = request.headers['input_string']
                     inputs = json.loads(input_string)
                     results = self.infer(inputs)
-                    json_str = json.dumps(results, cls=mt.MyEncoder)
+                    json_str = json.dumps(results, cls=MyEncoder)
                     jsoned_results = json.loads(json_str)
                     return jsonify(jsoned_results)
                 def exc_func(e):

@@ -6,7 +6,7 @@ import requests
 import numpy as np
 from datetime import datetime
 import cv2
-from mtutils import MyEncoder
+from .. import MyEncoder
 
 
 def tcp_encoder(image_list, **kwargs):
