@@ -5,3 +5,4 @@ from .evaluator import DetectionEvaluator
 from .utils import *
 from .labelme import *
 from .processing import *
+from .mario import *
