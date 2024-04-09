@@ -28,15 +28,14 @@ Mario 是用于整合各个子模块到生产环境的 Pipeline 框架
 ```mermaid
 graph TD
 inputs(inputs)
-
-before_run[call before_run hook]
-before_global_infer[call before_global_infer hook]
+before_run[call_before_run_hook]
+before_global_infer[call_before_global_infer_hook]
 inputs_division[inputs_division]
 infer_single_task[infer_single_task]
-after_global_infer[call after_global_infer hook]
-before_single_infer[call before_single_infer hook]
-after_single_infer[call after_single_infer hook]
-after_run[call after_run hook]
+after_global_infer[call_after_global_infer_hook]
+before_single_infer[call_before_single_infer_hook]
+after_single_infer[call_after_single_infer_hook]
+after_run[call_after_run hook]
 outputs(outputs)
 
 
