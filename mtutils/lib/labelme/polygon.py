@@ -15,6 +15,15 @@ class Polygon(object):
         for key, value in kwargs.items():
             if not hasattr(self, key):
                 setattr(self, key, value)
+    @property
+    def width(self):
+        array = np.array(self.points)
+        return np.max(array[:, 0]) - np.min(array[:, 0])
+
+    @property
+    def height(self):
+        array = np.array(self.points)
+        return np.max(array[:, 1]) - np.min(array[:, 1])
 
     def shape_as_polygon(self, points, shape_type):
         assert shape_type in ['polygon', 'rectangle', 'circle', 'point', 'bbox']
