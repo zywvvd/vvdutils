@@ -25,6 +25,13 @@ class Polygon(object):
         array = np.array(self.points)
         return np.max(array[:, 1]) - np.min(array[:, 1])
 
+    @property
+    def center(self):
+        array_points = np.array(self.points)
+        x_center = (np.max(array_points[:, 0]) + np.min(array_points[:, 0])) / 2
+        y_center = (np.max(array_points[:, 1]) + np.min(array_points[:, 1])) / 2
+        return [x_center, y_center]
+
     def shape_as_polygon(self, points, shape_type):
         assert shape_type in ['polygon', 'rectangle', 'circle', 'point', 'bbox']
         if None: pass
