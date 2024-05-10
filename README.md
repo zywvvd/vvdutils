@@ -1,2 +1,0 @@
-# vvdutils
-VVD utils
