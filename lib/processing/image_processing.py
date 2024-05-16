@@ -15,6 +15,7 @@ from ..utils import is_integer
 from ..utils import OS_exists
 from ..utils import time_reduce
 from ..utils import glob_recursively
+from ..utils import glob_images
 from ..utils import has_chinese_char
 from ..utils import vvd_floor
 from ..utils import change_file_name_for_path
@@ -1689,3 +1690,117 @@ def mask_on_mask(input_mask, standard_mask):
                 labels[labels == index] = -1
     final_mask = (labels < 0).astype('uint8')
     return final_mask
+
+def distortion_calibration(image_dir_path, W_num, H_num, show=False):
+    # termination criteria
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+
+    # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,6,0)
+
+    objp = np.zeros((W_num*H_num,3), np.float32)
+    objp[:,:2] = np.mgrid[0:W_num,0:H_num].T.reshape(-1,2)
+
+    # Arrays to store object points and image points from all the images.
+    objpoints = [] # 3d point in real world space
+    imgpoints = [] # 2d points in image plane.
+
+    image_path_list = glob_images(image_dir_path)
+    if len(image_path_list) == 0:
+        raise Exception(f'no image found in {image_dir_path}.')
+
+    valid_image_path_list = []
+    image_shape = None
+
+    for image_path in tqdm(image_path_list, desc=f' @@ calibration running: '):
+        img = cv_rgb_imread(image_path, 1)
+        if image_shape is None:
+            image_shape = img.shape[:2]
+        else:
+            assert image_shape == img.shape[:2], f' !! image {image_path} shape not match: {image_shape} vs {img.shape[:2]}.'
+
+        # Find the chess board corners
+        ret, corners = cv2.findChessboardCorners(img, (W_num, H_num), None)
+        # If found, add object points, image points (after refining them)
+        if ret == True:
+            valid_image_path_list.append(image_path)
+
+            objpoints.append(objp)
+            corners2 = cv2.cornerSubPix(img, corners, (11, 11), (-1,-1), criteria)
+            imgpoints.append(corners2)
+
+            if show:
+                copy_img = img.copy()
+                # Draw and display the corners
+                cv2.drawChessboardCorners(copy_img, (W_num, H_num), corners2, ret)
+                PIS(copy_img)
+        else:
+            print(f' !! {image_path} findChessboardCorners failed. ')
+
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img.shape[::-1], None, None)
+
+    print("\n @@ Camera Distortion Calibration calculation done.\n")
+
+    # 打印内参矩阵
+    print(" @@ Camera Matrix :")
+    print(mtx)
+
+    # 打印畸变系数
+    print("\n @@ dist :")
+    print(dist)
+    print("\n")
+
+    # 计算重投影误差
+    mean_error = 0
+    for i in range(len(objpoints)):
+        imgpoints2, _ = cv2.projectPoints(objpoints[i], rvecs[i], tvecs[i], mtx, dist)
+        error = cv2.norm(imgpoints[i], imgpoints2, cv2.NORM_L2)/len(imgpoints2)
+        mean_error += error
+        print(f'@ image {i+1} error: {error}')
+        if error > 0.1:
+            print(f'  image path: {valid_image_path_list[i]}')
+
+    # 打印平均误差
+    print(f' @@ total mean error: {mean_error/len(objpoints)}')
+
+    # matrix dist W H
+    result = dict()
+    result['mtx'] = mtx
+    result['dist'] = dist
+    result['W'] = image_shape[1]
+    result['H'] = image_shape[0]
+
+    return result
+
+def distortion_calibration_to_map(mtx, dist, W, H, **kwargs):
+    result = dict()
+
+    result['mtx'] = mtx
+    result['dist'] = dist
+    result['W'] = W
+    result['H'] = H
+
+    newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (W,H), 1, (W,H))
+    result['newcameramtx'] = newcameramtx
+
+    map1, map2 = cv2.initUndistortRectifyMap(mtx, dist, None, newcameramtx, (W, H), cv2.CV_32FC1)
+    distort_bbox = [*(roi[:2]),roi[2]+roi[0], roi[3]+roi[1]]
+    result['map1'] = map1
+    result['map2'] = map2
+    result['roi_bbox'] = distort_bbox
+
+    # frame = cv2.remap(img, map1, map2, cv2.INTER_LINEAR)
+    return result
+
+def undistort_with_map_result(img, map_result):
+    assert 'map1' in map_result, f' !! map1 not in map_result: {map_result}.'
+    assert 'map2' in map_result, f' !! map2 not in map_result: {map_result}.'
+    
+    map1 = map_result['map1']
+    map2 = map_result['map2']
+
+    assert map1.shape[:2] == img.shape[:2] == map2.shape[:2], f' !! shape not match: map1 {map1.shape[:2]}, map2 {map2.shape[:2]}, img {img.shape}.'
+
+    undistorted = cv2.remap(img, map1, map2, cv2.INTER_LINEAR)
+    return undistorted
+
+
