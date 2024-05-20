@@ -274,8 +274,25 @@ def fit_gaussian_2D(point_xy_list):
     rho = ((point_array[:, 0] * point_array[:, 1]).mean() - mean_x * mean_y) / (sigma_x * sigma_y)
     return mean_x, mean_y, sigma_x, sigma_y, rho
 
+def get_distance_by_lat_lon_1(lat1, lon1, lat2, lon2):
+    # 将经纬度转换为弧度
+    phi1 = math.radians(lat1)
+    phi2 = math.radians(lat2)
+    delta_phi = math.radians(lat2 - lat1)
+    delta_lambda = math.radians(lon2 - lon1)
+
+    # 使用 haversine 公式
+    a = math.sin(delta_phi / 2)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(delta_lambda / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    # 地球平均半径大约为 6371 km
+    R = 6371000
+    # 计算两点的距离
+    distance = R * c
+    return distance
+
 # 计算距离
-def getDistance(latA, lonA, latB, lonB):
+def get_distance_by_lat_lon_2(latA, lonA, latB, lonB):
     ra = 6378140  # 赤道半径
     rb = 6356755  # 极半径
     flatten = (ra - rb) / ra  # Partial rate of the earth
@@ -292,5 +309,78 @@ def getDistance(latA, lonA, latB, lonB):
     c2 = (math.sin(x) + x) * (math.sin(pA) - math.sin(pB)) ** 2 / math.sin(x / 2) ** 2
     dr = flatten / 8 * (c1 - c2)
     distance = ra * (x + dr)
-    distance = round(distance , 4)
+    distance = round(distance , 8)
     return distance
+
+import math
+ 
+# 计算角度
+def get_degree_by_lat_lon(latA, lonA, latB, lonB):
+    radLatA = math.radians(latA)
+    radLonA = math.radians(lonA)
+    radLatB = math.radians(latB)
+    radLonB = math.radians(lonB)
+    dLon = radLonB - radLonA
+    y = math.sin(dLon) * math.cos(radLatB)
+    x = math.cos(radLatA) * math.sin(radLatB) - math.sin(radLatA) * math.cos(radLatB) * math.cos(dLon)
+    brng = math.degrees(math.atan2(y, x))
+
+    brng = round((360 - brng + 90) % 360, 8)
+    # brng = int(brng)
+    dir_str = ''
+    if (brng == 0.0) or ((brng == 360.0)):
+        dir_str = '正东方向'
+    elif brng == 90.0:
+        dir_str = '正北方向'
+    elif brng == 180.0:
+        dir_str = '正西方向'
+    elif brng == 270.0:
+        dir_str = '正南方向'
+    elif 0 < brng < 90:
+        dir_str = f'北偏东{90 - brng}'
+    elif 90 < brng < 180:
+        dir_str = f'北偏西{brng - 90}'
+    elif 180 < brng < 270:
+        dir_str = f'南偏西{270 - brng}'
+    elif 270 < brng < 360:
+        dir_str = f'南偏东{brng - 270}'
+    else:
+        dir_str = '未知方向'
+    return brng, dir_str
+
+def get_destination_by_lat_lon(start_lat, start_lon, distance, bearing):
+    # 接受起始经纬度坐标、距离（以米为单位）和方位角作为输入
+    # 函数计算了在地表上按照给定方向和距离前进后的目标经纬度坐标。
+    # bearing 为正北 90 度，正西 180度， 正东 0 度，正南 270 度
+
+    bearing = (360-(bearing - 90))%360
+
+    # 方位角转换为 —— 以北为0度，向东为90度，向南为180度，向西为270度。
+
+    # 将经纬度从度转换为弧度
+    start_lat_rad = math.radians(start_lat)
+    start_lon_rad = math.radians(start_lon)
+    
+    # 定义地球半径
+    earth_radius = 6371000
+    
+    # 将距离转换为米
+    distance_meters = distance
+    
+    # 将方位角转换为弧度
+    bearing_rad = math.radians(bearing)
+    
+    # 计算终点纬度
+    lat2_rad = math.asin(math.sin(start_lat_rad) * math.cos(distance_meters / earth_radius) +
+                         math.cos(start_lat_rad) * math.sin(distance_meters / earth_radius) * math.cos(bearing_rad))
+    
+    # 计算终点经度
+    lon2_rad = start_lon_rad + math.atan2(math.sin(bearing_rad) * math.sin(distance_meters / earth_radius) * math.cos(start_lat_rad),
+                                           math.cos(distance_meters / earth_radius) - math.sin(start_lat_rad) * math.sin(lat2_rad))
+    
+    # 将弧度转换为度
+    lat2 = math.degrees(lat2_rad)
+    lon2 = math.degrees(lon2_rad)
+    
+    return lat2, lon2
+
