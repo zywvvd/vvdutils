@@ -1686,6 +1686,23 @@ def random_sample(data, sample_num, remove_data=False):
         return collection_list
 
 
+def load_xml(xml_path, disable_entities=True):
+    import xmltodict
+    with open(xml_path, 'r', encoding='utf-8') as xml_file:
+        xml_data = xml_file.read()
+    dict_data = xmltodict.parse(xml_data, disable_entities=disable_entities)
+    return dict_data
+
+
+def save_xml(dict_data, xml_path, overwrite=True, verbose=False):
+    import xmltodict
+    xml_data = xmltodict.unparse(dict_data, pretty=True)
+    file_path = save_file_path_check(xml_path, overwrite, verbose)
+    with open(file_path, 'w', encoding='utf-8') as xml_file:
+        xml_file.write(xml_data)
+
+
+
 if __name__ == '__main__':
     
     join_substring('asdfasdf', 123, 'asdf')
