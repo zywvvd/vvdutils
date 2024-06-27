@@ -1,6 +1,6 @@
 import re
 import cv2
-import sys
+import math
 import cv2 as cv
 import numpy as np
 import PIL.Image as Image
@@ -175,6 +175,40 @@ def image_resize(img_source, shape=None, factor=None, unique_check=False, interp
             resized_image[resized_image > 0] = np.max(pixel_list)
 
     return resized_image
+
+def image_merge(*image_weight_pair_list, gamma=0):
+    """
+    :param image_weight_pair: [(image, weight), ...]
+    :param gamma: value offset
+    wi' = wi / sum(wi)
+    I = I1*w1' + I2*w2' + ... + gamma
+    :return: uint8 image
+    """
+    if len(image_weight_pair_list) == 0:
+        raise RuntimeError("image_weight_pair_list is empty")
+    
+    shape_temp = None
+    total_weight = 0
+    for image, weight in image_weight_pair_list:
+        if weight <= 0:
+            raise RuntimeError("weight is not positive")
+        else:
+            total_weight += weight
+        if shape_temp is None:
+            shape_temp = image.shape
+        else:
+            assert shape_temp == image.shape, "image shape is not same"
+    
+    puzzle = np.zeros(shape_temp, dtype='float32')
+    for image, weight in image_weight_pair_list:
+        weight_temp = weight / total_weight
+        puzzle += weight_temp * image
+    
+    if gamma != 0:
+        puzzle += gamma
+    
+    puzzle = np.clip(puzzle, 0, 255)
+    return puzzle.astype('uint8')
 
 
 def to_gray_image(img):
@@ -1616,6 +1650,60 @@ def puzzle(image_list, col_num = None, row_num = None, margin = 20, white_edge=F
     return image
 
 
+def crop_tilted_rectangle(image, point_1, point_2, width):
+    # 裁剪倾斜矩形
+    # 原理是利用 meshgrid 乘以旋转矩阵，从原图中采样拼接得到
+
+    # point -> col, row
+    # 图像坐标系下，让 point1 在图像下方 即 row 更大
+    if point_1[1] < point_2[1]:
+        point_1, point_2 = point_2, point_1
+
+    # 计算矩形的高度和宽度
+    height = cal_distance(point_1, point_2)
+    assert height > 0, f"两点距离必须大于0 {height}"
+
+    x = np.linspace(-width/2, -width/2 + vv.round(width) -1, vv.round(width))
+    y = np.linspace(-height/2, -height/2 + vv.round(height) -1, vv.round(height))
+
+    X, Y = np.meshgrid(x, y)
+
+    # 计算矩形的倾斜角度
+    # 正上方为零度，逆时针为正角度
+    alpha = math.asin((point_1[0] - point_2[0]) / height)
+
+    # 平移距离
+    move_x = (point_1[0] + point_2[0]) / 2
+    move_y = (point_1[1] + point_2[1]) / 2
+
+    # 计算旋转矩阵
+    rotation_matrix = np.array([[np.cos(alpha), -np.sin(alpha)],
+                                [np.sin(alpha), np.cos(alpha)]
+    ])
+
+    # 旋转 meshgrid
+    X_rotated, Y_rotated = np.dot(rotation_matrix.T, np.array([X.flatten(), Y.flatten()]))
+
+    # 变回之前的形状
+    X_rotated = X_rotated.reshape(X.shape)
+    Y_rotated = Y_rotated.reshape(Y.shape)
+
+    # 平移
+    X_rotated += move_x
+    Y_rotated += move_y
+
+    X_rotated = X_rotated.astype('int32')
+    Y_rotated = Y_rotated.astype('int32')
+
+    # 防止图像裁边溢出
+    X_rotated = np.clip(X_rotated, 0, image.shape[1]-1)
+    Y_rotated = np.clip(Y_rotated, 0, image.shape[0]-1)
+
+    # 裁剪图像
+    cropped_image = image[Y_rotated, X_rotated]
+    return cropped_image
+
+
 # 画一个图像各通道的直方图
 def draw_hist(rgb_img):
     color = ('r', 'g', 'b')
@@ -1770,6 +1858,38 @@ def distortion_calibration(image_dir_path, W_num, H_num, show=False):
     result['H'] = image_shape[0]
 
     return result
+
+def img2video(image_path_list, output_video_name, fps, resize=None):
+    # 图像转视频 基于 OpenCV 
+    # 参数：image_path_list: 图像路径列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
+
+    if resize is not None:
+        shape = (resize[0], resize[1])
+    else:
+        shape = None
+
+    # 获取图像的尺寸
+    image = cv2.imread(image_path_list[0])
+    image = to_colorful_image(image)
+    if shape is not None:
+        image = image_resize(image, shape)
+
+    height, width, channels = image.shape
+    shape = (width, height)
+
+    # 创建视频 writer
+    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
+    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
+
+    # 遍历图像路径列表，并将图像写入视频文件
+    for image_path in tqdm(image_path_list):
+        image = cv2.imread(image_path)
+        image = to_colorful_image(image)
+        image = image_resize(image, shape)
+        out.write(image)
+
+    # 释放writer
+    out.release()
 
 def distortion_calibration_to_map(mtx, dist, W, H, **kwargs):
     result = dict()
