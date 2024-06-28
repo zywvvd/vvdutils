@@ -336,15 +336,19 @@ def gamma_transform(image, theta):
     gamma_image = data[image]
     return gamma_image
 
-def paint_words(img, display_str, left=0, top=0, fontsize=20, color=tuple([0, 0, 255])):
+def paint_words(img, display_str, left=0, top=0, fontsize=20, color=tuple([0, 0, 255]), font_path=None):
     from PIL import ImageFont, ImageDraw, Image
     import matplotlib.font_manager as fm
     try:
-        if current_system() == 'Windows':
-            font = ImageFont.truetype('arial.ttf', fontsize)
+        if font_path is None:
+            if current_system() == 'Windows':
+                font = ImageFont.truetype('arial.ttf', fontsize)
+            else:
+                font = ImageFont.truetype(fm.findfont(fm.FontProperties(family='DejaVu Sans')),fontsize)
         else:
-            font = ImageFont.truetype(fm.findfont(fm.FontProperties(family='DejaVu Sans')),fontsize)
-    except:
+            font = ImageFont.truetype(font_path, fontsize)
+    except Exception as e:
+        print(f"Failed to load font: {e}, fallback to default font.")
         font = ImageFont.load_default()
 
     img = to_colorful_image(img.copy())
@@ -1924,3 +1928,23 @@ def undistort_with_map_result(img, map_result):
     return undistorted
 
 
+def colorful_mask(ori_output, color_dict=None):
+    # mask to colorful image
+    if color_dict is None:
+        color_dict = {
+            0: (160, 160, 160),
+            1: (0, 255, 255),
+            2: (255, 255, 0),
+            3: (170, 85, 85),
+            4: (20, 0, 255),
+            5: (255, 0, 20),
+            6: (176, 58, 221),
+            7: (88, 138, 165),
+            8: (119, 176, 54),
+            9: (230, 95, 54),
+        }
+    puzzle = np.zeros([ori_output.shape[0], ori_output.shape[1], 3], np.float16)
+    for key in color_dict.keys():
+        puzzle[ori_output==key] = color_dict[key]
+
+    return puzzle.astype('uint8')

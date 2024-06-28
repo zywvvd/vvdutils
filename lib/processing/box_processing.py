@@ -27,12 +27,12 @@ def is_box(box):
         return False
 
 
-def compute_box_area(box):
+def box_area(box):
     """
     compute area of input box
     """
     assert is_box(box)
-    area = max(0, box[2] - box[0]) * max(0, box[3] - box[1])
+    area = max(0, abs(box[2] - box[0])) * max(0, abs(box[3] - box[1]))
     return area
 
 
