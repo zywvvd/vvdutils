@@ -8,7 +8,7 @@ import os.path as osp
 import json
 from ..utils import MyEncoder
 from ..utils import json_load
-
+from ..processing import get_polygons_from_mask
 from .polygon import Polygon
 
 
@@ -46,6 +46,14 @@ class Labelme(object):
     def add_polygon(self, polygon):
         assert isinstance(polygon, Polygon)
         self.shape_list.append(polygon)
+
+    def add_shape_from_mask(self, mask, label, approx=True, epsilon=50):
+        mask = mask > 0
+        if mask.sum() == 0:
+            return
+        polygon_list = get_polygons_from_mask(mask, approx=approx, epsilon=epsilon)
+        for polygon in polygon_list:
+            self.add_shape(polygon, label, shape_type='polygon')        
 
     @staticmethod
     def parse_json(labelme_json):

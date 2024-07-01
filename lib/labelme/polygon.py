@@ -7,6 +7,10 @@ from ..utils import vvd_round
 
 class Polygon(object):
     def __init__(self, points, class_name, shape_type, **kwargs):
+        if isinstance(points, np.ndarray):
+            if points.ndim == 3 and points.shape[1] == 1:
+                points = points[:,0,:].tolist()
+
         assert isinstance(points, list) or isinstance(points, tuple)
         assert isinstance(class_name, str)
         self.class_name = class_name

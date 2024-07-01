@@ -26,8 +26,13 @@ def make_ok_labelme_obj(image_path):
             }
 
             labelme_info = Labelme(info, [])
+        else:
+            labelme_info = Labelme.from_json(str(json_path))
             
         return labelme_info
+    else:
+        print(f'Warning !! {image_path} not exists')
+        return ''
 
 
 def make_ok_labelme_json(image_path):
@@ -37,6 +42,9 @@ def make_ok_labelme_json(image_path):
             labelme_info = make_ok_labelme_obj(image_path)
             labelme_info.save_json(str(json_path))
         return json_path
+    else:
+        print(f'Warning !! {image_path} not exists')
+        return ''
 
 
 def make_ok_labelme_for_dir(root_dir, img_suffix='png'):

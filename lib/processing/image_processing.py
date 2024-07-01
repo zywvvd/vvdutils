@@ -1264,12 +1264,22 @@ def polygon_interpolation(polygon, max_distance, close=True):
     return points_res
 
 
-def get_polygons_from_mask(mask):
+def get_polygons_from_mask(mask, approx=True, epsilon=None):
     """ get polygons for all isolated areas on fg-mask
         return something like: [[x1,y1], [x2,y2], [x3,y3], ...]
     """
     mask = to_gray_image(mask)
     contours, _  = cv2.findContours((mask).astype('uint8'), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if approx:
+        new_contours = list()
+
+        for contour in contours:
+            if epsilon is None:
+                epsilon = 0.005 * cv2.arcLength(contour, True)
+            new_contour = cv2.approxPolyDP(contour, epsilon, True)
+            if new_contour.shape[0] > 2:
+                new_contours.append(new_contour)
+        contours = new_contours
     return contours
 
 
