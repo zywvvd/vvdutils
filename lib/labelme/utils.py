@@ -1,7 +1,7 @@
 from pathlib import Path
 from ..utils import create_uuid
 from ..processing import cv_rgb_imread
-from ..utils import glob_recursively
+from ..utils import glob_images
 from tqdm import tqdm
 from .labelme import Labelme
 
@@ -47,7 +47,7 @@ def make_ok_labelme_json(image_path):
         return ''
 
 
-def make_ok_labelme_for_dir(root_dir, img_suffix='png'):
-    image_path_list = glob_recursively(root_dir, img_suffix)
+def make_ok_labelme_for_dir(root_dir):
+    image_path_list = glob_images(root_dir)
     for image_path in tqdm(image_path_list):
         make_ok_labelme_json(image_path)

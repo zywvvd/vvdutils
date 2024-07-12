@@ -1701,7 +1701,9 @@ def save_xml(dict_data, xml_path, overwrite=True, verbose=False):
     with open(file_path, 'w', encoding='utf-8') as xml_file:
         xml_file.write(xml_data)
 
-
+def get_file_line_number(file_path):
+    """Count the number of lines in a file"""
+    return sum(1 for line in open(file_path, 'r'))
 
 if __name__ == '__main__':
     

@@ -383,4 +383,55 @@ def get_destination_by_lat_lon(start_lat, start_lon, distance, bearing):
     lon2 = math.degrees(lon2_rad)
     
     return lat2, lon2
+    
+    
+def point_in_triangle_2d(P, A, B, C):
+    # P is the point, A, B, C are the vertices of the triangle
+    # P could be a 2d vector which means a point in 2d space
+    # or P also could be a N x 2 matrix which means N points in 2d space in which case the function will return a N x 1 matrix of booleans
+
+    P = np.array(P)
+    A = np.array(A[:2])
+    B = np.array(B[:2])
+    C = np.array(C[:2])
+
+    if np.cross(A-B, B-C) == 0:
+        return False
+    
+    res1 = np.cross(P - A, B - A)
+    res2 = np.cross(P - B, C - B)
+    res3 = np.cross(P - C, A - C)
+
+    return ((res1 >= 0) * (res2 >= 0) * (res3 >= 0)) | ((res1 <= 0) * (res2 <= 0) * (res3 <= 0))
+
+def get_z_from_xy_on_plane_ABC_3d(x, y, A, B, C):
+    # A, B, C are 3d points who define a plane
+    # function will calculate z value of x y on this plane
+
+    x = np.array(x)
+    y = np.array(y)
+
+    assert len(x) == len(y), f' !! Error: x and y must have the same length, but x has {len(x)} and y has {len(y)}'
+        
+    input_length = len(x)
+
+    A = np.array(A[:3])
+    B = np.array(B[:3])
+    C = np.array(C[:3])
+
+    assert len(A) == 3 and len(B) == 3 and len(C) == 3, f' !! Error: A, B and C must have 3 elements, but A has {len(A)}, B has {len(B)} and C has {len(C)}'
+    
+    # cal normal vector
+    n = np.cross(B - A, C - A)
+
+    if np.linalg.norm(n, 1) == 0:
+        print(" !! Warning: normal vector is zero vector")
+        return np.zeros([input_length, 2])
+    elif n[2] == 0:
+        print(" !! Warning: normal vector is parallel to z axis")
+        return np.zeros([input_length, 2])
+    else:
+        # pA is vertical to normal vector
+        z = (n[2] * A[2] - n[0] * (x - A[0]) - n[1] * (y - A[1])) / n[2]
+        return z
 
