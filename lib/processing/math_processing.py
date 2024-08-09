@@ -435,3 +435,17 @@ def get_z_from_xy_on_plane_ABC_3d(x, y, A, B, C):
         z = (n[2] * A[2] - n[0] * (x - A[0]) - n[1] * (y - A[1])) / n[2]
         return z
 
+
+def cal_triangle_area_by_side_length(a, b, c):
+    # a, b, c are the side length of a triangle
+    # return the area of the triangle
+    s = (a + b + c) / 2
+    return math.sqrt(s * (s - a) * (s - b) * (s - c))
+
+def cal_triangle_area_by_point(x1, y1, x2, y2, x3, y3):
+    # x1, y1, x2, y2, x3, y3 are the coordinates of the three points of a triangle
+    # return the area of the triangle
+    a = cal_distance([x1, y1], [x2, y2])
+    b = cal_distance([x2, y2], [x3, y3])
+    c = cal_distance([x3, y3], [x1, y1])
+    return cal_triangle_area_by_side_length(a, b, c)

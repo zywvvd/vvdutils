@@ -59,6 +59,9 @@ def exists(input):
     else:
         return OS_exists(input)
 
+def random_color():
+    return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
 
 def get_list_from_list(data_list, call_back, absolutely=False):
     """[make a list through a input list,
@@ -1290,7 +1293,7 @@ def symlink(src, tar):
 class ListOrderedDict(OrderedDict):
     def __getitem__(self, key):
         if is_integer(key):
-            key = list(self.keys())[key]
+            key = self.get_key(key)
         elif isinstance(key, slice):
             slicedkeys = list(self.keys())[key]
             lod_obj = type(self)()
@@ -1299,6 +1302,12 @@ class ListOrderedDict(OrderedDict):
             return lod_obj
 
         return super().__getitem__(key)
+
+    def get_key(self, index):
+        return list(self.keys())[index]
+
+    def get_index(self, key):
+        return list(self.keys()).index(key)
 
     def append(self, key, value):
         if is_integer(key):
