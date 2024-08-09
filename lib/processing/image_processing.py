@@ -1873,7 +1873,41 @@ def distortion_calibration(image_dir_path, W_num, H_num, show=False):
 
     return result
 
-def img2video(image_path_list, output_video_name, fps, resize=None):
+
+def img2video(image_list, output_video_name, fps, resize=None):
+    # 图像转视频 基于 OpenCV 
+    # 参数：image_list: rgb 图像列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
+
+    if resize is not None:
+        shape = (resize[0], resize[1])
+    else:
+        shape = None
+
+    # 获取图像的尺寸
+    image = image_list[0]
+    image = to_colorful_image(image)
+    if shape is not None:
+        image = image_resize(image, shape)
+
+    height, width, channels = image.shape
+    shape = (width, height)
+
+    # 创建视频 writer
+    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
+    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
+
+    # 遍历图像路径列表，并将图像写入视频文件
+    for image in tqdm(image_list, desc=f' @@ image to video running: '):
+        image = to_colorful_image(image)
+        image = cv_rgb_bgr_convert(image)
+        image = image_resize(image, shape)
+        out.write(image)
+
+    # 释放writer
+    out.release()
+
+
+def imgpath2video(image_path_list, output_video_name, fps, resize=None):
     # 图像转视频 基于 OpenCV 
     # 参数：image_path_list: 图像路径列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
 
@@ -1896,7 +1930,7 @@ def img2video(image_path_list, output_video_name, fps, resize=None):
     out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
 
     # 遍历图像路径列表，并将图像写入视频文件
-    for image_path in tqdm(image_path_list):
+    for image_path in tqdm(image_path_list, desc=f' @@ image to video running: '):
         image = cv2.imread(image_path)
         image = to_colorful_image(image)
         image = image_resize(image, shape)
