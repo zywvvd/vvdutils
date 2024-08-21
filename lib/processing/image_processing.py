@@ -1677,8 +1677,8 @@ def crop_tilted_rectangle(image, point_1, point_2, width):
     height = cal_distance(point_1, point_2)
     assert height > 0, f"两点距离必须大于0 {height}"
 
-    x = np.linspace(-width/2, -width/2 + vv.round(width) -1, vv.round(width))
-    y = np.linspace(-height/2, -height/2 + vv.round(height) -1, vv.round(height))
+    x = np.linspace(-width/2, -width/2 + round(width) -1, round(width))
+    y = np.linspace(-height/2, -height/2 + round(height) -1, round(height))
 
     X, Y = np.meshgrid(x, y)
 
