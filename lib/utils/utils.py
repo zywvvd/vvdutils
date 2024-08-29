@@ -18,9 +18,10 @@ import platform
 import hashlib
 import pickle
 import uuid
-import math
+import decimal
 import shutil
 import string
+import datetime
 
 import numpy as np
 import PIL.Image as Image
@@ -460,6 +461,10 @@ class MyEncoder(json.JSONEncoder):
             return bool(obj)
         elif isinstance(obj, Path) or isinstance(obj, Path2):
             return str(obj)
+        elif isinstance(obj, decimal.Decimal):
+            return float(obj)
+        elif isinstance(obj, datetime.datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
         else:
             return super(MyEncoder, self).default(obj)
 
@@ -1660,8 +1665,10 @@ def line_cross(min1, max1, min2, max2):
     cross = max_v - min_v >= 0
     return (min_v, max_v), cross_length, cross
 
+
 def epsilon_equal(a, b, epsilon=1e-8):
     return np.abs(a - b) < epsilon
+
 
 def line_merge(line_list):
     line_1D_list = list()
@@ -1678,6 +1685,7 @@ def line_merge(line_list):
             if Add:
                 line_1D_list.append([min_v, max_v])
     return line_1D_list
+
 
 def random_sample(data, sample_num, remove_data=False):
     sample_num = int(sample_num)
@@ -1710,9 +1718,64 @@ def save_xml(dict_data, xml_path, overwrite=True, verbose=False):
     with open(file_path, 'w', encoding='utf-8') as xml_file:
         xml_file.write(xml_data)
 
+
 def get_file_line_number(file_path):
     """Count the number of lines in a file"""
     return sum(1 for line in open(file_path, 'r'))
+
+
+def get_file_create_time(file_path):
+    # 获取文件的创建时间
+    creation_time = os.path.getctime(file_path)
+    creation_time_formatted = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(creation_time))
+    return creation_time_formatted
+
+
+def sleep_count(seconds, minute=0, hour=0, verbose=True):
+    total_seconds = seconds + minute * 60 + hour * 3600
+    now_time_value = time.time()
+    target_time_value = now_time_value + total_seconds
+
+    tar_object = datetime.datetime.fromtimestamp(target_time_value)
+    tar_datetime = tar_object.strftime('%H:%M:%S')
+
+    verbose_index = 1
+
+    while True:
+        time.sleep(0.01)
+        cur_time_value = time.time()
+        if cur_time_value - now_time_value >= verbose_index:
+            if verbose:
+                dt_object = datetime.datetime.fromtimestamp(cur_time_value)
+                formatted_datetime = dt_object.strftime('%H:%M:%S')
+
+                time_left = round(target_time_value - cur_time_value)
+                time_left = max(0, time_left)
+
+                hour_left = int(time_left // 3600)
+                minute_left = int((time_left % 3600) // 60)
+                seconds_left = int(time_left % 60)
+
+                verbose_str = f"{formatted_datetime} / {tar_datetime}    ----    "
+
+                if hour_left > 0:
+                    verbose_str = verbose_str + f"{hour_left}h "
+                
+                if minute_left > 0:
+                    verbose_str += f"{minute_left}m "
+
+                verbose_str += f"{seconds_left}s "
+
+                print(verbose_str)
+
+            verbose_index += 1
+        
+        if cur_time_value >= target_time_value:
+            break
+    
+    print(" Time Up !")
+
+
 
 if __name__ == '__main__':
     

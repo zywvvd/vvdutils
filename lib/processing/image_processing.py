@@ -1,10 +1,9 @@
-import re
 import cv2
 import math
 import cv2 as cv
 import numpy as np
 import PIL.Image as Image
-
+import io
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -793,7 +792,7 @@ def scatter3d(xyz_data_list, label_list, xyz_label=None, title='3d Scatter plot'
 
 
 def scatter2d(xy_data_list, label_list=None, xy_label=None, title='2d Scatter plot'):
-    if not xy_data_list:
+    if len(xy_data_list) == 0:
         return
     xyz_data = np.array(xy_data_list)
     assert xyz_data.ndim == 2
@@ -1793,6 +1792,72 @@ def mask_on_mask(input_mask, standard_mask):
     final_mask = (labels < 0).astype('uint8')
     return final_mask
 
+def img2video(image_list, output_video_name, fps, resize=None):
+    # 图像转视频 基于 OpenCV 
+    # 参数：image_list: rgb 图像列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
+
+    if resize is not None:
+        shape = (resize[0], resize[1])
+    else:
+        shape = None
+
+    # 获取图像的尺寸
+    image = image_list[0]
+    image = to_colorful_image(image)
+    if shape is not None:
+        image = image_resize(image, shape)
+
+    height, width, channels = image.shape
+    shape = (width, height)
+
+    # 创建视频 writer
+    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
+    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
+
+    # 遍历图像路径列表，并将图像写入视频文件
+    for image in tqdm(image_list, desc=f' @@ image to video running: '):
+        image = to_colorful_image(image)
+        image = cv_rgb_bgr_convert(image)
+        image = image_resize(image, shape)
+        out.write(image)
+
+    # 释放writer
+    out.release()
+
+
+def imgpath2video(image_path_list, output_video_name, fps, resize=None):
+    # 图像转视频 基于 OpenCV 
+    # 参数：image_path_list: 图像路径列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
+
+    if resize is not None:
+        shape = (resize[0], resize[1])
+    else:
+        shape = None
+
+    # 获取图像的尺寸
+    image = cv2.imread(image_path_list[0])
+    image = to_colorful_image(image)
+    if shape is not None:
+        image = image_resize(image, shape)
+
+    height, width, channels = image.shape
+    shape = (width, height)
+
+    # 创建视频 writer
+    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
+    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
+
+    # 遍历图像路径列表，并将图像写入视频文件
+    for image_path in tqdm(image_path_list, desc=f' @@ image to video running: '):
+        image = cv2.imread(image_path)
+        image = to_colorful_image(image)
+        image = image_resize(image, shape)
+        out.write(image)
+
+    # 释放writer
+    out.release()
+
+
 def distortion_calibration(image_dir_path, W_num, H_num, show=False):
     # termination criteria
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
@@ -1874,71 +1939,6 @@ def distortion_calibration(image_dir_path, W_num, H_num, show=False):
     return result
 
 
-def img2video(image_list, output_video_name, fps, resize=None):
-    # 图像转视频 基于 OpenCV 
-    # 参数：image_list: rgb 图像列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
-
-    if resize is not None:
-        shape = (resize[0], resize[1])
-    else:
-        shape = None
-
-    # 获取图像的尺寸
-    image = image_list[0]
-    image = to_colorful_image(image)
-    if shape is not None:
-        image = image_resize(image, shape)
-
-    height, width, channels = image.shape
-    shape = (width, height)
-
-    # 创建视频 writer
-    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
-    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
-
-    # 遍历图像路径列表，并将图像写入视频文件
-    for image in tqdm(image_list, desc=f' @@ image to video running: '):
-        image = to_colorful_image(image)
-        image = cv_rgb_bgr_convert(image)
-        image = image_resize(image, shape)
-        out.write(image)
-
-    # 释放writer
-    out.release()
-
-
-def imgpath2video(image_path_list, output_video_name, fps, resize=None):
-    # 图像转视频 基于 OpenCV 
-    # 参数：image_path_list: 图像路径列表，output_video_name: 输出视频文件名，fps: 视频帧率，resize: 图像尺寸调整，None 表示不调整
-
-    if resize is not None:
-        shape = (resize[0], resize[1])
-    else:
-        shape = None
-
-    # 获取图像的尺寸
-    image = cv2.imread(image_path_list[0])
-    image = to_colorful_image(image)
-    if shape is not None:
-        image = image_resize(image, shape)
-
-    height, width, channels = image.shape
-    shape = (width, height)
-
-    # 创建视频 writer
-    fourcc = cv2.VideoWriter.fourcc(*'mp4v')  # 使用mp4视频编码
-    out = cv2.VideoWriter(output_video_name, fourcc, fps, (width, height))
-
-    # 遍历图像路径列表，并将图像写入视频文件
-    for image_path in tqdm(image_path_list, desc=f' @@ image to video running: '):
-        image = cv2.imread(image_path)
-        image = to_colorful_image(image)
-        image = image_resize(image, shape)
-        out.write(image)
-
-    # 释放writer
-    out.release()
-
 def distortion_calibration_to_map(mtx, dist, W, H, **kwargs):
     result = dict()
 
@@ -1959,7 +1959,8 @@ def distortion_calibration_to_map(mtx, dist, W, H, **kwargs):
     # frame = cv2.remap(img, map1, map2, cv2.INTER_LINEAR)
     return result
 
-def undistort_with_map_result(img, map_result):
+
+def undistort_with_map_result(img, map_result, crop=False, interpolation=cv2.INTER_LINEAR):
     assert 'map1' in map_result, f' !! map1 not in map_result: {map_result}.'
     assert 'map2' in map_result, f' !! map2 not in map_result: {map_result}.'
     
@@ -1968,7 +1969,12 @@ def undistort_with_map_result(img, map_result):
 
     assert map1.shape[:2] == img.shape[:2] == map2.shape[:2], f' !! shape not match: map1 {map1.shape[:2]}, map2 {map2.shape[:2]}, img {img.shape}.'
 
-    undistorted = cv2.remap(img, map1, map2, cv2.INTER_LINEAR)
+    undistorted = cv2.remap(img, map1, map2, interpolation)
+
+    if crop:
+        roi_bbox = map_result['roi_bbox']
+        undistorted = undistorted[roi_bbox[1]:roi_bbox[3], roi_bbox[0]:roi_bbox[2]]
+
     return undistorted
 
 
@@ -1992,3 +1998,12 @@ def colorful_mask(ori_output, color_dict=None):
         puzzle[ori_output==key] = color_dict[key]
 
     return puzzle.astype('uint8')
+
+def read_mongodb_image(mongo_img_file_obj):
+    image_stream = io.BytesIO(mongo_img_file_obj.read())
+
+    pil_image = Image.open(image_stream)
+    pil_image = pil_image.convert('RGB')
+    image = np.array(pil_image)                             # 5000 * 4000 * 3 uint8 图像耗时 0.17 s
+
+    return image

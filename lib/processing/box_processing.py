@@ -184,7 +184,8 @@ def boxes_painter(rgb_image, box_list, label_list=None, score_list=None, color_l
             score = score_list[index]
             display_str += str(format(score, '.3f'))
 
-        text_width, text_height = font.getsize(display_str)
+        text_width = 10
+        text_height = font.font.height
         margin = np.ceil(0.05 * text_height)
 
         array_box = np.array(bbox)

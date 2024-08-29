@@ -46,6 +46,8 @@ def polar_to_cartesian(r, theta, center_xy, reverse_y=False):
 def cal_length(vector):
     return (np.array(vector) ** 2).sum() ** 0.5
 
+cal_vector_length = cal_length
+
 def get_angle_from_vector(vector, degree=False):
     assert len(vector) == 2
     assert (np.array(vector) ** 2).sum() > 0
@@ -276,6 +278,11 @@ def fit_gaussian_2D(point_xy_list):
 
 def get_distance_by_lat_lon_1(lat1, lon1, lat2, lon2):
     # 将经纬度转换为弧度
+    lat1 = float(lat1)
+    lon1 = float(lon1)
+    lat2 = float(lat2)
+    lon2 = float(lon2)
+
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
     delta_phi = math.radians(lat2 - lat1)
@@ -293,6 +300,12 @@ def get_distance_by_lat_lon_1(lat1, lon1, lat2, lon2):
 
 # 计算距离
 def get_distance_by_lat_lon_2(latA, lonA, latB, lonB):
+    # 将经纬度转换为弧度
+    lat1 = float(lat1)
+    lon1 = float(lon1)
+    lat2 = float(lat2)
+    lon2 = float(lon2)
+
     ra = 6378140  # 赤道半径
     rb = 6356755  # 极半径
     flatten = (ra - rb) / ra  # Partial rate of the earth
