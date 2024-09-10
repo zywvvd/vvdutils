@@ -413,6 +413,51 @@ def img_rotate(img,
 
 image_rotate = img_rotate
 
+def image_center_rotate(image, angle, center=None, interpolation=cv2.INTER_LINEAR, border_mode=cv2.BORDER_CONSTANT, border_value=0):
+    type = image.dtype
+    image = image.astype('uint8')
+    h, w = image.shape[:2]
+
+    if center is None:
+        center = ((w - 1) * 0.5, (h - 1) * 0.5)
+    assert isinstance(center, tuple)
+
+    matrix = cv2.getRotationMatrix2D((0, 0), -angle, 1)
+
+    corner_points = np.array([
+                        [0, 0],
+                        [w, 0],
+                        [w, h],
+                        [0, h]
+                        ] + [[center[0], center[1]]])
+
+    new_corner_points = corner_points @ matrix.T[:2, :]
+
+    x_min = np.min(new_corner_points[:, 0])
+    y_min = np.min(new_corner_points[:, 1])
+    x_max = np.max(new_corner_points[:, 0])
+    y_max = np.max(new_corner_points[:, 1])
+
+    matrix[0, 2] -= x_min
+    matrix[1, 2] -= y_min
+
+    new_w = np.ceil(x_max - x_min).astype('int32')
+    new_h = np.ceil(y_max - y_min).astype('int32')
+
+    new_corner_points -= [x_min, y_min]
+
+    rotated = cv2.warpAffine(
+        image,
+        matrix, (new_w, new_h),
+        flags=interpolation,
+        borderValue=border_value,
+        borderMode=border_mode)
+
+    rotated.astype(type)
+    center_point = new_corner_points[-1, :]
+
+    return rotated, center_point
+
 def image_flip_lr(image, contiguousarray=True):
     fliped = np.fliplr(image)
     if contiguousarray:
@@ -1263,7 +1308,7 @@ def polygon_interpolation(polygon, max_distance, close=True):
     return points_res
 
 
-def get_polygons_from_mask(mask, approx=True, epsilon=None):
+def get_polygons_from_mask(mask, approx=False, epsilon=None):
     """ get polygons for all isolated areas on fg-mask
         return something like: [[x1,y1], [x2,y2], [x3,y3], ...]
     """
@@ -1999,6 +2044,7 @@ def colorful_mask(ori_output, color_dict=None):
 
     return puzzle.astype('uint8')
 
+
 def read_mongodb_image(mongo_img_file_obj):
     image_stream = io.BytesIO(mongo_img_file_obj.read())
 
@@ -2007,3 +2053,22 @@ def read_mongodb_image(mongo_img_file_obj):
     image = np.array(pil_image)                             # 5000 * 4000 * 3 uint8 图像耗时 0.17 s
 
     return image
+
+
+def make_voronoi_mask(width, height, voronoi_polygon, gradient_width):
+    voronoi_img = np.zeros((height, width), dtype=np.float32)
+    cv2.polylines(voronoi_img, voronoi_polygon[None, :, :].astype('int32'), isClosed=True, color=255, thickness=vvd_round(gradient_width))
+
+    Ys, Xs = np.where(voronoi_img > 0)
+    voronoi_img[...] = 0
+
+    cv2.fillPoly(voronoi_img, voronoi_polygon[None, :, :].astype('int32'), color=1)
+    cv2.erode(voronoi_img, np.ones((7, 7), dtype=np.uint8), voronoi_img)
+
+    for x, y in zip(Xs, Ys):
+        row, col = int(y), int(x)
+        distance = cv2.pointPolygonTest(voronoi_polygon, (col, row), True)
+        value = np.clip(0.5 + distance / gradient_width, 0, 1)
+        voronoi_img[row, col] = value
+
+    return voronoi_img
