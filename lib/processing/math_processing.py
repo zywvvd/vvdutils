@@ -2,6 +2,7 @@ import math
 import numpy as np
 from ..utils import cal_distance
 from ..utils import is_iterable
+from ..utils import is_number
 
 
 def cartesian_to_polar(point_xy, center_xy, reverse_y=True):
@@ -420,12 +421,15 @@ def point_in_triangle_2d(P, A, B, C):
 def get_z_from_xy_on_plane_ABC_3d(x, y, A, B, C):
     # A, B, C are 3d points who define a plane
     # function will calculate z value of x y on this plane
+    if is_number(x) and is_number(y):
+        x = [x]
+        y = [y]
 
     x = np.array(x)
     y = np.array(y)
 
     assert len(x) == len(y), f' !! Error: x and y must have the same length, but x has {len(x)} and y has {len(y)}'
-        
+
     input_length = len(x)
 
     A = np.array(A[:3])
@@ -454,6 +458,7 @@ def cal_triangle_area_by_side_length(a, b, c):
     # return the area of the triangle
     s = (a + b + c) / 2
     return math.sqrt(s * (s - a) * (s - b) * (s - c))
+
 
 def cal_triangle_area_by_point(x1, y1, x2, y2, x3, y3):
     # x1, y1, x2, y2, x3, y3 are the coordinates of the three points of a triangle

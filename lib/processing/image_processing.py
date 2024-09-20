@@ -16,7 +16,7 @@ from ..utils import time_reduce
 from ..utils import glob_recursively
 from ..utils import glob_images
 from ..utils import has_chinese_char
-from ..utils import vvd_floor
+from ..utils import vvd_floor, vvd_ceil
 from ..utils import change_file_name_for_path
 from ..utils import encode_path
 from ..utils import cal_distance
@@ -1276,6 +1276,13 @@ def polygon2bbox(polygon):
         array = array[:, 0, :]
     return np.min(array, axis=0).tolist() + np.max(array, axis=0).tolist()
 
+def ceil_bbox(bbox):
+    x1, y1, x2, y2 = bbox
+    return [vvd_floor(x1), vvd_floor(y1), vvd_ceil(x2), vvd_ceil(y2)]
+
+def floor_bbox(bbox):
+    x1, y1, x2, y2 = bbox
+    return [vvd_ceil(x1), vvd_ceil(y1), vvd_floor(x2), vvd_floor(y2)]
 
 def xyxy2polygon(x1, y1=None, x2=None, y2=None):
     if y1 is None and x2 is None and y2 is None:
@@ -2055,7 +2062,7 @@ def read_mongodb_image(mongo_img_file_obj):
     return image
 
 
-def make_voronoi_mask(width, height, voronoi_polygon, gradient_width):
+def make_voronoi_grad_mask(width, height, voronoi_polygon, gradient_width):
     voronoi_img = np.zeros((height, width), dtype=np.float32)
     cv2.polylines(voronoi_img, voronoi_polygon[None, :, :].astype('int32'), isClosed=True, color=255, thickness=vvd_round(gradient_width))
 
@@ -2072,3 +2079,40 @@ def make_voronoi_mask(width, height, voronoi_polygon, gradient_width):
         voronoi_img[row, col] = value
 
     return voronoi_img
+
+
+def make_voronoi_mask(width, height, voronoi_polygon):
+    voronoi_img = np.zeros((height, width), dtype=np.uint8)
+    cv2.fillPoly(voronoi_img, voronoi_polygon[None, :, :].astype('int32'), color=1)
+
+    return voronoi_img
+
+
+class UndistortProcessor:
+    def __init__(self, fx, fy, cx, cy, k1, k2, p1, p2, k3, W, H):
+
+        mtx = np.array([[fx, 0, cx], [0, fy, cy], [0, 0, 1]])
+        dist = np.array([k1, k2, p1, p2, k3])
+
+        self.undistort_param_dict = distortion_calibration_to_map(mtx, dist, W, H)
+        self.W = W
+        self.H = H
+
+    def __call__(self, img, interpolation=cv2.INTER_LINEAR):
+        return self.process_img(img, interpolation=interpolation)
+
+    def process_img(self, img, crop=False, interpolation=cv2.INTER_LINEAR):
+        W, H = img.shape[1], img.shape[0]
+        assert W == self.W and H == self.H, f"Image size {W}x{H} is not equal to {self.W}x{self.H}"
+
+        undistort_image = undistort_with_map_result(img, self.undistort_param_dict, crop, interpolation)
+
+        return undistort_image
+
+    # data_processor = UndistortProcessor(3706.15, 3706.15, 2639.71, 1937.01, -0.110588, 0.0124022, -0.0001086, -0.000254551, -0.0262282, 5280, 3956)
+    # for image_path in vv.tqdm(img_path_list):
+
+    #     img = vv.cv_rgb_imread(image_path)
+        
+    #     processed_img = data_processor(img)
+    #     vv.PIS([img, 'ori_img'], [processed_img, 'undistorted'])
