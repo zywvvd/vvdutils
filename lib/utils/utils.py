@@ -13,6 +13,7 @@ import sys
 import cv2 as cv
 import logging
 import os
+import re
 import random
 import platform
 import hashlib
@@ -897,6 +898,12 @@ def glob_images(path, recursively=True):
     popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
     return  glob_recursively(path, popular_image_extensions, recursively=recursively)
 
+def find_all_numbers(string):
+    """
+    找出字符串中所有的数字，返回一个列表(科学计数法的不行)
+    """
+    numbers = re.findall(r'-?\d+\.?\d*', string)
+    return get_list_from_list(numbers, lambda x: float(x))
 
 def is_integer(num):
     """

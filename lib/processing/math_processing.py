@@ -302,10 +302,10 @@ def get_distance_by_lat_lon_1(lat1, lon1, lat2, lon2):
 # 计算距离
 def get_distance_by_lat_lon_2(latA, lonA, latB, lonB):
     # 将经纬度转换为弧度
-    lat1 = float(lat1)
-    lon1 = float(lon1)
-    lat2 = float(lat2)
-    lon2 = float(lon2)
+    latA = float(latA)
+    lonA = float(lonA)
+    latB = float(latB)
+    lonB = float(lonB)
 
     ra = 6378140  # 赤道半径
     rb = 6356755  # 极半径
