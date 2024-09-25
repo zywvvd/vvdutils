@@ -95,7 +95,6 @@ class ObjManager:
     Margin = 10
 
     # 误差在 0.034m 左右
-
     def __init__(self, xml_file_path=None):
         self.dx = 0
         self.dy = 0
@@ -108,6 +107,8 @@ class ObjManager:
         self.kdtree = None
 
         self.bad_point_num = 0
+        self.duplicate_point_num = 0
+        self.prepared = False
 
         if xml_file_path is not None:
             xml_dict = load_xml(xml_file_path)
@@ -115,9 +116,15 @@ class ObjManager:
             self.SRS = Metadata['SRS']
             self.dx, self.dy, self.dz = get_list_from_list(Metadata['SRSOrigin'].split(','), lambda x: float(x))
 
+    def __len__(self):
+        return len(self.point_list)
+
     def add_obj_file(self, obj_file_path):
         line_number = get_file_line_number(obj_file_path)
-        bar = tqdm(total=line_number, desc='Reading obj file')
+        bar = tqdm(total=line_number, desc=' @@ Reading obj file: ')
+
+        point_set = set((point[0], point[1]) for point in self.point_list)
+        self.prepared = False
 
         with open(obj_file_path, 'r') as file:
             while True:
@@ -126,19 +133,23 @@ class ObjManager:
                 bar.update(1)
                 if not line:
                     break
-                if len(line) < 3:
+
+                if len(line) < 5:
                     continue
 
                 if line[0:2] == 'v ':
                     match_res = re.match(r'v +(.*) +(.*) +(.*).', line)
-                    x = float(match_res[1])
-                    y = float(match_res[2])
-                    z = float(match_res[3])
+                    x = round(float(match_res[1]) + self.dx, 6)
+                    y = round(float(match_res[2]) + self.dy, 6)
+                    z = float(match_res[3]) + self.dz
 
-                    cur_point = [x + self.dx, y + self.dy, z + self.dz]
-                    self.point_list.append(cur_point)
+                    cur_point = (x, y)
 
-        self.prepare()
+                    if cur_point not in point_set:
+                        self.point_list.append([x, y, z])
+                        point_set.add(cur_point)
+                    else:
+                        self.duplicate_point_num += 1
         pass
 
     def get_distance(self, x, y):
@@ -146,23 +157,30 @@ class ObjManager:
         # 返回 0 在三角形内，正数为在三角形外
         return self.polygon.distance(sp_point)
 
-    def save(self, file_path):
+    def save(self, file_path, check_data=True):
+        if not self.prepared:
+            self.prepare()
+
+        if check_data:
+            self.data_check()
+
         pickle_save(self, file_path, overwrite=True)
 
     def data_check(self):
         self.bad_point_num = 0
-        for point_index, point in tqdm(enumerate(self.point_list)):
-            index_list = self.kdtree.query_ball_point(point[:2], 5)
+        for point_index, point in tqdm(enumerate(self.point_list), desc=' @@ Data checking: '):
+            index_list = self.kdtree.query_ball_point([point[0], point[1]], 5)
             alt_list = [self.point_list[index][2] for index in index_list]
             median_alt = np.median(alt_list)
-            if abs(point[2] - median_alt) > 20:
+            if abs(point[2] - median_alt) > 10:
                 self.point_list[point_index][2] = median_alt
                 self.bad_point_num += 1
 
     @classmethod
     def load(cls, file_path):
         obj = pickle_load(file_path)
-        obj.prepare()
+        if not obj.prepared:
+            obj.prepare()
         return obj
 
     @classmethod
@@ -172,7 +190,11 @@ class ObjManager:
         cur_obj = cls()
         for dir in dir_list:
             temp_obj = cls.from_dir(dir)
-            cur_obj.point_list += temp_obj.point_list
+            cur_obj_point_set = set((point[0], point[1]) for point in cur_obj.point_list)
+            for point in temp_obj.point_list:
+                if (point[0], point[1]) not in cur_obj_point_set:
+                    cur_obj.point_list.append(point)
+
         cur_obj.prepare()
         return cur_obj
 
@@ -185,24 +207,12 @@ class ObjManager:
         obj_file_path_list = glob_recursively(dir, 'obj')
         for obj_file_path in obj_file_path_list:
             obj.add_obj_file(obj_file_path)
+            pass
+        obj.prepare()
         return obj
 
     def prepare(self):
-        # point_set = set()
-        # remove_point_num = 0
-
-        # temp_point_list = []
-
-        # for point in tqdm(self.point_list, ' @@ removing duplicate point: '):
-        #     point_obj = Point.from_xy(point[0], point[1])
-        #     if point_obj not in point_set:
-        #         point_set.add(point_obj)
-        #         temp_point_list.append(point)
-        #     else:
-        #         remove_point_num += 1
-        
-        # self.point_list = temp_point_list
-        points_array = np.array([point[:2] for point in self.point_list]).astype('float32')
+        points_array = np.array([[point[0], point[1]] for point in self.point_list]).astype('float32')
 
         # make edge polygon
         polygon = cv2.convexHull(points_array)
@@ -210,9 +220,13 @@ class ObjManager:
 
         # make kd tree obj
         self.kdtree = KDTree(points_array)
+        self.prepared = True
         pass
 
     def get_altitude(self, x, y):
+        if not self.prepared:
+            self.prepare()
+
         query_point = [x, y]
 
         def cal_z(coefficients, x ,y):
@@ -249,9 +263,12 @@ class ObjManager:
         return tar_z, distance_list, max_error
 
     def make_alt_graph(self, point_polygon: List[Point], resolution=1, median_radius=0):
+        if not self.prepared:
+            self.prepare()
+
         assert resolution > 0, ' !! resolution must be positive'
 
-        points_array = np.array([[point.x, point.y] for point in point_polygon]).astype('float32')
+        points_array = np.array([[point[0], point[1]] for point in point_polygon]).astype('float32')
 
         polygon_obj = Polygon(points_array)
 
