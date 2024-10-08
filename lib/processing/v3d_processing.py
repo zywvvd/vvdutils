@@ -268,7 +268,7 @@ class ObjManager:
 
         assert resolution > 0, ' !! resolution must be positive'
 
-        points_array = np.array([[point[0], point[1]] for point in point_polygon]).astype('float32')
+        points_array = np.array([[point.x, point.y] for point in point_polygon]).astype('float32')
 
         polygon_obj = Polygon(points_array)
 

@@ -1694,6 +1694,15 @@ def line_merge(line_list):
     return line_1D_list
 
 
+def time_string(microsecond=False, millisecond=False):
+    if microsecond:
+        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")
+    elif millisecond:
+        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")[:-3]
+    else:
+        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
 def random_sample(data, sample_num, remove_data=False):
     sample_num = int(sample_num)
     assert sample_num > 0 and sample_num <= len(data)

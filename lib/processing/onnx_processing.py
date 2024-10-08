@@ -17,7 +17,7 @@ class OnnxSimpleRelease:
         57.375,
     ]
 
-    def __init__(self, model_path, mean=None, std=None, model_type='float32'):
+    def __init__(self, model_path, mean=None, std=None, model_type='float32', gpu=True):
         import onnxruntime
 
         if mean is not None:
@@ -29,9 +29,12 @@ class OnnxSimpleRelease:
         self.model_type = model_type
 
         # 加载模型
-        self.ort_session = onnxruntime.InferenceSession(model_path, providers=[
-                    ("CUDAExecutionProvider", {"cudnn_conv_algo_search": "DEFAULT", "cudnn_conv_use_max_workspace": '1'})
-                ])
+        if gpu:
+            self.ort_session = onnxruntime.InferenceSession(model_path, providers=[
+                        ("CUDAExecutionProvider", {"cudnn_conv_algo_search": "DEFAULT", "cudnn_conv_use_max_workspace": '1'})
+                    ])
+        else:
+            self.ort_session = onnxruntime.InferenceSession(model_path)
         self.input_name = self.ort_session.get_inputs()[0].name
 
 

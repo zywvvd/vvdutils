@@ -678,7 +678,7 @@ def image_show_from_path(file_path):
         plt_image_show(image)
 
 
-def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cmap=None, position=[30, 30], share_xy=False, axis_off=False, col_num=None, row_num=None, norm_float=True):
+def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cmap=None, position=[30, 30], share_xy=False, axis_off=False, col_num=None, row_num=None, norm_float=True, bgr=False):
     '''
     更加鲁棒地显示图像包括二维图像,第三维度为1的图像
     '''
@@ -734,6 +734,8 @@ def plt_image_show(*image, window_name='', array_res=False, full_screen=True, cm
             if image.shape[0] == 3 and image.shape[-1] != 3:
                 # guess it is a tensor image
                 image = np.transpose(image, [1, 2 ,0])
+            if image.shape[-1] == 3 and bgr:
+                image = cv_rgb_bgr_convert(image)
 
         if iterable(ax):
             if ax.ndim == 1:
