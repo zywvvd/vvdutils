@@ -61,8 +61,11 @@ def exists(input):
     else:
         return OS_exists(input)
 
-def random_color():
-    return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+def random_color(norm=False):
+    if norm:
+        return (random.random(), random.random(), random.random())
+    else:
+        return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 
 def get_list_from_list(data_list, call_back, absolutely=False):
@@ -1588,6 +1591,13 @@ def path_with_suffix(path, suffix):
 
 def path_with_name(path, name):
     return uniform_split_char(Path(path).with_name(name))
+
+def path_insert_content(path, content):
+    path_obj = Path(path)
+    suffix = path_obj.suffix
+    parent = path_obj.parent
+    stem = path_obj.stem
+    return uniform_split_char(parent / (stem + content + suffix))
 
 def get_path_parent(path):
     return uniform_split_char(Path(path).parent)

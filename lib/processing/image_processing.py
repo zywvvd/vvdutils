@@ -20,6 +20,8 @@ from ..utils import vvd_floor, vvd_ceil
 from ..utils import change_file_name_for_path
 from ..utils import encode_path
 from ..utils import cal_distance
+from ..utils import remove_file
+from ..utils import path_insert_content
 
 from tqdm import tqdm
 from pathlib import Path
@@ -1878,6 +1880,71 @@ def img2video(image_list, output_video_name, fps, resize=None):
     # 释放writer
     out.release()
 
+def video_process(video_path, output_path=None, max_size = None, callback=None, remove_original=False):
+    cap = cv2.VideoCapture(video_path)
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+
+    if output_path is None:
+        output_path = path_insert_content(video_path, '_processed')
+    
+    # 获取视频的宽度和高度
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = int(cap.get(cv2.CAP_PROP_FPS))  # 获取帧率
+
+    # 定义视频编码器
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+    if max_size is not None:
+        cur_max_size = max(width, height)
+        if cur_max_size > max_size:
+            scale = max_size / cur_max_size
+            width = int(width * scale)
+            height = int(height * scale)
+            
+
+    # 创建VideoWriter对象，用于写入处理后的视频
+    out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+
+    progress_bar = tqdm(total=frame_count, desc=f'Video Processing {video_path}')
+
+    success = False
+
+    # 检查视频是否打开
+    if not cap.isOpened():
+        print(" !! Error opening video file")
+    else:
+        while True:
+            # 逐帧读取视频
+            ret, frame = cap.read()
+            if not ret:
+                break  # 视频读取完毕，退出循环
+
+            # 对帧进行操作
+            if callback is not None:
+                h, w, c = frame.shape
+                frame = callback(frame)
+                h_p, w_p, c_p = frame.shape
+                assert h_p == h and w_p == w and c_p == c,  " !! Callback function should not change the size of the frame"
+
+            frame = image_resize(frame, shape=[width, height])
+
+            # 将处理后的帧写入输出视频
+            out.write(frame)
+            progress_bar.update(1)
+        
+        success = True
+
+    # 释放VideoCapture和VideoWriter对象
+    cap.release()
+    out.release()
+
+    if remove_original and success:
+        remove_file(video_path)
+
+    # 关闭所有窗口
+    cv2.destroyAllWindows()
+    pass
 
 def imgpath2video(image_path_list, output_video_name, fps, resize=None):
     # 图像转视频 基于 OpenCV 
