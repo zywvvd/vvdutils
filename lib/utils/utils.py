@@ -901,12 +901,24 @@ def glob_images(path, recursively=True):
     popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
     return  glob_recursively(path, popular_image_extensions, recursively=recursively)
 
+
+def glob_videos(path, recursively=True):
+    """
+    在 glob_recursively 基础上进行封装，获取 path 路径下常见视频格式的视频
+    videoSuffixSet = {"WMV","ASF","ASX","RM","RMVB","MP4","3GP","MOV","M4V","AVI","DAT","MKV","FIV","VOB"}
+    返回完整路径名列表
+    """
+    popular_video_extensions = ['mp4', 'avi', 'mov', 'MP4', 'AVI', 'MOV']
+    return  glob_recursively(path, popular_video_extensions, recursively=recursively)
+
+
 def find_all_numbers(string):
     """
     找出字符串中所有的数字，返回一个列表(科学计数法的不行)
     """
     numbers = re.findall(r'-?\d+\.?\d*', string)
     return get_list_from_list(numbers, lambda x: float(x))
+
 
 def is_integer(num):
     """
