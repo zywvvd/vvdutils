@@ -1716,13 +1716,21 @@ def line_merge(line_list):
     return line_1D_list
 
 
-def time_string(microsecond=False, millisecond=False):
+def time_string(microsecond=False, millisecond=False, simple_str=False, year_month_day=False):
     if microsecond:
-        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")
     elif millisecond:
-        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")[:-3]
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")[:-3]
     else:
-        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    if year_month_day:
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    if simple_str:
+        time_str = time_str.replace(":", "-").replace(" ", "_")
+
+    return time_str
 
 
 def random_sample(data, sample_num, remove_data=False):

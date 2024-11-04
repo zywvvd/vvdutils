@@ -209,28 +209,29 @@ def boxes_painter(rgb_image, box_list, label_list=None, score_list=None, color_l
         points = get_list_from_list(points, lambda x: tuple(x))
         draw.line(points, width=line_thickness, fill=tuple(color))
 
-        text_bottom = top
-        
-        ori_text_box = [left - 1, text_bottom - text_height - 2 * margin, left + text_width, text_bottom]
-        w_offset = h_offset = 0
-        if ori_text_box[0] < 0:
-            w_offset -= ori_text_box[0]
-        if ori_text_box[2] > W:
-            w_offset += W - ori_text_box[2]
-        if ori_text_box[1] < 0:
-            h_offset -= ori_text_box[1]
-        if ori_text_box[3] > H:
-            h_offset += H - ori_text_box[3]
-        text_box = (np.array(ori_text_box) + [w_offset, h_offset] * 2).tolist()
+        if len(display_str):
+            text_bottom = top
+            
+            ori_text_box = [left - 1, text_bottom - text_height - 2 * margin, left + text_width, text_bottom]
+            w_offset = h_offset = 0
+            if ori_text_box[0] < 0:
+                w_offset -= ori_text_box[0]
+            if ori_text_box[2] > W:
+                w_offset += W - ori_text_box[2]
+            if ori_text_box[1] < 0:
+                h_offset -= ori_text_box[1]
+            if ori_text_box[3] > H:
+                h_offset += H - ori_text_box[3]
+            text_box = (np.array(ori_text_box) + [w_offset, h_offset] * 2).tolist()
 
-        draw.rectangle(text_box, fill=tuple(color))
-        # if np.mean(np.array(color)) < 250:
-        #     font_color = 'yellow'
-        # else:
-        #     font_color = 'red'
-        font_color = tuple((255 - np.array(color)).tolist())
+            draw.rectangle(text_box, fill=tuple(color))
+            # if np.mean(np.array(color)) < 250:
+            #     font_color = 'yellow'
+            # else:
+            #     font_color = 'red'
+            font_color = tuple((255 - np.array(color)).tolist())
 
-        draw.text((int(text_box[0] + (text_box[2] - text_box[0])/2 - text_width/2), text_box[3] - text_height - 2 * margin), display_str, fill=font_color, font=font)
+            draw.text((int(text_box[0] + (text_box[2] - text_box[0])/2 - text_width/2), text_box[3] - text_height - 2 * margin), display_str, fill=font_color, font=font)
 
     # get image with box and index
     array_image_with_box = np.asarray(pil_image)

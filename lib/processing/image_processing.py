@@ -1013,7 +1013,7 @@ def crop_data_around_boxes(image, crop_box, cut_box_back=False):
 
         # out of boundary
         if ndim == 3:
-            crop_ori_temp = np.zeros([crop_height, crop_width, 3], dtype=data_type)
+            crop_ori_temp = np.zeros([crop_height, crop_width, image.shape[2]], dtype=data_type)
         elif ndim == 2:
             crop_ori_temp = np.zeros([crop_height, crop_width], dtype=data_type)
         else:
