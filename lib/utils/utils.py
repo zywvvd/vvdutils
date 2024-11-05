@@ -649,9 +649,10 @@ def dir_check(dir_path, verbose=False):
             os.makedirs(dir_path)
             if verbose:
                 print('dirs made: {}'.format(dir_path))
+            return True
         except Exception as err:
             print(f'failed to make dir {dir_path}, error {err}')
-        return False
+            return False
     else:
         return True
 
