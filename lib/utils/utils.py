@@ -510,6 +510,7 @@ class Loger_printer():
             logging.ERROR: self.logger.error,
             logging.CRITICAL: self.logger.critical
         }
+        self.level = self.logger.level
         self.closed = False
 
     def get_logger_func(self, level):
@@ -523,7 +524,8 @@ class Loger_printer():
             log_func = self.get_logger_func(level)
             if message is not None:
                 for message_str in message:
-                    print(message_str)
+                    if level >= self.level:
+                        print(message_str)
                     log_func(message_str)
             if close_logger:
                 for handler in self.logger.handlers:
