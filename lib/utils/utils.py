@@ -434,17 +434,53 @@ def xor(A, B):
     else:
         return False
 
-def get_file_hash_code(file):
+def get_file_hash_code(file, extra_info=None):
     """
     获取文件hash值
     """
-    assert os.path.exists(file)
+    assert os.path.exists(file), f"file {file} does not exist"
     md5_hash = hashlib.md5()
     with open(file, "rb") as fid:
         md5_hash.update(fid.read())
         digest = md5_hash.hexdigest()
+    if extra_info is not None:
+        digest += str(extra_info)
+        digest = md5(digest)
     return digest
 
+def get_dir_hash_code(dir_path, extra_info=None):
+    """
+    获取文件夹hash值
+    """
+    assert os.path.exists(dir_path), f"dir {dir_path} does not exist"
+    _, file_list = get_dir_file_list(dir_path, recursive=True)
+    dir_path_obj = Path(dir_path)
+    hash_str = ""
+    for file in file_list:
+        file_path_obj = Path(file)
+        hash_str += get_file_hash_code(file)
+        relative_path = str(file_path_obj.relative_to(dir_path_obj))
+        hash_str += '-' + relative_path + '@'
+    if extra_info is not None:
+        digest += str(extra_info)
+        digest = md5(digest)
+    return md5(hash_str)
+
+def zip_dir(dir_path, zip_file_path): # 压缩文件夹
+    import zipfile as zipfile
+
+    assert os.path.isdir(dir_path), f'dir_path {dir_path} is not a dir'
+    assert dir_check(OS_dirname(zip_file_path)), f'zip_file_path {zip_file_path} dir create_failed exist'
+
+    dir_name = get_path_stem(dir_path)
+
+    with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED, allowZip64=True) as zipf:
+        _, file_path_list = get_dir_file_list(dir_path, recursive=True)
+        get_dir_hash_code
+        root_path = Path(dir_path)
+        for file_path in file_path_list:
+            cur_path = Path(file_path)
+            zipf.write(file_path, Path(dir_name) / cur_path.relative_to(root_path))
 
 class MyEncoder(json.JSONEncoder):
     """
@@ -1052,7 +1088,7 @@ def get_single_gpu_id(step=1, verbose=False):
     gpu_id = id_list[0]
     return gpu_id
 
-def get_dir_file_list(root_path, recursive=False, leaf_dir=False):
+def get_dir_file_list(root_path, recursive=True, leaf_dir=False):
     """[get dir and file list under root_path recursively]
 
     Args:

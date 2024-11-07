@@ -39,3 +39,4 @@ def create_tmp_file(extension=''):
         tmp_file = os.path.join(tmp_folder, uuid.uuid1().hex)
 
     return tmp_file
+
