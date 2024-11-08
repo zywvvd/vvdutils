@@ -23,6 +23,10 @@ from pyproj import Transformer
 
 transformer_4538_to_4326 = Transformer.from_crs("EPSG:4538", "EPSG:4326", always_xy=True)
 transformer_4326_to_4538 = Transformer.from_crs("EPSG:4326", "EPSG:4538", always_xy=True)
+transformer_4326_to_32645 = Transformer.from_crs("EPSG:4326", "EPSG:32645", always_xy=True)
+transformer_4538_to_32645 = Transformer.from_crs("EPSG:4538", "EPSG:32645", always_xy=True)
+transformer_32645_to_4538 = Transformer.from_crs("EPSG:32645", "EPSG:4538", always_xy=True)
+transformer_32645_to_4326 = Transformer.from_crs("EPSG:32645", "EPSG:4326", always_xy=True)
 
 def trans_4326_to_4538(lat, lon):
     return transformer_4326_to_4538.transform(lon, lat)
@@ -30,6 +34,18 @@ def trans_4326_to_4538(lat, lon):
 def trans_4538_to_4326(x, y):
     # output : lon, lat
     return transformer_4538_to_4326.transform(x, y)
+
+def trans_4326_to_32645(lat, lon):
+    return transformer_4326_to_32645.transform(lon, lat)
+
+def trans_4538_to_32645(x, y):
+    return transformer_4538_to_32645.transform(x, y)
+
+def trans_32645_to_4538(x, y):
+    return transformer_32645_to_4538.transform(x, y)
+
+def trans_32645_to_4326(x, y):
+    return transformer_32645_to_4326.transform(x, y)
 
 class Point:
     def __init__(self, lat, lon, z=0):
