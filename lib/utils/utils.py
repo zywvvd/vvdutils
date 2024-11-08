@@ -23,6 +23,7 @@ import decimal
 import shutil
 import string
 import datetime
+import importlib
 
 import numpy as np
 import PIL.Image as Image
@@ -49,6 +50,9 @@ from func_timeout import func_set_timeout, FunctionTimedOut
 
 isfile = OS_isfile 
 
+def lazy_import(module_name):
+    print(f'Lazy import: {module_name}')
+    return importlib.import_module(module_name)
 
 def exists(input):
     if isinstance(input, list):
@@ -66,7 +70,6 @@ def random_color(norm=False):
         return (random.random(), random.random(), random.random())
     else:
         return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-
 
 def get_list_from_list(data_list, call_back, absolutely=False):
     """[make a list through a input list,
@@ -96,7 +99,6 @@ def get_list_from_list(data_list, call_back, absolutely=False):
         raise RuntimeError('input should be list or dict')
     return output_list
 
-
 def segment_intersection(seg_1, seg_2):
     """ get intersection area from two segment
 
@@ -114,7 +116,6 @@ def segment_intersection(seg_1, seg_2):
     inter_dis = max(0, max_value - min_value)
     return inter_dis, (min_value, max_value)
 
-
 def concat_generator(*iterables):
     """ merge iterables to one generator
     Args: 
@@ -126,7 +127,6 @@ def concat_generator(*iterables):
     for it in iterables:
         for element in it:
             yield element
-
 
 def get_mac_address():
     """get mac address
@@ -1755,11 +1755,11 @@ def line_merge(line_list):
     return line_1D_list
 
 
-def time_string(microsecond=False, millisecond=False, simple_str=False, year_month_day=False):
+def time_string(millisecond=False, microsecond=False, simple_str=False, year_month_day=False):
     if microsecond:
-        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     elif millisecond:
-        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S-%f")[:-3]
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
     else:
         time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
