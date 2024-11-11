@@ -84,6 +84,10 @@ class MongoGridFSConnection:
 
             return OS_join(save_dir, name)
 
+        elif obj_type_code == 2:
+        # bytes
+            return mongo_obj.read()
+
         elif obj_type_code == 3:
         # dict
             return mongo_obj._file
@@ -349,6 +353,8 @@ class MongoGridFSConnection:
         return self.parse(mogo_obj, save_dir)
 
     def update_data_by_id(self, data_id, data, dict_info, data_type):
+        raise RuntimeError("update_data_by_id is not implemented yet")
+
         assert data_type in self.DATA_TYPES, f"Unknown data type: {data_type} while updating data. "
         assert isinstance(dict_info, dict), f"dict_info {dict_info} must be a dict"
 
