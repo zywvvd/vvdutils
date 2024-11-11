@@ -456,14 +456,16 @@ def get_dir_hash_code(dir_path, extra_info=None):
     _, file_list = get_dir_file_list(dir_path, recursive=True)
     dir_path_obj = Path(dir_path)
     hash_str = ""
+
     for file in file_list:
         file_path_obj = Path(file)
         hash_str += get_file_hash_code(file)
         relative_path = str(file_path_obj.relative_to(dir_path_obj))
         hash_str += '-' + relative_path + '@'
+
     if extra_info is not None:
-        digest += str(extra_info)
-        digest = md5(digest)
+        hash_str += '-extra_info-' + str(extra_info)
+
     return md5(hash_str)
 
 def zip_dir(dir_path, zip_file_path): # 压缩文件夹
@@ -481,6 +483,16 @@ def zip_dir(dir_path, zip_file_path): # 压缩文件夹
         for file_path in file_path_list:
             cur_path = Path(file_path)
             zipf.write(file_path, Path(dir_name) / cur_path.relative_to(root_path))
+
+def unzip_dir(zip_file_path, dir_path): # 解压文件夹
+    import zipfile as zipfile
+
+    assert os.path.isfile(zip_file_path), f'zip_file_path {zip_file_path} is not a file'
+    assert dir_check(dir_path), f'dir_path {dir_path} create_failed exist'
+
+    with zipfile.ZipFile(zip_file_path, 'r') as zipf:
+        zipf.extractall(dir_path)
+        
 
 class MyEncoder(json.JSONEncoder):
     """
@@ -931,13 +943,14 @@ def glob_recursively(path, extensions, recursively=True):
     return file_list
 
 
+popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
 def glob_images(path, recursively=True):
     """
     在 glob_recursively 基础上进行封装，获取 path 路径下常见图像格式的图像
     extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
     返回完整路径名列表
     """
-    popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
+    
     return  glob_recursively(path, popular_image_extensions, recursively=recursively)
 
 
