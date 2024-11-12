@@ -153,6 +153,8 @@ def bilinear_by_meshgrid_gray(image, x_grid, y_grid):
         wb[empty_mask] = 0.25
         wc[empty_mask] = 0.25
         wd[empty_mask] = 0.25
+    
+    W = wa + wb + wc + wd
 
     assert np.abs(np.max(W) - 1) < 1e-8
 
