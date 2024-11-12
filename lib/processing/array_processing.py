@@ -1,7 +1,6 @@
 import numpy as np
 import re
 import hashlib
-from numpy.core.fromnumeric import argmax
 
 
 def get_Several_MinMax_Array(np_arr, several):
@@ -100,7 +99,7 @@ def bilinear_interpolate(im, x, y):
     return wa*Ia + wb*Ib + wc*Ic + wd*Id
 
 
-def bilinear_by_meshgrid(image, x_grid, y_grid):
+def bilinear_by_meshgrid_gray(image, x_grid, y_grid):
 
     #               Ia, Wd                          Ic, Wb
     #           (floor_x, floor_y)              (ceil_x, floor_y)   
@@ -111,7 +110,7 @@ def bilinear_by_meshgrid(image, x_grid, y_grid):
     #           (floor_x, ceil_y)               (ceil_x, ceil_y)   
     #
 
-    assert image.shape == x_grid.shape == y_grid.shape
+    assert x_grid.shape == y_grid.shape
     assert image.ndim == 2
     H, W = image.shape[:2]
 
@@ -147,11 +146,30 @@ def bilinear_by_meshgrid(image, x_grid, y_grid):
     assert np.min(wa) >=0 and np.min(wb) >=0 and np.min(wc) >=0 and np.min(wd) >=0
     
     W = wa + wb + wc + wd
+
+    empty_mask = W == 0
+    if np.max(empty_mask) > 0:
+        wa[empty_mask] = 0.25
+        wb[empty_mask] = 0.25
+        wc[empty_mask] = 0.25
+        wd[empty_mask] = 0.25
+
     assert np.abs(np.max(W) - 1) < 1e-8
 
-    res_image = wa*Ia + wb*Ib + wc*Ic + wd*Id + (W == 0) * image
+    res_image = wa*Ia + wb*Ib + wc*Ic + wd*Id
 
     return res_image
+
+def bilinear_by_meshgrid(image, x_grid, y_grid):
+    if np.ndim(image) == 2:
+        return bilinear_by_meshgrid_gray(image, x_grid, y_grid)
+    elif np.ndim(image) == 3:
+        channel_res = list()
+        for i in range(image.shape[2]):
+            channel_res.append(bilinear_by_meshgrid_gray(image[:,:,i], x_grid, y_grid))
+        return np.stack(channel_res, axis=2)
+    else:
+        raise NotImplementedError("Not implemented for data who has more than 3 dimensions.")
 
 
 def get_start_and_end(data):
