@@ -47,6 +47,7 @@ def trans_32645_to_4538(x, y):
 def trans_32645_to_4326(x, y):
     return transformer_32645_to_4326.transform(x, y)
 
+
 class Point:
     def __init__(self, lat, lon, z=0):
         assert lat >= -90 and lat <= 90, "Latitude must be between -90 and 90"
@@ -56,10 +57,14 @@ class Point:
         self.lon = float(lon)
 
         self.x, self.y = trans_4326_to_4538(self.lat, self.lon)
+        self.x_32645, self.y_32645 = trans_4326_to_32645(self.lat, self.lon)
         self.z = float(z)
 
-        self.x = float(self.x)
-        self.y = float(self.y)
+        self.x = round(float(self.x), 8)
+        self.y = round(float(self.y), 8)
+
+        self.x_32645 = round(float(self.x_32645), 8)
+        self.y_32645 = round(float(self.y_32645), 8)
 
         self.key_point = False
         self.edge_point = False
@@ -67,16 +72,19 @@ class Point:
         self.key_value = 0
 
     @classmethod
-    def from_xy(cls, x, y, z=0, decimal_places=None):
-        if decimal_places is not None:
-            x = round(x, decimal_places)
-            y = round(y, decimal_places)
-
+    def from_xy(cls, x, y, z=0):
         lon, lat = trans_4538_to_4326(x, y)
+        return cls(lat, lon, z)
+
+    def from_xy_32645(cls, x, y, z=0):
+        lon, lat = trans_32645_to_4326(x, y)
         return cls(lat, lon, z)
 
     def get_xy(self):
         return self.x, self.y
+
+    def get_xy_32645(self):
+        return self.x_32645, self.y_32645
 
     def __str__(self):
         return f"(lat: {self.lat}, lon: {self.lon})"
