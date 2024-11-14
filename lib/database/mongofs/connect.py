@@ -327,7 +327,7 @@ class MongoGridFSConnection:
         assert isinstance(condition, dict), f"condition {condition} must be a dict"
 
         files = self.fs.find(condition)
-        return files
+        return list(files)
 
     def get_by_id(self, data_id):
         if data_id is None:
