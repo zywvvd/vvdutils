@@ -1874,6 +1874,19 @@ def sleep_count(seconds, minute=0, hour=0, verbose=True):
     print(" Time Up !")
 
 
+class KDPoints:
+    KDTree = None
+
+    def __init__(self, points):
+        if self.KDTree is None:
+            # from scipy.spatial import KDTree
+            type(self).KDTree = lazy_import("scipy.spatial").KDTree
+        self.points = points
+        self.kdtree = self.KDTree(points)
+
+    def query(self, query_point):
+        distance, point_index = self.kdtree.query(query_point)
+        return distance, self.points[point_index]
 
 if __name__ == '__main__':
     

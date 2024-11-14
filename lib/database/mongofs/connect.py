@@ -91,6 +91,7 @@ class MongoGridFSConnection:
         elif obj_type_code == 3:
         # dict
             return mongo_obj._file
+
         elif obj_type_code == 4:
         # pickle object
             return pickle.loads(mongo_obj.read())
@@ -111,7 +112,7 @@ class MongoGridFSConnection:
         
         try:
             server_info = conn.server_info()
-            print(f"MongoDB connect success, server info: {server_info}")
+            print(f"MongoDB connect success, server info: {server_info['version']}")
         except Exception as err:
             raise RuntimeError(f" !! MongoDB Authentication failed: {err}")
 
