@@ -23,6 +23,12 @@ class MysqlConnection:
             self.db.rollback()
         self.db.start_transaction()
 
+    def commit(self):
+        self.db.commit()
+    
+    def rollback(self):
+        self.db.rollback()
+
     def connect(self):
         db = None
         err = 'connect failed.'
@@ -33,7 +39,9 @@ class MysqlConnection:
             pass
 
         if db is None:
-            raise RuntimeError(f"Error connecting to MySQL database: {err}")
+            raise RuntimeError(f" !! Error connecting to MySQL database: {err}")
+        else:
+            print(f" @@ Connected to MySQL database {self.database} successfully.")
 
         return db
 
@@ -48,35 +56,43 @@ class MysqlConnection:
         cursor.execute(query, list(data_dict.values()))
 
     def update_item(self, set_dict, conditions, table, logical="AND", cursor=None):
-        # TODO 未完成
+
         if cursor is None:
             cursor = self.default_cursor
 
-        key_str_list = list()
-        value_list = list()
-        for k, v in set_dict.items():
-            key_str_list.append(f"{k} = %s")
-            value_list.append(v)
+        try:
+            self.start_transaction()
+            key_str_list = list()
+            value_list = list()
+            for k, v in set_dict.items():
+                key_str_list.append(f"{k} = %s")
+                value_list.append(v)
 
-        set_str = ", ".join(key_str_list)
-        
-        query = ""
-        
-        if conditions:
-            query += " WHERE "
-
-            condition_str_list = list()
+            set_str = ", ".join(key_str_list)
             
-            for condition in conditions:
-                condition_str_list.append(f"{condition[0]} {condition[2]} %s")
-                value_list.append(str(condition[1]))
-            query += (' ' + logical + ' ').join(condition_str_list)
+            query = ""
+            
+            if conditions:
+                query += " WHERE "
 
-        update_query = f"UPDATE {table} SET {set_str} {query}"
-        # 执行更新操作
-        cursor.execute(update_query, value_list)
+                condition_str_list = list()
+                
+                for condition in conditions:
+                    condition_str_list.append(f"{condition[0]} {condition[2]} %s")
+                    value_list.append(str(condition[1]))
+                query += (' ' + logical + ' ').join(condition_str_list)
 
-    def select_item(self, conditions, table, logical="AND", cursor=None):
+            update_query = f"UPDATE {table} SET {set_str} {query}"
+            # 执行更新操作
+            cursor.execute(update_query, value_list)
+            self.commit()
+            return True
+        except Exception as e:
+            self.rollback()
+            print(f" !! Error updating item: {e}")
+            return False
+
+    def select_item(self, conditions, table, logical="AND", cursor=None, for_update=False):
         """
         :param conditions: list [[key1, value1, operator1], [key2, value2, operator2], ...]
         :param logical: str
@@ -99,6 +115,10 @@ class MysqlConnection:
             query += (' ' + logical + ' ').join(condition_str_list)
         else:
             query = f"SELECT * FROM {table}"
+
+
+        if for_update:
+            query += " FOR UPDATE"
 
         cursor.execute(query, condition_value_list)
         result = cursor.fetchall()
