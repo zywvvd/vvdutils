@@ -99,7 +99,7 @@ def bilinear_interpolate(im, x, y):
     return wa*Ia + wb*Ib + wc*Ic + wd*Id
 
 
-def bilinear_by_meshgrid_gray(image, x_grid, y_grid):
+def bilinear_by_meshgrid_gray(image, x_grid, y_grid, fill_constant=None):
 
     #               Ia, Wd                          Ic, Wb
     #           (floor_x, floor_y)              (ceil_x, floor_y)   
@@ -114,11 +114,17 @@ def bilinear_by_meshgrid_gray(image, x_grid, y_grid):
     assert image.ndim == 2
     H, W = image.shape[:2]
 
+    if fill_constant is not None:
+        constant_mask_x = np.logical_or(x_grid < 0, x_grid >= W-1)
+        constant_mask_y = np.logical_or(y_grid < 0, y_grid >= H-1)
+        constant_mask = np.logical_or(constant_mask_x, constant_mask_y)
+
     x_grid = np.clip(x_grid, 0, W-1)
     y_grid = np.clip(y_grid, 0, H-1)
 
     floor_x_grid = np.floor(x_grid).astype('int32')
     floor_y_grid = np.floor(y_grid).astype('int32')
+
     ceil_x_grid = floor_x_grid + 1
     ceil_y_grid = floor_y_grid + 1
 
@@ -160,15 +166,20 @@ def bilinear_by_meshgrid_gray(image, x_grid, y_grid):
 
     res_image = wa*Ia + wb*Ib + wc*Ic + wd*Id
 
+    if fill_constant is not None:
+        res_image = res_image * np.logical_not(constant_mask) + fill_constant * constant_mask
+
     return res_image
 
-def bilinear_by_meshgrid(image, x_grid, y_grid):
+def bilinear_by_meshgrid(image, x_grid, y_grid, fill_constant=None):
+
     if np.ndim(image) == 2:
-        return bilinear_by_meshgrid_gray(image, x_grid, y_grid)
+        return bilinear_by_meshgrid_gray(image, x_grid, y_grid, fill_constant)
+
     elif np.ndim(image) == 3:
         channel_res = list()
         for i in range(image.shape[2]):
-            channel_res.append(bilinear_by_meshgrid_gray(image[:,:,i], x_grid, y_grid))
+            channel_res.append(bilinear_by_meshgrid_gray(image[:,:,i], x_grid, y_grid, fill_constant))
         return np.stack(channel_res, axis=2)
     else:
         raise NotImplementedError("Not implemented for data who has more than 3 dimensions.")
