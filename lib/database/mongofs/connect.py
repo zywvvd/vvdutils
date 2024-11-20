@@ -388,3 +388,26 @@ class MongoGridFSConnection:
 
     def get_data_num(self):
         return len(list(self.get_by_condition({})))
+    
+    def save(self, data_id, dir_path=None, file_path=None):
+        mogo_obj = self.get_by_id(data_id)
+
+        if mogo_obj is None:
+            return False
+
+        save_path = None
+        if file_path is not None:
+            save_path = file_path
+        elif dir_path is not None:
+            assert dir_check(dir_path), f"dir_path {dir_path} is not a valid directory"
+            save_path = os.path.join(dir_path, mogo_obj._file['@name'])
+        else:
+            raise RuntimeError("Either dir_path or file_path must be specified")
+        
+        assert save_path is not None, f"save_path {save_path} is not valid"
+
+        # save data
+        with open(save_path, 'wb') as f:
+            f.write(mogo_obj.read())
+
+        return True
