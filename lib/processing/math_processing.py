@@ -5,6 +5,14 @@ from ..utils import is_iterable
 from ..utils import is_number
 
 
+def calculate_mode(data):
+    count_dict = {}
+    for num in data:
+        count_dict[num] = count_dict.get(num, 0) + 1
+    max_count = max(count_dict.values())
+    modes = [num for num, count in count_dict.items() if count == max_count]
+    return modes
+
 def cartesian_to_polar(point_xy, center_xy, reverse_y=True):
     x, y = point_xy
     center_x, center_y = center_xy
