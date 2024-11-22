@@ -50,19 +50,34 @@ from func_timeout import func_set_timeout, FunctionTimedOut
 
 isfile = OS_isfile 
 
-def get_line_info():     
-    # 获取当前帧对象     
-    current_frame = inspect.currentframe()     
-    # 获取上一级帧对象（即调用者）     
-    caller_frame = current_frame.f_back     
-    # 获取调用者的函数名、行号和文件名     
-    function_name = caller_frame.f_code.co_name     
-    line_number = caller_frame.f_lineno     
-    file_path = caller_frame.f_code.co_filename     
-    # 提取文件名，去掉路径     
-    file_name = os.path.basename(file_path)     
-    # 使用 f-string 格式化字符串     
-    error_line = f"{file_name}:{function_name}:{line_number}"     
+def rm_r(path):
+    try:
+        if os.path.isdir(path) and not os.path.islink(path):
+            shutil.rmtree(path)
+        elif os.path.exists(path):
+            os.remove(path)
+    except:
+        print("Cannot remove %s" % path)
+
+def get_line_info():
+    # 获取当前帧对象
+    current_frame = inspect.currentframe()
+    # 获取上一级帧对象（即调用者）
+    caller_frame = current_frame.f_back
+    # 获取上上级帧对象
+    caller_parent_frame = caller_frame.f_back
+    
+    # 获取上上级调用者的函数名、行号和文件名
+    function_name = caller_parent_frame.f_code.co_name
+    line_number = caller_parent_frame.f_lineno
+    file_path = caller_parent_frame.f_code.co_filename
+    
+    # 提取文件名，去掉路径
+    file_name = os.path.basename(file_path)
+    
+    # 使用 f-string 格式化字符串
+    error_line = f"{file_name}:{function_name}:{line_number}, "
+    
     return error_line
 
 def lazy_import(module_name):
