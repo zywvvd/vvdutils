@@ -76,6 +76,7 @@ class Point:
         lon, lat = trans_4538_to_4326(x, y)
         return cls(lat, lon, z)
 
+    @classmethod
     def from_xy_32645(cls, x, y, z=0):
         lon, lat = trans_32645_to_4326(x, y)
         return cls(lat, lon, z)
