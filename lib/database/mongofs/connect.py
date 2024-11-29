@@ -63,7 +63,7 @@ class MongoGridFSConnection:
         # file 
             if obj_type in popular_image_extensions:
                 # image
-                return read_mongodb_image(mongo_obj)
+                return read_mongodb_image(mongo_obj, obj_type)
             else:
                 # other file
                 dir_check(save_dir)
@@ -117,6 +117,13 @@ class MongoGridFSConnection:
             raise RuntimeError(f" !! MongoDB Authentication failed: {err}")
 
         return conn
+
+    def __del__(self):
+        if self.conn is not None:
+            self.conn.close()
+    
+    def __exit__(self):
+        self.__del__()
 
     def insert_file(self, path=None, dict_info=dict(), force=False, specific_data_id=None):
         """

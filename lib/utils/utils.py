@@ -973,7 +973,7 @@ def glob_recursively(path, extensions, recursively=True):
     return file_list
 
 
-popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP']
+popular_image_extensions = ['png', 'jpeg', 'bmp', 'jpg', 'PNG', 'JPEG', 'JPG', 'BMP', 'tif', 'TIF']
 def glob_images(path, recursively=True):
     """
     在 glob_recursively 基础上进行封装，获取 path 路径下常见图像格式的图像

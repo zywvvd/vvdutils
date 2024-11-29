@@ -2138,12 +2138,26 @@ def colorful_mask(ori_output, color_dict=None):
     return puzzle.astype('uint8')
 
 
-def read_mongodb_image(mongo_img_file_obj):
-    image_stream = io.BytesIO(mongo_img_file_obj.read())
+def tif_image_load(file_path):
+    import imageio.v3 as iio
+    with iio.imopen(file_path, 'r') as image_file:
+        img = image_file.read()
+        img_array = np.array(img)
+    return img_array[..., :3]
 
-    pil_image = Image.open(image_stream)
-    pil_image = pil_image.convert('RGB')
-    image = np.array(pil_image)                             # 5000 * 4000 * 3 uint8 图像耗时 0.17 s
+
+def read_mongodb_image(mongo_img_file_obj, obj_type: str):
+    image_stream = io.BytesIO(mongo_img_file_obj.read())
+    Image.MAX_IMAGE_PIXELS = None
+
+    if obj_type == 'tif':
+        import imageio.v3 as iio
+        image = iio.imopen(image_stream, 'r').read()
+
+    else:
+        pil_image = Image.open(image_stream)
+        pil_image = pil_image.convert('RGB')
+        image = np.array(pil_image)                             # 5000 * 4000 * 3 uint8 图像耗时 0.17 s
 
     return image
 
