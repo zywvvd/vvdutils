@@ -48,6 +48,9 @@ class MysqlConnection:
     def close(self):
         self.db.close()
 
+    def __del__(self):
+        self.close()
+
     def insert_item(self, data_dict, table, cursor=None):
         if cursor is None:
             cursor = self.default_cursor

@@ -2138,12 +2138,11 @@ def colorful_mask(ori_output, color_dict=None):
     return puzzle.astype('uint8')
 
 
-def tif_image_load(file_path):
+def huge_image_load(file_path):
     import imageio.v3 as iio
     with iio.imopen(file_path, 'r') as image_file:
         img = image_file.read()
-        img_array = np.array(img)
-    return img_array[..., :3]
+    return img
 
 
 def read_mongodb_image(mongo_img_file_obj, obj_type: str):
