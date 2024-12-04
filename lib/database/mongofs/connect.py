@@ -54,14 +54,14 @@ class MongoGridFSConnection:
 
         assert dir_check(self.temp_dir), f"Temp directory {self.temp_dir} create failed."
 
-    def parse(self, mongo_obj, save_dir='mongo_data'):
+    def parse(self, mongo_obj, save_dir='mongo_data', force_save=False):
         obj_type_code = mongo_obj._file['@type_code']
         obj_type = mongo_obj._file['@type']
         name = mongo_obj._file['@name']
 
         if obj_type_code == 0:
         # file 
-            if obj_type in popular_image_extensions:
+            if obj_type in popular_image_extensions and not force_save:
                 # image
                 return read_mongodb_image(mongo_obj, obj_type)
             else:
@@ -352,13 +352,13 @@ class MongoGridFSConnection:
         else:
             return files[0]
 
-    def get_and_parse(self, data_id, save_dir='mongo_data'):
+    def get_and_parse(self, data_id, save_dir='mongo_data', force_save=False):
         mogo_obj = self.get_by_id(data_id)
         if mogo_obj is None:
             return None
 
         # data = pickle.loads(mogo_obj.read())
-        return self.parse(mogo_obj, save_dir)
+        return self.parse(mogo_obj, save_dir, force_save)
 
     def update_data_by_id(self, data_id, data, dict_info, data_type):
         raise RuntimeError("update_data_by_id is not implemented yet")

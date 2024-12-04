@@ -1798,6 +1798,33 @@ def line_merge(line_list):
     return line_1D_list
 
 
+def make_time(year=None, month=None, day=None, hour=None, minute=None, second=None):
+
+    now = datetime.datetime.now()
+
+    if year is None:
+        year = now.year
+
+    if month is None:
+        month = now.month
+
+    if day is None:
+        day = now.day
+
+    if hour is None:
+        hour = now.hour
+
+    if minute is None:
+        minute = now.minute
+
+    if second is None:
+        second = now.second
+
+    # make time
+    time_str = datetime.datetime(year, month, day, hour, minute, second)
+    return time_str
+
+
 def time_string(millisecond=False, microsecond=False, simple_str=False, year_month_day=False, datetime_obj=None):
 
     if datetime_obj is None:
