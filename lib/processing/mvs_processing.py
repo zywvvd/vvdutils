@@ -7,8 +7,7 @@ from: https://github.com/cdcseacave/openMVS/blob/168b9a7a3d4d6bc938838efe7b8a566
 
 import numpy as np
 
-def loadDMAP(dmap_path: str):
-  with open(dmap_path, 'rb') as dmap:
+def parseDMAP(dmap):
     file_type = dmap.read(2).decode()
     content_type = np.frombuffer(dmap.read(1), dtype=np.uint8)
     reserve = np.frombuffer(dmap.read(1), dtype=np.uint8)
@@ -68,8 +67,11 @@ def loadDMAP(dmap_path: str):
       views_map = np.frombuffer(dmap.read(map_size * 4), dtype=np.uint8).reshape(depth_height, depth_width, 4)
       data.update({'views_map': views_map})
   
-  return data
+    return data
 
+def loadDMAP(dmap_path: str):
+  with open(dmap_path, 'rb') as dmap:
+    return parseDMAP(dmap)
 
 def saveDMAP(data: dict, dmap_path: str):
   assert 'depth_map' in data, 'depth_map is required'

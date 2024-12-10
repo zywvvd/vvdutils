@@ -5,6 +5,7 @@ from os.path import exists
 from bson import ObjectId
 import pickle
 import time
+import json
 
 from ...utils import lazy_import
 from ...utils import dir_check
@@ -64,6 +65,9 @@ class MongoGridFSConnection:
             if obj_type in popular_image_extensions and not force_save:
                 # image
                 return read_mongodb_image(mongo_obj, obj_type)
+            elif obj_type == 'json' and not force_save:
+                # json
+                return json.load(io.BytesIO(mongo_obj.read()))
             else:
                 # other file
                 dir_check(save_dir)
@@ -109,7 +113,7 @@ class MongoGridFSConnection:
 
         if len(conn.nodes) == 0:
             raise RuntimeError(" !! MongoDB connect failed.")
-        
+
         try:
             server_info = conn.server_info()
             print(f"MongoDB connect success, server info: {server_info['version']}")

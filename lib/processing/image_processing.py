@@ -51,36 +51,75 @@ def get_image_size(file_path, fallback_on_error=True):
 
     return (width, height)
 
-def erode(mat, iterations=1, kernel_size=3, kernel=None):
+def erode(mat, iterations=1, kernel_size=3, kernel=None, bool=True, float=False):
     """ erode 2D binary matrix by one pixel """
     assert isinstance(mat, np.ndarray)
     if kernel is None:
         kernel = np.ones((kernel_size, kernel_size), np.uint8)
     else:
         kernel = np.array(kernel, np.uint8)
-    mat_eroded = cv.erode(mat.astype(np.uint8), kernel, iterations=iterations)
-    return mat_eroded > 0
+    if float:
+        mat = mat.astype(np.float32)
+    else:
+        mat = mat.astype(np.uint8)
+    mat_eroded = cv.erode(mat, kernel, iterations=iterations)
+    if bool:
+        return mat_eroded > 0
+    return mat_eroded
 
-def dilate(mat, iterations=1, kernel_size=3, kernel=None):
+def dilate(mat, iterations=1, kernel_size=3, kernel=None, bool=True, float=False):
     """ dilate 2D binary matrix by one pixel """
     assert isinstance(mat, np.ndarray)
     if kernel is None:
         kernel = np.ones((kernel_size, kernel_size), np.uint8)
     else:
         kernel = np.array(kernel, np.uint8)
-    mat_dilated = cv.dilate(mat.astype(np.uint8), kernel, iterations=iterations)
-    return mat_dilated > 0
+    if float:
+        mat = mat.astype(np.float32)
+    else:
+        mat = mat.astype(np.uint8)
+    mat_dilated = cv.dilate(mat, kernel, iterations=iterations)
+    if bool:
+        return mat_dilated > 0
+    return mat_dilated
 
-def open(mat, iterations=1, kernel_size=3, kernel=None):
+def open(mat, iterations=1, kernel_size=3, kernel=None, bool=True, float=False):
     """ dilate 2D binary matrix by one pixel """
     assert isinstance(mat, np.ndarray)
     if kernel is None:
         kernel = np.ones((kernel_size, kernel_size), np.uint8)
     else:
         kernel = np.array(kernel, np.uint8)
-    mat_dilated = cv.erode(mat.astype(np.uint8), kernel, iterations=iterations)
-    mat_dilated = cv.dilate(mat_dilated.astype(np.uint8), kernel, iterations=iterations)
-    return mat_dilated > 0
+    if float:
+        mat = mat.astype(np.float32)
+    else:
+        mat = mat.astype(np.uint8)
+
+    mat_dilated = cv.erode(mat, kernel, iterations=iterations)
+    mat_dilated = cv.dilate(mat_dilated, kernel, iterations=iterations)
+
+    if bool:
+        return mat_dilated > 0
+    return mat_dilated
+
+def close(mat, iterations=1, kernel_size=3, kernel=None, bool=True, float=False):
+    """ close 2D binary matrix by one pixel """
+    assert isinstance(mat, np.ndarray)
+    if kernel is None:
+        kernel = np.ones((kernel_size, kernel_size), np.uint8)
+    else:
+        kernel = np.array(kernel, np.uint8)
+    if float:
+        mat = mat.astype(np.float32)
+    else:
+        mat = mat.astype(np.uint8)
+
+    mat_dilated = cv.dilate(mat, kernel, iterations=iterations)
+    mat_dilated = cv.erode(mat_dilated, kernel, iterations=iterations)
+    
+    if bool:
+        return mat_dilated > 0
+    return mat_dilated
 
 def get_bool_gravity_center(mask):
     num = np.sum(np.abs(mask))

@@ -99,7 +99,7 @@ def bilinear_interpolate(im, x, y):
     return wa*Ia + wb*Ib + wc*Ic + wd*Id
 
 
-def bilinear_by_meshgrid_gray(image, x_grid, y_grid, fill_constant=None):
+def bilinear_by_meshgrid_gray(image, x_grid, y_grid, fill_constant=None, zero_mask=False):
 
     #               Ia, Wd                          Ic, Wb
     #           (floor_x, floor_y)              (ceil_x, floor_y)   
@@ -168,6 +168,10 @@ def bilinear_by_meshgrid_gray(image, x_grid, y_grid, fill_constant=None):
 
     if fill_constant is not None:
         res_image = res_image * np.logical_not(constant_mask) + fill_constant * constant_mask
+
+    if zero_mask:
+        data_zero_mask = ~((Ia==0) | (Ib==0) | (Ic==0) | (Id==0))
+        res_image = res_image * data_zero_mask
 
     return res_image
 
