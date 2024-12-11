@@ -2194,7 +2194,7 @@ def read_mongodb_image(mongo_img_file_obj, obj_type: str):
 
     else:
         pil_image = Image.open(image_stream)
-        pil_image = pil_image.convert('RGB')
+        # pil_image = pil_image.convert('RGB')
         image = np.array(pil_image)                             # 5000 * 4000 * 3 uint8 图像耗时 0.17 s
 
     return image
