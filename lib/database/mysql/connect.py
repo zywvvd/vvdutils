@@ -1,3 +1,4 @@
+import time
 from ...utils import lazy_import
 
 
@@ -15,8 +16,17 @@ class MysqlConnection:
         self.username = username
         self.password = password
 
-        self.db = self.connect()
+        self.db = self.make_connection()
         self.default_cursor = self.get_cursor(in_dict=True)
+
+    def make_connection(self):
+        try_time = 3
+        db_obj = self.connect()
+        while db_obj.is_closed() and try_time > 0:
+            db_obj = self.connect()
+            time.sleep(1)
+            try_time -= 1
+        return db_obj
 
     def start_transaction(self):
         if self.db.in_transaction:
@@ -51,7 +61,19 @@ class MysqlConnection:
     def __del__(self):
         self.close()
 
+    def mysql_connection_check(self):
+        if self.db.is_connected():
+            return
+        else:
+            self.db = self.make_connection()
+        if self.db.is_connected():
+            self.default_cursor = self.get_cursor(in_dict=True)
+            return
+        else:
+            raise RuntimeError(" !! Error connecting to MySQL database.")
+
     def insert_item(self, data_dict, table, cursor=None):
+        self.mysql_connection_check()
         if cursor is None:
             cursor = self.default_cursor
 
@@ -59,7 +81,7 @@ class MysqlConnection:
         cursor.execute(query, list(data_dict.values()))
 
     def update_item(self, set_dict, conditions, table, logical="AND", cursor=None):
-
+        self.mysql_connection_check()
         if cursor is None:
             cursor = self.default_cursor
 
@@ -101,6 +123,7 @@ class MysqlConnection:
         :param logical: str
         :return: list
         """
+        self.mysql_connection_check()
         assert logical in ["AND", "OR"], " !! logical must be 'AND' or 'OR'"
 
         if cursor is None:
@@ -128,6 +151,7 @@ class MysqlConnection:
         return result
 
     def delete_item(self, conditions, table, logical='AND', cursor=None):
+        self.mysql_connection_check()
         if cursor is None:
             cursor = self.default_cursor
 
@@ -149,4 +173,5 @@ class MysqlConnection:
 
     
     def get_cursor(self, in_dict=True):
+        self.mysql_connection_check()
         return self.db.cursor(dictionary=in_dict)

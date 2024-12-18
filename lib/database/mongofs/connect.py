@@ -112,7 +112,12 @@ class MongoGridFSConnection:
         time.sleep(0.5)
 
         if len(conn.nodes) == 0:
-            raise RuntimeError(" !! MongoDB connect failed.")
+            time.sleep(1)
+            if len(conn.nodes) == 0:
+                time.sleep(1)
+                if len(conn.nodes) == 0:
+                    raise RuntimeError(" !! MongoDB connect failed.")
+
 
         try:
             server_info = conn.server_info()
