@@ -45,8 +45,8 @@ class MysqlConnection:
 
         try:
             db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True)
-        except Exception as err:
-            pass
+        except Exception as e:
+            err = f" error type {type(e)}: {e}"
 
         if db is None:
             raise RuntimeError(f" !! Error connecting to MySQL database: {err}")
@@ -56,7 +56,10 @@ class MysqlConnection:
         return db
 
     def close(self):
-        self.db.close()
+        try:
+            self.db.close()
+        except:
+            print(" !! Error closing MySQL database.")
 
     def __del__(self):
         self.close()

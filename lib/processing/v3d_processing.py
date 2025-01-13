@@ -21,50 +21,67 @@ from shapely.geometry import Point as ShapelyPoint
 from pyproj import Transformer
 
 
-transformer_4538_to_4326 = Transformer.from_crs("EPSG:4538", "EPSG:4326", always_xy=True)
-transformer_4326_to_4538 = Transformer.from_crs("EPSG:4326", "EPSG:4538", always_xy=True)
-transformer_4326_to_32645 = Transformer.from_crs("EPSG:4326", "EPSG:32645", always_xy=True)
-transformer_4538_to_32645 = Transformer.from_crs("EPSG:4538", "EPSG:32645", always_xy=True)
-transformer_32645_to_4538 = Transformer.from_crs("EPSG:32645", "EPSG:4538", always_xy=True)
-transformer_32645_to_4326 = Transformer.from_crs("EPSG:32645", "EPSG:4326", always_xy=True)
+class ProjTransformerManager:
+    def __init__(self):
+        self.transformer_dict = dict()
+
+    def get_transformer(self, src_crs, dst_crs):
+        if (src_crs, dst_crs) not in self.transformer_dict:
+            self.transformer_dict[(src_crs, dst_crs)] = Transformer.from_crs(src_crs, dst_crs, always_xy=True)
+        return self.transformer_dict[(src_crs, dst_crs)]
+    
+    def transform(self, param_1, param_2, src_crs, dst_crs):
+        return self.get_transformer(src_crs, dst_crs).transform(param_1, param_2)
+
+proj_transformer_manager = ProjTransformerManager()
 
 def trans_4326_to_4538(lat, lon):
-    return transformer_4326_to_4538.transform(lon, lat)
+    return proj_transformer_manager.transform(lon, lat, "4326", "4538")
 
 def trans_4538_to_4326(x, y):
     # output : lon, lat
-    return transformer_4538_to_4326.transform(x, y)
+    return proj_transformer_manager.transform(x, y, "4538", "4326")
 
-def trans_4326_to_32645(lat, lon):
-    return transformer_4326_to_32645.transform(lon, lat)
+def get_utm_zone_from_zone_num(zone_num, is_south=False):
+    return f'EPSG:327{format(zone_num, "02d")}' if is_south else f'EPSG:326{format(zone_num, "02d")}'
 
-def trans_4538_to_32645(x, y):
-    return transformer_4538_to_32645.transform(x, y)
+def get_utm_zone_from_lon(lon, is_south=False):
+    """根据经度确定 UTM 区域"""     
+    zone_number = int((lon + 180) / 6) + 1     
+    return get_utm_zone_from_zone_num(zone_number, is_south)
 
-def trans_32645_to_4538(x, y):
-    return transformer_32645_to_4538.transform(x, y)
+def get_utm_zone_from_lon_lat(lon, lat):
+    return get_utm_zone_from_lon(lon, lat < 0)
 
-def trans_32645_to_4326(x, y):
-    return transformer_32645_to_4326.transform(x, y)
-
+def get_utm_zone_from_wgs84_str(utm_zone_str):
+    # WGS84 UTM 51N
+    match_res = re.match(r'WGS84 UTM(.+)(N|S)', utm_zone_str)
+    zone_num = int(match_res.group(1))
+    is_south = match_res.group(2) == 'S'
+    return get_utm_zone_from_zone_num(zone_num, is_south)
 
 class Point:
-    def __init__(self, lat, lon, z=0):
+    def __init__(self, lat, lon, z=0, utm_zone=None):
         assert lat >= -90 and lat <= 90, "Latitude must be between -90 and 90"
         assert lon >= -180 and lon <= 180, "Longitude must be between -180 and 180"
+
+        if utm_zone is None:
+            self.utm_zone_str = get_utm_zone_from_lon_lat(lon, lat)
+        else:
+            self.utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
 
         self.lat = float(lat)
         self.lon = float(lon)
 
         self.x, self.y = trans_4326_to_4538(self.lat, self.lon)
-        self.x_32645, self.y_32645 = trans_4326_to_32645(self.lat, self.lon)
+        self.x_utm, self.y_utm = proj_transformer_manager.transform(self.lon, self.lat, "4326", self.utm_zone_str)
         self.z = float(z)
 
         self.x = round(float(self.x), 8)
         self.y = round(float(self.y), 8)
 
-        self.x_32645 = round(float(self.x_32645), 8)
-        self.y_32645 = round(float(self.y_32645), 8)
+        self.x_utm = round(float(self.x_utm), 8)
+        self.y_utm = round(float(self.y_utm), 8)
 
         self.key_point = False
         self.edge_point = False
@@ -77,15 +94,16 @@ class Point:
         return cls(lat, lon, z)
 
     @classmethod
-    def from_xy_32645(cls, x, y, z=0):
-        lon, lat = trans_32645_to_4326(x, y)
+    def from_xy_utm(cls, utm_zone, x, y, z=0):
+        utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
+        lon, lat = proj_transformer_manager.transform(x, y, utm_zone_str, "4326")
         return cls(lat, lon, z)
 
     def get_xy(self):
         return self.x, self.y
 
-    def get_xy_32645(self):
-        return self.x_32645, self.y_32645
+    def get_xy_utm(self):
+        return self.x_utm, self.y_utm
 
     def __str__(self):
         return f"(lat: {self.lat}, lon: {self.lon})"
@@ -203,8 +221,9 @@ class ObjManager:
 
     @classmethod
     def load(cls, file_path):
+        print('@@ Loading data ...')
         obj = pickle_load(file_path)
-        if not obj.prepared:
+        if not hasattr(obj, "prepared") or not obj.prepared:
             obj.prepare()
         return obj
 
@@ -237,6 +256,7 @@ class ObjManager:
         return obj
 
     def prepare(self):
+        print('@@ Preparing data ...')
         points_array = np.array([[point[0], point[1]] for point in self.point_list]).astype('float32')
 
         # make edge polygon

@@ -62,6 +62,7 @@ def find_longest_start_end(arr):
 
 
 def get_longest_part(signal):
+    signal = np.array(signal)
     if len(signal) == 0 or np.max(np.abs(signal)) == 0:
         return 0, 0
 
