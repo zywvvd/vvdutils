@@ -60,6 +60,7 @@ def get_utm_zone_from_wgs84_str(utm_zone_str):
     is_south = match_res.group(2) == 'S'
     return get_utm_zone_from_zone_num(zone_num, is_south)
 
+
 class Point:
     def __init__(self, lat, lon, z=0, utm_zone=None):
         assert lat >= -90 and lat <= 90, "Latitude must be between -90 and 90"
@@ -70,8 +71,8 @@ class Point:
         else:
             self.utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
 
-        self.lat = float(lat)
-        self.lon = float(lon)
+        self.lat = round(float(lat), 12)
+        self.lon = round(float(lon), 12)
 
         self.x, self.y = trans_4326_to_4538(self.lat, self.lon)
         self.x_utm, self.y_utm = proj_transformer_manager.transform(self.lon, self.lat, "4326", self.utm_zone_str)
@@ -122,7 +123,7 @@ class Point:
 
     def vector_lat_lon(self, other):
         return np.array([other.lat - self.lat, other.lon - self.lon])
-    
+
     def clone(self):
         return type(self)(self.lat, self.lon)
 
