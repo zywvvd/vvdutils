@@ -20,6 +20,9 @@ from shapely.geometry import Polygon
 from shapely.geometry import Point as ShapelyPoint
 from pyproj import Transformer
 
+from rasterio.transform import from_origin
+from rasterio.enums import Compression
+import rasterio
 
 class ProjTransformerManager:
     def __init__(self):
@@ -356,3 +359,56 @@ class ObjManager:
 
         result_img = canvas[::-1, :]
         return result_img
+
+
+def create_tiff_file(data, tif_img_path, left, top, res_width, res_height, width, height, utm_zone, compression=Compression.zstd):
+    utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
+    match_res = re.match("EPSG:(\d+)", utm_zone_str)[1]
+    crs = rasterio.crs.CRS.from_epsg(int(match_res))
+
+    transform = from_origin(left, top, res_width, res_height)
+    
+    array_data = np.array(data, dtype=np.uint8)
+    ndim = data.ndim
+
+    # compression = Compression.jpeg
+
+    if ndim == 2:
+        # 创建TIFF文件并写入数据
+        with rasterio.open(
+            tif_img_path, 'w',
+            driver='GTiff',
+            height=height,
+            width=width,
+            count=1,  # 波段数
+            dtype=rasterio.uint8,
+            crs=crs,
+            transform=transform,
+            compress=compression,
+            JPEG_QUALITY=90,
+        ) as dst:
+            # 写入波段
+            dst.write(array_data, 1)
+
+    elif ndim == 3:
+        channel_num = data.shape[2]
+        with rasterio.open(
+            tif_img_path, 'w',
+            driver='GTiff',
+            height=height,
+            width=width,
+            count=channel_num,  # 波段数
+            dtype=rasterio.uint8,
+            crs=crs,
+            transform=transform,
+            compress=compression,
+            JPEG_QUALITY=90,
+        ) as dst:
+            # 分别写入每个波段
+            for i in range(channel_num):
+                dst.write(array_data[:, :, i], i+1)
+
+    else:
+        raise ValueError(" !! Tiff Image Create - Invalid data dimensions {ndim}")
+    
+    pass
