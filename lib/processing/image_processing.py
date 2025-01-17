@@ -2185,12 +2185,13 @@ def huge_image_load(file_path):
 
 
 def read_mongodb_image(mongo_img_file_obj, obj_type: str):
+    import tifffile
     image_stream = io.BytesIO(mongo_img_file_obj.read())
     Image.MAX_IMAGE_PIXELS = None
 
     if obj_type == 'tif':
-        import imageio.v3 as iio
-        image = iio.imopen(image_stream, 'r').read()
+        with tifffile.TiffFile(image_stream) as tif:
+            image = tif.asarray()
 
     else:
         pil_image = Image.open(image_stream)
