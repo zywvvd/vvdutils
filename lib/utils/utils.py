@@ -453,6 +453,9 @@ def create_uuid():
     md5_hash = hashlib.md5(uuid.uuid1().bytes)
     return md5_hash.hexdigest()
 
+def string_hash(s):
+    return int(hashlib.md5(s.encode()).hexdigest(), 16)
+
 
 def md5(data):
     return hashlib.md5(str(data).encode(encoding='utf-8')).hexdigest()
@@ -657,10 +660,8 @@ def log_init(log_path, quiet=False, level=logging.INFO):
         # open log file as  mode of write
         open_type = 'w'
 
-    # basicConfig 无法解决中文乱码的问题, 封存相关代码
-    # 据说 Python 3.9 之后会加入basicConfig() 的encoding和errors关键字配置
     # logging.basicConfig(
-    #     # 日志级别,logging.DEBUG,logging.ERROR
+    #     日志级别,logging.DEBUG,logging.ERROR
     #     level=level,
     #     # 日志格式: 时间、   日志信息
     #     format='%(asctime)s: %(message)s',

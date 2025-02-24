@@ -24,7 +24,12 @@ class Labelme(object):
     @classmethod
     def from_json(cls, labelme_json):
         labelme_json = str(labelme_json)
-        data = cls.parse_json(labelme_json)
+        labelme_info = json_load(labelme_json)
+        return cls.from_labelmeinfo(labelme_info)
+
+    @classmethod
+    def from_labelmeinfo(cls, labelme_info):
+        data = cls.parse_info(labelme_info)
         return cls(image_info=data['image_info'], shapes=data['shapes'])
 
     def __len__(self):
@@ -56,25 +61,29 @@ class Labelme(object):
             self.add_shape(polygon, label, shape_type='polygon')        
 
     @staticmethod
-    def parse_json(labelme_json):
-        obj = json_load(labelme_json)
-
+    def parse_info(labelme_info):
         # get shapes
         shapes = list()
-        for shape in obj['shapes']:
+        for shape in labelme_info['shapes']:
+            temp_shape = shape.copy()
+            temp_shape.pop('points', None)
+            temp_shape.pop('label', None)
+            temp_shape.pop('shape_type', None)
+            temp_shape.pop('class_name', None)
+
             polygon = Polygon(
                 points=shape['points'],
                 class_name=shape['label'],
-                shape_type=shape['shape_type']
+                shape_type=shape['shape_type'],
+                **temp_shape
             )
             shapes.append(polygon)
 
         image_info = {
-            'image_path': obj['imagePath'].replace('\\', '/'),  # path to linux style
-            'height': obj['imageHeight'], 'width': obj['imageWidth']
+            'image_path': labelme_info['imagePath'].replace('\\', '/'),  # path to linux style
+            'height': labelme_info['imageHeight'], 'width': labelme_info['imageWidth']
         }
         data = {'shapes': shapes, 'image_info':  image_info}
-
         return data
 
     def load_image(self, image_root=''):
@@ -94,6 +103,12 @@ class Labelme(object):
         json_dir = osp.dirname(json_path)
         os.makedirs(json_dir, exist_ok=True)
 
+        self.dump_dict()
+
+        with open(json_path, 'w') as fid:
+            json.dump(self.kwargs, fid, indent=4, cls=MyEncoder)
+
+    def dump_dict(self):
         self.kwargs.update({
             'version': '5.1.1',
             'flags': {},
@@ -103,6 +118,4 @@ class Labelme(object):
             'imageHeight': self.image_height,
             'imageWidth': self.image_width
         })
-
-        with open(json_path, 'w') as fid:
-            json.dump(self.kwargs, fid, indent=4, cls=MyEncoder)
+        return self.kwargs

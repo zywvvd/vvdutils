@@ -88,6 +88,11 @@ class Polygon(object):
             'flags': {},
             'group_id': None
         }
+
+        for key, value in self.__dict__.items():
+            if key not in shape_obj:
+                shape_obj[key] = value
+
         return shape_obj
 
     def __eq__(self, other):

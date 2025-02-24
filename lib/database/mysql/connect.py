@@ -153,6 +153,16 @@ class MysqlConnection:
         result = cursor.fetchall()
         return result
 
+    def is_not_null(self, key, table, cursor=None):
+        self.mysql_connection_check()
+        if cursor is None:
+            cursor = self.default_cursor
+
+        query = f"SELECT * FROM {table} WHERE {key} IS NOT NULL"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+
     def delete_item(self, conditions, table, logical='AND', cursor=None):
         self.mysql_connection_check()
         if cursor is None:
