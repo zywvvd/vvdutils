@@ -139,8 +139,13 @@ class MysqlConnection:
             condition_str_list = list()
             
             for condition in conditions:
-                condition_str_list.append(f"{condition[0]} {condition[2]} %s")
-                condition_value_list.append(str(condition[1]))
+                if condition[2] == 'in':
+                    temp_str = "(" + ', '.join(['%s'] * len(condition[1])) + ")"
+                    condition_str_list.append(f"{condition[0]} {condition[2]} {temp_str}")
+                    condition_value_list.extend(condition[1])
+                else:
+                    condition_str_list.append(f"{condition[0]} {condition[2]} %s")
+                    condition_value_list.append(str(condition[1]))
             query += (' ' + logical + ' ').join(condition_str_list)
         else:
             query = f"SELECT * FROM {table}"
