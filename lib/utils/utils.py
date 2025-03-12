@@ -1798,6 +1798,12 @@ def line_merge(line_list):
                 line_1D_list.append([min_v, max_v])
     return line_1D_list
 
+def parse_time_str(time_str):
+    try:
+        time_obj = datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
+    except:
+        time_obj = datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S.%f")
+    return time_obj
 
 def make_time(year=None, month=None, day=None, hour=None, minute=None, second=None):
 

@@ -157,6 +157,10 @@ class MysqlConnection:
         cursor.execute(query, condition_value_list)
         result = cursor.fetchall()
         return result
+    
+    def item_exists(self, conditions, table, logical="AND", cursor=None):
+        result = self.select_item(conditions, table, logical, cursor)
+        return len(result) > 0
 
     def is_not_null(self, key, table, cursor=None):
         self.mysql_connection_check()
