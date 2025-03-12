@@ -129,7 +129,10 @@ class MongoGridFSConnection:
 
     def __del__(self):
         if self.conn is not None:
-            self.conn.close()
+            try:
+                self.conn.close()
+            except Exception as err:
+                print(f" !! MongoDB close error: {err}")
     
     def __exit__(self):
         self.__del__()
