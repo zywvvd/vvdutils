@@ -14,7 +14,7 @@ def get_gpu_device_count(verbose=0):
         print('please make sure pynvml is installed correctly.')
         print('a simple pip install nvidia-ml-py3 may help.')
         print('now a 0 will be return')
-        return '0', [0]
+        return 0
 
     try:
         # 初始化工具
@@ -22,7 +22,7 @@ def get_gpu_device_count(verbose=0):
     except Exception as e:
         print('pynvml.nvmlInit failed:', e)
         print('now a 0 will be return')
-        return '0', [0]
+        return 0
     # 驱动信息
     if verbose:
         print("GPU driver version: ", pynvml.nvmlSystemGetDriverVersion())
