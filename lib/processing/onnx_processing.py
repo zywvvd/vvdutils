@@ -43,7 +43,7 @@ class OnnxSimpleRelease:
         57.375,
     ]
 
-    def __init__(self, model_path, specific_wh=None, mean=None, std=None, model_type='float32', gpu=True, device_id=None):
+    def __init__(self, model_path, specific_wh=None, mean=None, std=None, model_type='float32', gpu=True, device_id=None, bgr=False):
         import onnxruntime
         try:
             import pynvml
@@ -74,6 +74,7 @@ class OnnxSimpleRelease:
         assert model_type in ['float32', 'float16'], "model_type must be 'float32' or 'float16'"
         self.model_type = model_type
         self.device_id = device_id
+        self.bgr = bgr
 
         # 加载模型
         if gpu:
@@ -96,7 +97,11 @@ class OnnxSimpleRelease:
         self.input_name = self.ort_session.get_inputs()[0].name
 
 
-    def infer(self, image):
+    def infer(self, rgb_image):
+        if self.bgr:
+            image = rgb_image[..., ::-1]
+        else:
+            image = rgb_image
         # 归一化
         processed_image = (image - self.mean) / self.std
 
