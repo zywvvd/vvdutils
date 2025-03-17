@@ -105,7 +105,7 @@ class MongoGridFSConnection:
 
         raise NotImplementedError("Under Devolopment.")
 
-    def connect(self):
+    def auth_connect(self):
         conn = None
         try:
             conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password, authSource=self.database)
@@ -122,14 +122,49 @@ class MongoGridFSConnection:
                 if len(conn.nodes) == 0:
                     raise RuntimeError(" !! MongoDB connect failed.")
 
+        try:
+            server_info = conn.server_info()
+            print(f"MongoDB connect success, server info: {server_info['version']}")
+        except Exception as err:
+            print(f" !! MongoDB Auth connect failed: {err}")
+            return None
+
+        return conn
+
+    def no_auth_connect(self):
+        conn = None
+        try:
+            conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password)
+        except Exception as err:
+            raise RuntimeError(f" !! MongoDB connect error: {err}")
+
+        time.sleep(0.5)
+
+        if len(conn.nodes) == 0:
+            time.sleep(1)
+            if len(conn.nodes) == 0:
+                time.sleep(1)
+                if len(conn.nodes) == 0:
+                    raise RuntimeError(" !! MongoDB connect failed.")
 
         try:
             server_info = conn.server_info()
             print(f"MongoDB connect success, server info: {server_info['version']}")
         except Exception as err:
-            raise RuntimeError(f" !! MongoDB Authentication failed: {err}")
+            print(f" !! MongoDB no auth connect failed: {err}")
+            return None
 
         return conn
+
+    def connect(self):
+        conn = self.auth_connect() 
+        if conn is None:
+            conn = self.no_auth_connect()
+        
+        if conn is None:
+            raise RuntimeError(" !! MongoDB connect failed.")
+        return conn
+
 
     def __del__(self):
         if self.conn is not None:
