@@ -1412,7 +1412,7 @@ def get_shapes_from_mask(mask, epsilon=None, drop_small_polygon=False):
     return shapes
 
 
-def draw_polygons(mask, polygons, color=None, thickness=5, fill=False):
+def draw_polygons(mask, polygons, color=None, thickness=5, fill=False, draw_split=False):
     mask = mask.copy()
     if color is None:
         color = [255, 255, 255]
@@ -1423,7 +1423,11 @@ def draw_polygons(mask, polygons, color=None, thickness=5, fill=False):
         pass
 
     if fill:
-        mask = cv2.fillPoly(mask, [np.array(p).astype('int32') for p in polygons], color)
+        if not draw_split:
+            mask = cv2.fillPoly(mask, [np.array(p).astype('int32') for p in polygons], color)
+        else:
+            for p in polygons:
+                mask = cv2.fillPoly(mask, [np.array(p).astype('int32')], color)
     else:
         mask = cv2.polylines(mask, [np.array(p).astype('int32') for p in polygons], True, color=color, thickness=thickness)
 
