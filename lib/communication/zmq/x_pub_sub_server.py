@@ -61,4 +61,4 @@ class XPubClient:
         time.sleep(0.3)
 
     def pub(self, data):
-        return self.socket.send_string(data)
+        return self.socket.send_string(str(data).encode('utf-8'))
