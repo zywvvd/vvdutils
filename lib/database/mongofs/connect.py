@@ -21,6 +21,9 @@ from ...utils import popular_image_extensions
 from ...processing import read_mongodb_image
 
 
+def make_mongo_connect_url(username, password, host, port, database):
+    return f"mongodb://{username}:{password}@{host}:{port}/{database}"
+
 
 class MongoGridFSConnection:
     MongoClient = None
@@ -34,7 +37,7 @@ class MongoGridFSConnection:
         # from gridfs import GridFS
         if self.MongoClient is None:
             type(self).MongoClient = lazy_import('pymongo').MongoClient
-        
+
         if self.GridFS is None:
             type(self).GridFS = lazy_import('gridfs').GridFS
 
@@ -105,7 +108,8 @@ class MongoGridFSConnection:
     def connect(self):
         conn = None
         try:
-            conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password)
+            conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password, authSource=self.database)
+            # conn = self.MongoClient(make_mongo_connect_url(self.username, self.password, self.host, self.port, self.database))
         except Exception as err:
             raise RuntimeError(f" !! MongoDB connect error: {err}")
 
