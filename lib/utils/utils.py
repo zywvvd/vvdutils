@@ -1956,6 +1956,17 @@ class KDPoints:
         distance, point_index = self.kdtree.query(query_point)
         return distance, self.points[point_index]
 
+def dump_yaml(yaml_data, yaml_path, overwrite=True, verbose=False):
+    import yaml
+    file_path = save_file_path_check(yaml_path, overwrite, verbose)
+    with open(file_path, 'w', encoding='utf-8') as yaml_file:
+        yaml.dump(yaml_data, yaml_file, allow_unicode=True, sort_keys=False)
+
+def load_yaml(yaml_path):
+    import yaml
+    with open(yaml_path, 'r', encoding='utf-8') as yaml_file:
+        yaml_data = yaml.safe_load(yaml_file)
+    return yaml_data
 
 if __name__ == '__main__':
     
