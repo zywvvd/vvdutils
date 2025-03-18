@@ -1968,7 +1968,16 @@ def load_yaml(yaml_path):
         yaml_data = yaml.safe_load(yaml_file)
     return yaml_data
 
+def load_csv(csv_path):
+    import csv
+    info_list = list()
+    with open(csv_path, 'r', encoding='utf8') as file:
+        csv_reader = csv.DictReader(file)
+        for temp_info in tqdm(csv_reader, desc=" @@ Loading csv file {csv_path}: "):
+            info_list.append(temp_info)
+    return info_list
+
+
 if __name__ == '__main__':
-    
     join_substring('asdfasdf', 123, 'asdf')
     pass

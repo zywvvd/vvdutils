@@ -45,7 +45,7 @@ class XSubClient:
     def sub(self, verbose=False):
         while True: 
             print(" @@ Waiting for data...")
-            data = self.socket.recv_string()
+            data = self.socket.recv_string(encoding='utf-8')
             if verbose:
                 print(data)
             return data
@@ -61,4 +61,4 @@ class XPubClient:
         time.sleep(0.3)
 
     def pub(self, data):
-        return self.socket.send_string(str(data).encode('utf-8'))
+        return self.socket.send_string(str(data), encoding='utf-8')
