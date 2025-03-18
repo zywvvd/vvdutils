@@ -80,7 +80,11 @@ class MysqlConnection:
         if cursor is None:
             cursor = self.default_cursor
 
-        query = f"INSERT INTO {table} ({', '.join(data_dict.keys())}) VALUES ({', '.join(['%s'] * len(data_dict))})"
+        key_list = list(data_dict.keys())
+        for index, key in enumerate(key_list):
+            key_list[index] = f'`{key}`'
+
+        query = f"INSERT INTO {table} ({', '.join(key_list)}) VALUES ({', '.join(['%s'] * len(data_dict))})"
         cursor.execute(query, list(data_dict.values()))
 
     def update_item(self, set_dict, conditions, table, logical="AND", cursor=None):
