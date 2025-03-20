@@ -1977,6 +1977,15 @@ def load_csv(csv_path):
             info_list.append(temp_info)
     return info_list
 
+def dump_csv(dict_info_list, csv_path, overwrite=True, verbose=False):
+    import csv
+    file_path = save_file_path_check(csv_path, overwrite, verbose)
+    with open(file_path, 'w', encoding='utf8', newline='') as file:
+        csv_writer = csv.DictWriter(file, fieldnames=dict_info_list[0].keys())
+        csv_writer.writeheader()
+        csv_writer.writerows(dict_info_list)
+    if verbose:
+        print(f" @@ Save csv file {csv_path}.")
 
 if __name__ == '__main__':
     join_substring('asdfasdf', 123, 'asdf')
