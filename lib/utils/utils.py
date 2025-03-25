@@ -50,6 +50,27 @@ from func_timeout import func_set_timeout, FunctionTimedOut
 
 isfile = OS_isfile 
 
+def get_pc_mac(directory='/sys/class/net'):
+    eth_en_interfaces = []
+    mac_list = []
+    with os.scandir(directory) as entries:
+        for entry in entries:
+            if entry.is_dir() and (entry.name.startswith('eth') or entry.name.startswith('en')):
+                eth_en_interfaces.append(entry.name)
+    for interface in eth_en_interfaces:
+        try:
+            with open(os.path.join(directory, interface, 'address'), 'r') as f:
+                mac = f.read().strip()
+                if mac.startswith('00:00:00:00:00:00'):
+                    continue
+                mac_list.append(mac)
+        except FileNotFoundError:
+            continue
+    if len(mac_list) == 0:
+        return None
+    return min(mac_list)
+
+
 def rm_r(path):
     try:
         if os.path.isdir(path) and not os.path.islink(path):
