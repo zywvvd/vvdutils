@@ -44,7 +44,7 @@ class MysqlConnection:
         err = 'connect failed.'
 
         try:
-            db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True)
+            db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True, allow_local_infile=True)
         except Exception as e:
             err = f" error type {type(e)}: {e}"
 
