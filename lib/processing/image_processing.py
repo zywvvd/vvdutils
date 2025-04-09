@@ -2183,6 +2183,7 @@ def colorful_mask(ori_output, color_dict=None):
 
 def huge_image_load(file_path):
     import imageio.v3 as iio
+    Image.MAX_IMAGE_PIXELS = None
     with iio.imopen(file_path, 'r') as image_file:
         img = image_file.read()
     return img

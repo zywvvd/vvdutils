@@ -361,7 +361,7 @@ class ObjManager:
         return result_img
 
 
-def create_tiff_file(data, tif_img_path, left, top, res_width, res_height, width, height, utm_zone, compression=Compression.zstd):
+def create_tiff_file(data, tif_img_path, left, top, res_width, res_height, width, height, utm_zone, compression=Compression.jpeg):
     utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
     match_res = re.match("EPSG:(\d+)", utm_zone_str)[1]
     crs = rasterio.crs.CRS.from_epsg(int(match_res))
@@ -371,7 +371,7 @@ def create_tiff_file(data, tif_img_path, left, top, res_width, res_height, width
     array_data = np.array(data, dtype=np.uint8)
     ndim = data.ndim
 
-    # compression = Compression.jpeg
+    # compression = Compression.zstd
 
     if ndim == 2:
         # 创建TIFF文件并写入数据
