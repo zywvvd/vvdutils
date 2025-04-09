@@ -1576,17 +1576,24 @@ def is_iterable(obj):
     return isinstance(obj, Iterable)
 
 
-def get_file_time(file_path):
+def get_file_time(file_path, datetime_res=False):
     """get file time record"""
     atime = os.path.getatime(file_path)  # 文件访问时间
     mtime = os.path.getmtime(file_path)  # 文件最近修改时间
     ctime = os.path.getctime(file_path)  # 文件的创建时间
 
-    time_info = dict(
-        access_time=time.localtime(atime),
-        modify_time=time.localtime(mtime),
-        create_time=time.localtime(ctime)
-    )
+    if datetime_res:
+        time_info = dict(
+            access_time=datetime.datetime.fromtimestamp(atime),
+            modify_time=datetime.datetime.fromtimestamp(mtime),
+            create_time=datetime.datetime.fromtimestamp(ctime)
+        )
+    else:
+        time_info = dict(
+            access_time=time.localtime(atime),
+            modify_time=time.localtime(mtime),
+            create_time=time.localtime(ctime)
+        )
 
     return time_info
 
