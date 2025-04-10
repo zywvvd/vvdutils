@@ -26,6 +26,7 @@ import datetime
 import importlib
 
 import numpy as np
+from loguru import logger
 import PIL.Image as Image
 import matplotlib.pyplot as plt
 
@@ -646,6 +647,33 @@ class Loger_printer():
                     handler.close()
         else:
             print('logger has been closed')
+
+
+class UruLogConfig:
+    @staticmethod
+    def config(main_name, sub_dir_list, log_file_name, log_root="./log", retention="2 days", format=None, enqueue=True, serialize=False, rotation=None, compression=None, level="INFO", filter=None):
+        logger.remove()
+        if format is None:
+            format = "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+
+        # 保留并添加控制台输出
+        logger.add(
+            sys.stderr,
+            format=format,  # 使用统一的格式
+            level=level,
+            colorize=True,  # 保持颜色显示
+            filter=filter
+        )
+
+        if not dir_check(log_root):
+            raise Exception(f"Log root directory {log_root} does not exist")
+        
+        assert isinstance(sub_dir_list, list), "sub_dir_list must be a list"
+        log_file_name = path_with_suffix(log_file_name, "log")
+        
+        log_path = OS_join(log_root, main_name, *sub_dir_list, log_file_name)
+        logger.add(log_path, rotation=rotation, retention=retention, compression=compression, level=level, enqueue=enqueue, serialize=serialize, format=format, filter=filter)
+
 
 def get_date_str():
     str_time = time.localtime(time.time())
