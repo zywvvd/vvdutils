@@ -1,5 +1,6 @@
 import time
 from ...utils import lazy_import
+from loguru import logger
 
 
 class MysqlConnection:
@@ -16,13 +17,21 @@ class MysqlConnection:
         self.username = username
         self.password = password
 
+        logger.info(f" @@ Connecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
+
         self.db = self.make_connection()
+        if self.db is None:
+            logger.error(f" !! Error connecting to MySQL database: {self.database}, host: {self.host}, port: {self.port}")
+            raise Exception("Error connecting to MySQL database.")
+        else:
+            logger.info(f" @@ Connected to MySQL database {self.database} successfully, host: {self.host}, port: {self.port}")
         self.default_cursor = self.get_cursor(in_dict=True)
 
     def make_connection(self):
         try_time = 3
         db_obj = self.connect()
-        while db_obj.is_closed() and try_time > 0:
+        while (db_obj is None or db_obj.is_closed()) and try_time > 0:
+            logger.info(f" @@ Reconnecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
             db_obj = self.connect()
             time.sleep(1)
             try_time -= 1
@@ -41,17 +50,18 @@ class MysqlConnection:
 
     def connect(self):
         db = None
-        err = 'connect failed.'
 
         try:
             db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True, allow_local_infile=True)
         except Exception as e:
-            err = f" error type {type(e)}: {e}"
-
+            logger.exception(f" !! Error connecting to MySQL database. {e}")
+        
+        time.sleep(2)
         if db is None:
-            raise RuntimeError(f" !! Error connecting to MySQL database: {err}")
-        else:
-            print(f" @@ Connected to MySQL database {self.database} successfully.")
+            try:
+                db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True, allow_local_infile=True)
+            except Exception as e:
+                logger.exception(f" !! Error connecting to MySQL database. {e}")
 
         return db
 
@@ -59,7 +69,7 @@ class MysqlConnection:
         try:
             self.db.close()
         except:
-            print(" !! Error closing MySQL database.")
+            logger.exception(" !! Error closing MySQL database.")
 
     def __del__(self):
         self.close()
@@ -73,6 +83,7 @@ class MysqlConnection:
             self.default_cursor = self.get_cursor(in_dict=True)
             return
         else:
+            logger.error(" !! Error connecting to MySQL database under <mysql_connection_check>.")
             raise RuntimeError(" !! Error connecting to MySQL database.")
 
     def insert_item(self, data_dict, table, cursor=None):
@@ -121,7 +132,7 @@ class MysqlConnection:
             return True
         except Exception as e:
             self.rollback()
-            print(f" !! Error updating item: {e}")
+            logger.exception(f" !! Error updating item: {e}")
             return False
 
     def select_item(self, conditions, table, logical="AND", cursor=None, for_update=False):
