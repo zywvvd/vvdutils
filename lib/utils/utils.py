@@ -650,6 +650,27 @@ class Loger_printer():
 
 
 class UruLogConfig:
+    """
+    How to use:
+    
+    from loguru import logger
+    from vvdutils import UruLogConfig
+    UruLogConfig.config(main_name="test", sub_dir_list=["test"], log_file_name="test.log")
+
+    def my_function1():
+        try:
+            return 1 / 0
+        except Exception as e:
+            logger.exception(f"What?! {e}")
+    
+    my_function1()
+    logger.info("This is a test log")
+    logger.success("This is a success log")
+    logger.warning("This is a warning log")
+    logger.error("This is a error log")
+    logger.critical("This is a critical log")
+    logger.debug("This is a debug log")
+    """
     @staticmethod
     def config(main_name, sub_dir_list, log_file_name, log_root="./log", retention="2 days", format=None, enqueue=True, serialize=False, rotation=None, compression=None, level="INFO", filter=None):
         logger.remove()
@@ -665,13 +686,16 @@ class UruLogConfig:
             filter=filter
         )
 
+        sub_dir_list = get_list_from_list(sub_dir_list, lambda x: str(x))
+
         if not dir_check(log_root):
             raise Exception(f"Log root directory {log_root} does not exist")
         
         assert isinstance(sub_dir_list, list), "sub_dir_list must be a list"
-        log_file_name = path_with_suffix(log_file_name, "log")
         
-        log_path = OS_join(log_root, main_name, *sub_dir_list, log_file_name)
+        log_path = OS_join(log_root, str(main_name), *sub_dir_list, log_file_name)
+        log_path = path_with_suffix(log_path, "log")
+
         logger.add(log_path, rotation=rotation, retention=retention, compression=compression, level=level, enqueue=enqueue, serialize=serialize, format=format, filter=filter)
 
 
