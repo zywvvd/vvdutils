@@ -6,6 +6,7 @@ from bson import ObjectId
 import pickle
 import time
 import json
+from loguru import logger
 
 from ...utils import lazy_import
 from ...utils import dir_check
@@ -111,6 +112,7 @@ class MongoGridFSConnection:
             conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password, authSource=self.database)
             # conn = self.MongoClient(make_mongo_connect_url(self.username, self.password, self.host, self.port, self.database))
         except Exception as err:
+            logger.exception(f" !! MongoDB connect error: {err}")
             raise RuntimeError(f" !! MongoDB connect error: {err}")
 
         time.sleep(0.5)
@@ -120,13 +122,14 @@ class MongoGridFSConnection:
             if len(conn.nodes) == 0:
                 time.sleep(1)
                 if len(conn.nodes) == 0:
+                    logger.error(" !! MongoDB connect failed.")
                     raise RuntimeError(" !! MongoDB connect failed.")
 
         try:
             server_info = conn.server_info()
-            print(f"MongoDB connect success, server info: {server_info['version']}")
+            logger.info(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
         except Exception as err:
-            print(f" !! MongoDB Auth connect failed: {err}")
+            logger.exception(f" !! MongoDB Auth connect failed: {err}")
             return None
 
         return conn
@@ -149,9 +152,9 @@ class MongoGridFSConnection:
 
         try:
             server_info = conn.server_info()
-            print(f"MongoDB connect success, server info: {server_info['version']}")
+            logger.info(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
         except Exception as err:
-            print(f" !! MongoDB no auth connect failed: {err}")
+            logger.exception(f" !! MongoDB no auth connect failed: {err}")
             return None
 
         return conn
@@ -167,11 +170,12 @@ class MongoGridFSConnection:
 
 
     def __del__(self):
-        if self.conn is not None:
-            try:
-                self.conn.close()
-            except Exception as err:
-                print(f" !! MongoDB close error: {err}")
+        if hasattr(self, "conn"):
+            if self.conn is not None:
+                try:
+                    self.conn.close()
+                except Exception as err:
+                    logger.exception(f" !! MongoDB close error: {err}")
     
     def __exit__(self):
         self.__del__()

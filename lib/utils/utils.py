@@ -103,7 +103,7 @@ def get_line_info():
     return error_line
 
 def lazy_import(module_name):
-    print(f'Lazy import: {module_name}')
+    # print(f'Lazy import: {module_name}')
     return importlib.import_module(module_name)
 
 def exists(input):
