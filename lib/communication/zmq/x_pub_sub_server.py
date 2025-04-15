@@ -4,9 +4,10 @@ from loguru import logger
 
 
 class XPubSubServer:
-    def __init__(self, x_sub_port, x_pub_port):
+    def __init__(self, x_sub_port, x_pub_port, host="*"):
         self.x_sub_port = str(x_sub_port)
         self.x_pub_port = str(x_pub_port)
+        self.host = host
         self.context = None
 
     def start(self):
@@ -16,12 +17,12 @@ class XPubSubServer:
 
                 # 前端接收发布者消息（XSUB）
                 frontend = self.context.socket(zmq.XSUB)
-                frontend.bind("tcp://*:" + self.x_sub_port)  # 发布者连接到此端口
+                frontend.bind("tcp://" + self.host + ":" + self.x_sub_port)  # 发布者连接到此端口
                 logger.info(f"Listening for publishers on tcp://*:{self.x_sub_port}")
 
                 # 后端发送给订阅者（XPUB）
                 backend = self.context.socket(zmq.XPUB)
-                backend.bind("tcp://*:" + self.x_pub_port)  # 订阅者连接到此端口
+                backend.bind("tcp://" + self.host + ":" + self.x_pub_port)  # 订阅者连接到此端口
                 logger.info(f"Listening for subscribers on tcp://*:{self.x_pub_port}")
 
                 # 使用代理进行消息转发
