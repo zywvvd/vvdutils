@@ -127,7 +127,7 @@ class MongoGridFSConnection:
 
         try:
             server_info = conn.server_info()
-            logger.info(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
+            logger.debug(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
         except Exception as err:
             logger.exception(f" !! MongoDB Auth connect failed: {err}")
             return None
@@ -152,7 +152,7 @@ class MongoGridFSConnection:
 
         try:
             server_info = conn.server_info()
-            logger.info(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
+            logger.debug(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
         except Exception as err:
             logger.exception(f" !! MongoDB no auth connect failed: {err}")
             return None

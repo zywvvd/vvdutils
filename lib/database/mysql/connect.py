@@ -17,21 +17,21 @@ class MysqlConnection:
         self.username = username
         self.password = password
 
-        logger.info(f" @@ Connecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
+        logger.debug(f" @@ Connecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
 
         self.db = self.make_connection()
         if self.db is None:
             logger.error(f" !! Error connecting to MySQL database: {self.database}, host: {self.host}, port: {self.port}")
             raise Exception("Error connecting to MySQL database.")
         else:
-            logger.info(f" @@ Connected to MySQL database {self.database} successfully, host: {self.host}, port: {self.port}")
+            logger.debug(f" @@ Connected to MySQL database {self.database} successfully, host: {self.host}, port: {self.port}")
         self.default_cursor = self.get_cursor(in_dict=True)
 
     def make_connection(self):
         try_time = 3
         db_obj = self.connect()
         while (db_obj is None or db_obj.is_closed()) and try_time > 0:
-            logger.info(f" @@ Reconnecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
+            logger.debug(f" @@ Reconnecting to MySQL database {self.database}, host: {self.host}, port: {self.port}, username: {self.username}.")
             db_obj = self.connect()
             time.sleep(1)
             try_time -= 1
