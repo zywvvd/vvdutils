@@ -75,16 +75,18 @@ class MysqlConnection:
         self.close()
 
     def mysql_connection_check(self):
-        if self.db.is_connected():
-            return
-        else:
+        try:
+            if self.db.is_connected():
+                return
+        except:
+            logger.error(" !! connection check failed, try to reconnect mysql.")
             self.db = self.make_connection()
-        if self.db.is_connected():
-            self.default_cursor = self.get_cursor(in_dict=True)
-            return
-        else:
-            logger.error(" !! Error connecting to MySQL database under <mysql_connection_check>.")
-            raise RuntimeError(" !! Error connecting to MySQL database.")
+            if self.db.is_connected():
+                self.default_cursor = self.get_cursor(in_dict=True)
+                return
+            else:
+                logger.error(" !! Error connecting to MySQL database under <mysql_connection_check>.")
+                raise RuntimeError(" !! Error connecting to MySQL database.")
 
     def insert_item(self, data_dict, table, cursor=None):
         self.mysql_connection_check()
