@@ -56,13 +56,19 @@ def get_utm_zone_from_lon(lon, is_south=False):
 def get_utm_zone_from_lon_lat(lon, lat):
     return get_utm_zone_from_lon(lon, lat < 0)
 
-def get_utm_zone_from_wgs84_str(utm_zone_str):
+def get_utm_zone_from_wgs84_str(wgs84_str):
     # WGS84 UTM 51N
-    match_res = re.match(r'WGS84 UTM(.+)(N|S)', utm_zone_str)
+    match_res = re.match(r'WGS84 UTM(.+)(N|S)', wgs84_str)
     zone_num = int(match_res.group(1))
     is_south = match_res.group(2) == 'S'
     return get_utm_zone_from_zone_num(zone_num, is_south)
 
+def get_wgs84_str_from_utm_zone_str(utm_zone_str):
+    match_res = re.match(r"EPSG:32(\d)(\d{2})", utm_zone_str)
+    s_or_n = 'S' if match_res[1] == '7' else 'N'
+    zone_num = match_res[2]
+
+    return f'WGS84 UTM {zone_num}{s_or_n}'
 
 class Point:
     def __init__(self, lat, lon, z=0, utm_zone=None):
@@ -71,8 +77,10 @@ class Point:
 
         if utm_zone is None:
             self.utm_zone_str = get_utm_zone_from_lon_lat(lon, lat)
+            self.wgs84_str = get_wgs84_str_from_utm_zone_str(self.utm_zone_str)
         else:
             self.utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
+            self.wgs84_str = utm_zone
 
         self.lat = round(float(lat), 12)
         self.lon = round(float(lon), 12)
@@ -93,9 +101,9 @@ class Point:
         self.key_value = 0
 
     @classmethod
-    def from_xy(cls, x, y, z=0):
+    def from_xy(cls, x, y, z=0, utm_zone=None):
         lon, lat = trans_4538_to_4326(x, y)
-        return cls(lat, lon, z)
+        return cls(lat, lon, z, utm_zone)
 
     @classmethod
     def from_xy_utm(cls, utm_zone, x, y, z=0):
@@ -119,10 +127,10 @@ class Point:
         return hash((self.lat, self.lon))
 
     def distance_to(self, other):
-        return cal_distance([self.x, self.y], [other.x, other.y])
+        return cal_distance([self.x_utm, self.y_utm], [other.x_utm, other.y_utm])
 
     def vector_xy(self, other):
-        return np.array([other.x - self.x, other.y - self.y])
+        return np.array([other.x_utm - self.x_utm, other.y_utm - self.y_utm])
 
     def vector_lat_lon(self, other):
         return np.array([other.lat - self.lat, other.lon - self.lon])
