@@ -460,12 +460,25 @@ def get_z_from_xy_on_plane_ABC_3d(x, y, A, B, C):
         z = (n[2] * A[2] - n[0] * (x - A[0]) - n[1] * (y - A[1])) / n[2]
         return z
 
+def is_triangle(a, b, c):
+    # 验证边长有效性
+    if a < 0 or b < 0 or c < 0:
+        raise ValueError("边长必须为正数")
+    
+    # 判断三角形条件
+    if a + b > c and a + c > b and b + c > a:
+        return True
+    else:
+        return False
 
 def cal_triangle_area_by_side_length(a, b, c):
     # a, b, c are the side length of a triangle
     # return the area of the triangle
-    s = (a + b + c) / 2
-    return math.sqrt(s * (s - a) * (s - b) * (s - c))
+    if is_triangle(a, b, c):
+        s = (a + b + c) / 2
+        return math.sqrt(s * (s - a) * (s - b) * (s - c))
+    else:
+        return 0
 
 
 def cal_triangle_area_by_point(x1, y1, x2, y2, x3, y3):
