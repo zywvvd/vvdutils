@@ -2,6 +2,46 @@ import time
 from ...utils import lazy_import
 from loguru import logger
 
+def auto_reconnect(func):
+    def wrapper(self, *args, **kwargs):
+        retries = 3
+        for attempt in range(retries):
+            try:
+                return func(self, *args, **kwargs)
+            except Exception as e:
+                if attempt < retries - 1:
+                    logger.warning(f"Connection error: {e}, retrying ({attempt+1}/{retries})...")
+                    self._safe_reconnect()
+                    continue
+                raise e
+
+        return None
+    return wrapper
+
+
+class SafeCursor:
+    def __init__(self, connection, dict_cursor=True):
+        self.connection = connection
+        self.dict_cursor = dict_cursor
+        self.cursor = None
+    
+    def __enter__(self):
+        try:
+            self.cursor = self.connection.cursor(dictionary=self.dict_cursor)
+            return self.cursor
+        except Exception as e:
+            logger.error(f"Cursor creation failed: {e}")
+            raise
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            if self.cursor:
+                self.cursor.close()
+        except Exception as close_error:
+            logger.debug(f"Cursor close error: {close_error}")
+        if exc_type:
+            logger.error(f"Cursor operation error: {exc_val}")
+
 
 class MysqlConnection:
     # import mysql.connector
@@ -50,16 +90,35 @@ class MysqlConnection:
 
     def connect(self):
         db = None
+        connection_params = {
+            "host": self.host,
+            "port": self.port,
+            "user": self.username,
+            "password": self.password,
+            "database": self.database,
+            "autocommit": True,
+            "allow_local_infile": True,
+            "connect_timeout": 30,          # 增加连接超时
+            "pool_size": 5,                 # 连接池大小
+            "pool_name": "main_pool",       # 连接池名称
+            "pool_reset_session": True      # 重置会话
+        }
+
+        if hasattr(self.MySqlConnector, 'CONNECTION_POOL'):
+            connection_params.update({
+                "pool_heartbeat_interval": 300,  # 5分钟心跳
+                "pool_validation_interval": 60    # 每分钟验证
+            })
 
         try:
-            db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True, allow_local_infile=True)
+            db = self.MySqlConnector.connect(**connection_params)
         except Exception as e:
             logger.exception(f" !! Error connecting to MySQL database. {e}")
         
         time.sleep(2)
         if db is None:
             try:
-                db = self.MySqlConnector.connect(host=self.host, port=self.port, user=self.username, password=self.password, database=self.database, autocommit=True, allow_local_infile=True)
+                db = self.MySqlConnector.connect(**connection_params)
             except Exception as e:
                 logger.exception(f" !! Error connecting to MySQL database. {e}")
 
@@ -74,81 +133,110 @@ class MysqlConnection:
     def __del__(self):
         self.close()
 
+    def _safe_reconnect(self):
+        try:
+            self.db.close()
+        except Exception as close_error:
+            logger.debug(f"Error closing old connection: {close_error}")
+        finally:
+            self.db = self.make_connection()
+            self.default_cursor = self.get_cursor(in_dict=True)
+
     def mysql_connection_check(self):
         try:
             if self.db.is_connected():
-                return
-        except:
-            logger.error(" !! connection check failed, try to reconnect mysql.")
-            self.db = self.make_connection()
-            if self.db.is_connected():
-                self.default_cursor = self.get_cursor(in_dict=True)
-                return
-            else:
+                with self.db.cursor() as cursor:
+                    cursor.execute("SELECT 1")
+                    cursor.fetchall()
+                return True
+
+        except (self.MySqlConnector.errors.InterfaceError, 
+            self.MySqlConnector.errors.OperationalError,
+            AttributeError) as e:
+            logger.warning(f" !! Connection check failed: {e}, attempting reconnect...")
+            for _ in range(3):
+                try:
+                    self.db.ping(reconnect=True, attempts=3, delay=1)
+                    self.default_cursor = self.get_cursor(in_dict=True)
+                    logger.info("Connection reestablished successfully")
+                    return True
+                except Exception as ping_error:
+                    logger.error(f"Reconnection attempt failed: {ping_error}")
+                    time.sleep(1)
+        
+            logger.error(" !! Reconnection failed, try to reconnect mysql.")
+            try:
+                self._safe_reconnect()
+                return True
+            except Exception as e:
                 logger.error(" !! Error connecting to MySQL database under <mysql_connection_check>.")
-                raise RuntimeError(" !! Error connecting to MySQL database.")
+                raise ConnectionError("Failed to reconnect after multiple attempts")
 
-    def insert_item(self, data_dict, table, cursor=None):
-        self.mysql_connection_check()
+    def _execute(self, query, value, cursor=None, fetchall=False):
         if cursor is None:
-            cursor = self.default_cursor
+            with SafeCursor(self.db) as cursor:
+                cursor.execute(query, value)
+                if fetchall:
+                    return cursor.fetchall()
+                else:
+                    return True
+        else:
+            cursor.execute(query, value)
+            if fetchall:
+                return cursor.fetchall()
+            else:
+                return True
 
+    @auto_reconnect
+    def insert_item(self, data_dict, table, cursor=None):
+        # self.mysql_connection_check()
         key_list = list(data_dict.keys())
         for index, key in enumerate(key_list):
             key_list[index] = f'`{key}`'
 
         query = f"INSERT INTO {table} ({', '.join(key_list)}) VALUES ({', '.join(['%s'] * len(data_dict))})"
-        cursor.execute(query, list(data_dict.values()))
+        values = list(data_dict.values())
+        self._execute(query, values, cursor)
+        return True
 
+    @auto_reconnect
     def update_item(self, set_dict, conditions, table, logical="AND", cursor=None):
-        self.mysql_connection_check()
-        if cursor is None:
-            cursor = self.default_cursor
+        # self.mysql_connection_check()
 
-        try:
-            self.start_transaction()
-            key_str_list = list()
-            value_list = list()
-            for k, v in set_dict.items():
-                key_str_list.append(f"{k} = %s")
-                value_list.append(v)
+        key_str_list = list()
+        value_list = list()
+        for k, v in set_dict.items():
+            key_str_list.append(f"{k} = %s")
+            value_list.append(v)
 
-            set_str = ", ".join(key_str_list)
+        set_str = ", ".join(key_str_list)
+        
+        query = ""
+        
+        if conditions:
+            query += " WHERE "
+
+            condition_str_list = list()
             
-            query = ""
-            
-            if conditions:
-                query += " WHERE "
+            for condition in conditions:
+                condition_str_list.append(f"{condition[0]} {condition[2]} %s")
+                value_list.append(str(condition[1]))
+            query += (' ' + logical + ' ').join(condition_str_list)
 
-                condition_str_list = list()
-                
-                for condition in conditions:
-                    condition_str_list.append(f"{condition[0]} {condition[2]} %s")
-                    value_list.append(str(condition[1]))
-                query += (' ' + logical + ' ').join(condition_str_list)
+        update_query = f"UPDATE {table} SET {set_str} {query}"
+        # 执行更新操作
+        self._execute(update_query, value_list, cursor)
+        return True
 
-            update_query = f"UPDATE {table} SET {set_str} {query}"
-            # 执行更新操作
-            cursor.execute(update_query, value_list)
-            self.commit()
-            return True
-        except Exception as e:
-            self.rollback()
-            logger.exception(f" !! Error updating item: {e}")
-            return False
-
+    @auto_reconnect
     def select_item(self, conditions, table, logical="AND", cursor=None, for_update=False):
         """
         :param conditions: list [[key1, value1, operator1], [key2, value2, operator2], ...]
         :param logical: str
         :return: list
         """
-        self.mysql_connection_check()
+        # self.mysql_connection_check()
         assert logical in ["AND", "OR"], " !! logical must be 'AND' or 'OR'"
-
-        if cursor is None:
-            cursor = self.default_cursor
-
         condition_value_list = list()
         if conditions:
             query = f"SELECT * FROM {table} WHERE "
@@ -167,33 +255,28 @@ class MysqlConnection:
         else:
             query = f"SELECT * FROM {table}"
 
-
         if for_update:
             query += " FOR UPDATE"
 
-        cursor.execute(query, condition_value_list)
-        result = cursor.fetchall()
+        result = self._execute(query, condition_value_list, cursor, fetchall=True)
         return result
-    
+
+    @auto_reconnect
     def item_exists(self, conditions, table, logical="AND", cursor=None):
         result = self.select_item(conditions, table, logical, cursor)
         return len(result) > 0
 
+    @auto_reconnect
     def is_not_null(self, key, table, cursor=None):
-        self.mysql_connection_check()
-        if cursor is None:
-            cursor = self.default_cursor
-
+        # self.mysql_connection_check()
         query = f"SELECT * FROM {table} WHERE {key} IS NOT NULL"
-        cursor.execute(query)
-        result = cursor.fetchall()
+
+        result = self._execute(query, [], cursor, fetchall=True)
         return result
 
+    @auto_reconnect
     def delete_item(self, conditions, table, logical='AND', cursor=None):
-        self.mysql_connection_check()
-        if cursor is None:
-            cursor = self.default_cursor
-
+        # self.mysql_connection_check()
         query = ""
         
         if conditions:
@@ -208,9 +291,8 @@ class MysqlConnection:
             query += (' ' + logical + ' ').join(condition_str_list)
 
         del_query = f"DELETE FROM {table} {query}"
-        cursor.execute(del_query, value_list)
+        self._execute(del_query, value_list, cursor)
 
-    
     def get_cursor(self, in_dict=True):
         self.mysql_connection_check()
         return self.db.cursor(dictionary=in_dict)
