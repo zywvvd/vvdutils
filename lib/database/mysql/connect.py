@@ -24,7 +24,7 @@ class SafeCursor:
         self.connection = connection
         self.dict_cursor = dict_cursor
         self.cursor = None
-    
+
     def __enter__(self):
         try:
             self.cursor = self.connection.cursor(dictionary=self.dict_cursor)
