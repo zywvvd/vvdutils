@@ -9,8 +9,11 @@ def auto_reconnect(func):
             try:
                 return func(self, *args, **kwargs)
             except Exception as e:
+                if "Duplicate entry" in e.msg:
+                    logger.warning(f" @@ Duplicate entry: {e}.")
+                    break
                 if attempt < retries - 1:
-                    logger.warning(f"Connection error: {e}, retrying ({attempt+1}/{retries})...")
+                    logger.warning(f" !! Connection error: {e}, retrying ({attempt+1}/{retries})...")
                     self._safe_reconnect()
                     continue
                 raise e
