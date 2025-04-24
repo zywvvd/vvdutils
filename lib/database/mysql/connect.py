@@ -100,7 +100,7 @@ class MysqlConnection:
             "allow_local_infile": True,
             "connect_timeout": 30,          # 增加连接超时
             "pool_size": 5,                 # 连接池大小
-            "pool_name": "main_pool",       # 连接池名称
+            "pool_name": f"mysql_pool_{self.database}",       # 连接池名称
             "pool_reset_session": True      # 重置会话
         }
 
