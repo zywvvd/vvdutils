@@ -39,7 +39,6 @@ from os.path import isfile as OS_isfile
 from os.path import isdir as OS_isdir
 from os.path import dirname as OS_dirname
 
-from numpy.lib.function_base import iterable
 from pathlib2 import Path as Path2
 from pathlib import Path
 from glob import glob
@@ -48,6 +47,11 @@ from collections import OrderedDict
 from functools import wraps
 from functools import reduce
 from func_timeout import func_set_timeout, FunctionTimedOut
+
+try:
+    from collections.abc import Iterable
+except ImportError:
+    from typing import Iterable
 
 isfile = OS_isfile 
 
@@ -70,6 +74,10 @@ def get_pc_mac(directory='/sys/class/net'):
     if len(mac_list) == 0:
         return None
     return min(mac_list)
+
+
+def iterable(obj):
+    return isinstance(obj, Iterable) and not isinstance(obj, (str, bytes))
 
 
 def rm_r(path):
@@ -1621,11 +1629,6 @@ def remove_chinese_for_file_names(root_dir):
 def is_generator(obj):
     from inspect import isgenerator
     return isgenerator(obj)
-
-
-def is_iterable(obj):
-    from typing import Iterable
-    return isinstance(obj, Iterable)
 
 
 def get_file_time(file_path, datetime_res=False):

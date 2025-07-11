@@ -13,8 +13,8 @@ import json
 import pickle
 
 from tqdm import tqdm
-from numpy.lib.function_base import iterable
 from ..utils import MyEncoder
+from ..utils import iterable
 
 
 def _DEFAULT_KEY_CALLBACK(rec):

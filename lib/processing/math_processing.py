@@ -1,7 +1,7 @@
 import math
 import numpy as np
 from ..utils import cal_distance
-from ..utils import is_iterable
+from ..utils import iterable
 from ..utils import is_number
 
 
@@ -142,7 +142,7 @@ class LogicOp:
     
     @staticmethod
     def In(value):
-        assert is_iterable(value)
+        assert iterable(value)
         def func(input):
             if input in value:
                 return True
@@ -152,7 +152,7 @@ class LogicOp:
 
     @staticmethod
     def NotIn(value):
-        assert is_iterable(value)
+        assert iterable(value)
         def func(input):
             if input in value:
                 return False
