@@ -180,7 +180,7 @@ class MongoGridFSConnection:
     def __exit__(self):
         self.__del__()
 
-    def insert_file(self, path=None, dict_info=dict(), force=False, specific_data_id=None):
+    def insert_file(self, path=None, dict_info=dict(), force=True, specific_data_id=None):
         """
         Insert data into GridFS
         file path points to a file or a directory to be inserted
@@ -229,8 +229,11 @@ class MongoGridFSConnection:
 
         if specific_data_id is not None:
             specific_data_id = ObjectId(specific_data_id)
-            assert not self.fs.exists({'_id': specific_data_id}), f"MongoDB insert_file: Data with id {specific_data_id} already exists."
-            data_info.update({'_id': specific_data_id})
+            if not self.fs.exists({'_id': specific_data_id}):
+                data_info.update({'_id': specific_data_id})
+            else:
+                logger.error(f" !! mongo insert specific file id {specific_data_id} already exists.")
+                raise RuntimeError(f" !! mongo insert specific file id {specific_data_id} already exists.")
 
         # update data_info with additional information
         if isinstance(dict_info, dict):
@@ -269,9 +272,44 @@ class MongoGridFSConnection:
             else:
                 raise RuntimeError(f"Unknown type code: {type_code} for file insert.")
 
+        if specific_data_id is not None:
+            assert str(data_id) == str(specific_data_id), f" !! mongo file insert specific data id {specific_data_id} not equal to {data_id}"
+
         return data_id
 
-    def insert_data(self, data, dict_info=dict(), force=False, specific_data_id=None):
+    def insert_file_by_id(self, data_id, path=None, dict_info=dict(), force=True):
+        specific_data_id = ObjectId(data_id)
+
+        if not self.fs.exists({'_id': specific_data_id}):
+            return self.insert_file(path, dict_info, force, data_id)
+
+        else:
+            # data id already exists, update the data
+            # 1. 获取旧数据（用于回滚）
+            old_mongo_obj = self.get_by_id(data_id)
+
+            if not old_mongo_obj:
+                raise ValueError(" !! Mongo FS File not found by data_id {data_id}")
+            else:
+                mongo_data = old_mongo_obj.read()
+
+            # 2. 删除旧数据
+            self.delete_by_id(data_id)
+
+            # 3. 插入新数据（使用相同的 _id）
+            try:
+                return self.insert_file(path, dict_info, force, data_id)
+
+            except Exception as e:
+                # 4. 失败时回滚
+                self.fs.put(
+                    mongo_data,
+                    **old_mongo_obj._file
+                )
+                logger.error(f" !! Mongo Update failed, rolled back: {e}")
+                return data_id
+
+    def insert_data(self, data, dict_info=dict(), force=True, specific_data_id=None):
 
         data_info = dict()
         hash_value = ""
@@ -306,8 +344,11 @@ class MongoGridFSConnection:
 
         if specific_data_id is not None:
             specific_data_id = ObjectId(specific_data_id)
-            assert not self.fs.exists({'_id': specific_data_id}), f"MongoDB insert_file: Data with id {specific_data_id} already exists."
-            data_info.update({'_id': specific_data_id})
+            if not self.fs.exists({'_id': specific_data_id}):
+                data_info.update({'_id': specific_data_id})
+            else:
+                logger.error(f" !! mongo insert specific data id {specific_data_id} already exists.")
+                raise RuntimeError(f" !! mongo insert specific data id {specific_data_id} already exists.")
 
         # update data_info with additional information
         if isinstance(dict_info, dict):
@@ -317,6 +358,7 @@ class MongoGridFSConnection:
             # if hash value already exists, return the data_id
             files = self.fs.find({'@hash': hash_value})
             data_id = str(files[0]._id)
+
         else:
             # insert data into GridFS
             if type_code == 2:
@@ -345,11 +387,47 @@ class MongoGridFSConnection:
                     data_id = str(data_obj_id)
                 except Exception as e:
                     raise RuntimeError(f"Error occurred while saving object to MongoDB GridFS: {e}")
+
             else:
-                raise RuntimeError(f"Unknown type code: {type_code}")
+                raise RuntimeError(f"Mongo indert fun got an Unknown type code: {type_code}")
+
+        if specific_data_id is not None:
+            assert str(data_id) == str(specific_data_id), f" !! mongo insert specific data id {specific_data_id} not equal to {data_id}"
 
         return data_id
-    
+
+    def insert_data_by_id(self, data_id, data, dict_info=dict(), force=True):
+        specific_data_id = ObjectId(data_id)
+
+        if not self.fs.exists({'_id': specific_data_id}):
+            return self.insert_data(data, dict_info, force, data_id)
+
+        else:
+            # data id already exists, update the data
+            # 1. 获取旧数据（用于回滚）
+            old_mongo_obj = self.get_by_id(data_id)
+
+            if not old_mongo_obj:
+                raise ValueError(" !! Mongo FS File not found by data_id {data_id}")
+            else:
+                mongo_data = old_mongo_obj.read()
+
+            # 2. 删除旧数据
+            self.delete_by_id(data_id)
+
+            # 3. 插入新数据（使用相同的 _id）
+            try:
+                return self.insert_data(data, dict_info, force, specific_data_id)
+
+            except Exception as e:
+                # 4. 失败时回滚
+                self.fs.put(
+                    mongo_data,
+                    **old_mongo_obj._file
+                )
+                logger.error(f" !! Mongo Update failed, rolled back: {e}")
+                return data_id
+
     def close(self):
         self.conn.close()
 
@@ -414,39 +492,6 @@ class MongoGridFSConnection:
 
         # data = pickle.loads(mogo_obj.read())
         return self.parse(mogo_obj, save_dir, force_save)
-
-    def update_data_by_id(self, data_id, data, dict_info, data_type):
-        raise RuntimeError("update_data_by_id is not implemented yet")
-
-        assert data_type in self.DATA_TYPES, f"Unknown data type: {data_type} while updating data. "
-        assert isinstance(dict_info, dict), f"dict_info {dict_info} must be a dict"
-
-        data_id = ObjectId(str(data_id))
-
-        # check data before update
-        if data_type == 'file':
-            assert os.path.isfile(data), f"Data {data} is not a file while updating data. "
-        elif data_type == 'dir':
-            assert os.path.isdir(data), f"Data {data} is not a directory while updating data. "
-        elif data_type == 'bytes':
-            assert isinstance(data, bytes), f"Data {data} is not bytes while updating data. "
-        elif data_type == 'object':
-            assert isinstance(data, object), f"Data {data} is not object while updating data. "
-        elif data_type == 'none':
-            assert data is None, f"Data {data} is not None while updating data. "
-        else:
-            raise RuntimeError(f"Unknown data type: {data_type} while updating data. ")
-        
-        # update data
-        self.delete_by_id(data_id)
-        if data_type == 'file' or data_type == 'dir' or data_type == 'none':
-            self.insert_file(path=data, dict_info=dict_info, specific_data_id=data_id)
-        elif data_type == 'bytes' or data_type == 'object':
-            self.insert_data(data=data, dict_info=dict_info, specific_data_id=data_id)
-        else:
-            raise RuntimeError(f"Unknown data type: {data_type} while updating data. ")
-        
-        return data_id
 
     def get_data_num(self):
         return len(list(self.get_by_condition({})))
