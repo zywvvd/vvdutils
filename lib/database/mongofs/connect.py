@@ -7,6 +7,7 @@ import pickle
 import time
 import json
 from loguru import logger
+import random 
 
 from ...utils import lazy_import
 from ...utils import dir_check
@@ -33,7 +34,8 @@ class MongoGridFSConnection:
     DATA_TYPES = ['file', 'dir', 'bytes', 'object', 'none']
     TEMP_DIR = './tmp/mongodb_tmp'
 
-    def __init__(self, username, password, host, port, database, temp_dir=None):
+    def __init__(self, username, password, host, port, database, temp_dir=None,
+                 connect_timeout=10, server_selection_timeout=20, max_retries=4):
         # from pymongo import MongoClient
         # from gridfs import GridFS
         if self.MongoClient is None:
@@ -47,7 +49,11 @@ class MongoGridFSConnection:
         self.database = database
         self.username = username
         self.password = password
-        self.conn = self.connect()
+
+        self.connect_timeout = connect_timeout  # 连接超时（秒）
+        self.server_selection_timeout = server_selection_timeout  # 服务器选择超时（秒）
+        self.max_retries = max_retries  # 最大重试次数
+        self.conn = self.connect_with_retry()
 
         self.db = self.conn[self.database]
         self.fs = self.GridFS(self.db)
@@ -106,79 +112,119 @@ class MongoGridFSConnection:
 
         raise NotImplementedError("Under Devolopment.")
 
+    def connect_with_retry(self):
+        """带重试机制的连接方法"""
+        attempt = 0
+        while attempt < self.max_retries:
+            try:
+                return self.connect()
+
+            except Exception as e:
+                attempt += 1
+                wait_time = min(2 ** attempt, 10)  # 指数退避，最大10秒
+                shake_wait_time = random.uniform(0, 0.5 * wait_time)
+
+                logger.warning(f"Connection attempt {attempt}/{self.max_retries} failed. Retrying in {wait_time}s + {shake_wait_time}s. Error: {str(e)}")
+                time.sleep(wait_time + shake_wait_time)  # 添加随机抖动时间，以避免多个客户端同时重试
+
+        raise ConnectionError(f"Failed to connect after {self.max_retries} attempts")
+
+    def create_client(self, auth=True):
+        """创建MongoClient实例"""
+        try:
+            if auth:
+                return self.MongoClient(
+                    host=self.host,
+                    port=self.port,
+                    username=self.username,
+                    password=self.password,
+                    authSource=self.database,
+                    connectTimeoutMS=self.connect_timeout * 1000,
+                    serverSelectionTimeoutMS=self.server_selection_timeout * 1000
+                )
+            else:
+                return self.MongoClient(
+                    self.host, 
+                    self.port, 
+                    username=self.username, 
+                    password=self.password,
+                    connectTimeoutMS=self.connect_timeout * 1000,
+                    serverSelectionTimeoutMS=self.server_selection_timeout * 1000
+                )
+        except Exception as e:
+            logger.error(f" !! Mongo Client creation failed: {str(e)}")
+            raise
+
     def auth_connect(self):
         conn = None
         try:
-            conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password, authSource=self.database)
+            # conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password, authSource=self.database)
             # conn = self.MongoClient(make_mongo_connect_url(self.username, self.password, self.host, self.port, self.database))
-        except Exception as err:
-            logger.exception(f" !! MongoDB connect error: {err}")
-            raise RuntimeError(f" !! MongoDB connect error: {err}")
-
-        time.sleep(0.5)
-
-        if len(conn.nodes) == 0:
-            time.sleep(1)
-            if len(conn.nodes) == 0:
-                time.sleep(1)
-                if len(conn.nodes) == 0:
-                    logger.error(" !! MongoDB connect failed.")
-                    raise RuntimeError(" !! MongoDB connect failed.")
-
-        try:
-            server_info = conn.server_info()
-            logger.debug(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
-        except Exception as err:
-            logger.exception(f" !! MongoDB Auth connect failed: {err}")
+            conn = self.create_client(auth=True)
+            if self.verify_connection(conn):
+                return conn
             return None
-
-        return conn
+        except Exception as err:
+            logger.exception(f"Auth connection failed: {err}")
+            return None
 
     def no_auth_connect(self):
         conn = None
         try:
-            conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password)
+            # conn = self.MongoClient(self.host, self.port, username=self.username, password=self.password)
+            conn = self.create_client(auth=False)
+            if self.verify_connection(conn):
+                return conn
+            return None
         except Exception as err:
-            raise RuntimeError(f" !! MongoDB connect error: {err}")
-
-        time.sleep(0.5)
-
-        if len(conn.nodes) == 0:
-            time.sleep(1)
-            if len(conn.nodes) == 0:
-                time.sleep(1)
-                if len(conn.nodes) == 0:
-                    raise RuntimeError(" !! MongoDB connect failed.")
-
-        try:
-            server_info = conn.server_info()
-            logger.debug(f"MongoDB connect success, server info: {server_info['version']}, host {self.host}, port {self.port}, database {self.database}")
-        except Exception as err:
-            logger.exception(f" !! MongoDB no auth connect failed: {err}")
+            logger.exception(f"No-auth connection failed: {err}")
             return None
 
-        return conn
+    def verify_connection(self, conn):
+        """验证连接是否有效"""
+        try:
+            # 使用更可靠的ping命令检查连接
+            conn.admin.command('ping')
+            logger.debug(f" Mongo Connection verified to {self.host}:{self.port}")
+            return True
+        except Exception as e:
+            logger.warning(f" !! Mongo Connection verification failed: {str(e)}")
+            return False
 
     def connect(self):
-        conn = self.auth_connect() 
-        if conn is None:
+        """连接主逻辑"""
+        logger.info(f"Connecting to MongoDB at {self.host}:{self.port}...")
+        
+        # 1. 尝试认证连接
+        conn = self.auth_connect()
+        
+        # 2. 尝试非认证连接
+        if not conn:
+            logger.info("Trying no-auth connection...")
             conn = self.no_auth_connect()
         
-        if conn is None:
-            raise RuntimeError(" !! MongoDB connect failed.")
-        return conn
+        if conn:
+            logger.info(f"Connected to database '{self.database}'")
+            return conn
+        
+        raise ConnectionError("All connection attempts failed")
 
 
     def __del__(self):
-        if hasattr(self, "conn"):
-            if self.conn is not None:
-                try:
-                    self.conn.close()
-                except Exception as err:
-                    logger.exception(f" !! MongoDB close error: {err}")
+        self.close_connection()
     
     def __exit__(self):
-        self.__del__()
+        self.close_connection()
+
+    def close_connection(self):
+        if hasattr(self, "conn") and self.conn:
+            try:
+                self.conn.close()
+                logger.debug("MongoDB connection closed")
+            except Exception as err:
+                logger.exception(f"Error closing connection: {err}")
+            finally:
+                self.conn = None
 
     def insert_file(self, path=None, dict_info=dict(), force=True, specific_data_id=None):
         """

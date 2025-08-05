@@ -37,7 +37,7 @@ class Polygon(object):
         return [x_center, y_center]
 
     def shape_as_polygon(self, points, shape_type):
-        assert shape_type in ['polygon', 'rectangle', 'circle', 'point', 'bbox']
+        assert shape_type in ['polygon', 'rectangle', 'circle', 'point', 'bbox', 'line']
         if None: pass
         elif shape_type == 'polygon':
             return points
@@ -62,6 +62,10 @@ class Polygon(object):
             Xs, Ys = x0+r*np.cos(angles), y0+r*np.sin(angles)
             points = [[float(x),float(y)] for x,y in zip(Xs,Ys)]
             return points
+        elif shape_type == 'line':
+            x1,y1 = points[0]
+            x2,y2 = points[1]
+            return [[x1,y1],[x2,y2]]
         else:
             raise NotImplementedError("Unrecognized shape type: {}".format(self.shape_type))
 

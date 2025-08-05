@@ -76,6 +76,37 @@ def get_pc_mac(directory='/sys/class/net'):
     return min(mac_list)
 
 
+def retry_with_backoff(retries=3, initial_delay=1, backoff_factor=2, exceptions=(Exception,)):
+    """
+    一个重试装饰器，在遇到指定异常时进行重试，并采用指数退避和抖动策略。
+    :param retries: 最大重试次数
+    :param initial_delay: 初始延迟（秒）
+    :param backoff_factor: 延迟递增因子
+    :param exceptions: 需要捕获并重试的异常元组
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            mtries, mdelay = retries, initial_delay
+            while mtries > 1:
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    # 对于认证等明确错误，不进行重试
+                    if "AuthenticationFailed" in str(e) or "OperationFailure" in str(e) and "auth failed" in str(e):
+                        logger.error(f"Authentication failed, not retrying. Error: {e}")
+                        raise
+                    
+                    msg = f"{str(e)}, Retrying in {mdelay:.2f} seconds..."
+                    logger.warning(msg)
+                    time.sleep(mdelay + random.uniform(0, 0.5 * mdelay)) # 添加抖动
+                    mtries -= 1
+                    mdelay *= backoff_factor
+            # 最后一次尝试
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
 def iterable(obj):
     return isinstance(obj, Iterable) and not isinstance(obj, (str, bytes))
 
