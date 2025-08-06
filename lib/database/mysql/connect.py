@@ -1,6 +1,8 @@
 import time
 from ...utils import lazy_import
 from loguru import logger
+import hashlib
+
 
 def auto_reconnect(func):
     def wrapper(self, *args, **kwargs):
@@ -230,6 +232,62 @@ class MysqlConnection:
         # 执行更新操作
         self._execute(update_query, value_list, cursor)
         return True
+    
+    @auto_reconnect
+    def batch_upsert_with_composite_keys(
+        self,
+        table: str,
+        data: list[dict],
+        key_fields: list[str],
+        cursor=None
+    ) -> bool:
+        """修正VALUES()嵌套问题的批量upsert方案"""
+        if not data or not key_fields:
+            return True
+
+        try:
+            cursor = cursor or self.db.cursor()
+            temp_table = f"temp_{table}_upsert_{hashlib.md5(str(key_fields).encode()).hexdigest()[:6]}"
+            
+            # 1. 创建临时表（保持原逻辑）
+            columns = list(data[0].keys())
+            pk_def = ', '.join(
+                f'{k} BIGINT' if isinstance(data[0][k], (int, float))
+                else f'{k} VARCHAR(255)'
+                for k in key_fields
+            )
+            cursor.execute(f"""
+                CREATE TEMPORARY TABLE {temp_table} (
+                    {pk_def},
+                    PRIMARY KEY ({', '.join(key_fields)}),
+                    {', '.join(f'{col} TEXT' for col in columns if col not in key_fields)}
+                ) ENGINE=InnoDB
+            """)
+            
+            # 2. 批量插入临时表（保持原逻辑）
+            cursor.executemany(
+                f"INSERT INTO {temp_table} ({', '.join(columns)}) VALUES ({', '.join(['%s']*len(columns))})",
+                [tuple(str(item[col]) for col in columns) for item in data]
+            )
+            
+            # 3. 修正UPDATE子句构造
+            update_cols = [col for col in columns if col not in key_fields]
+            update_clause = ', '.join(f'{col}=VALUES({col})' for col in update_cols)
+            
+            cursor.execute(f"""
+                INSERT INTO {table} ({', '.join(columns)})
+                SELECT {', '.join(columns)} FROM {temp_table}
+                ON DUPLICATE KEY UPDATE {update_clause}
+            """)
+            
+            return True
+            
+        except Exception as e:
+            self.db.rollback()
+            raise RuntimeError(f"Batch upsert failed: {str(e)}")
+        finally:
+            if cursor and not hasattr(cursor, 'external_owner'):
+                cursor.close()
 
     @auto_reconnect
     def select_item(self, conditions, table, logical="AND", cursor=None, for_update=False):
