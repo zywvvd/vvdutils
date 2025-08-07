@@ -266,7 +266,7 @@ class MysqlConnection:
             
             # 2. 批量插入临时表（保持原逻辑）
             cursor.executemany(
-                f"INSERT INTO {temp_table} ({', '.join(columns)}) VALUES ({', '.join(['%s']*len(columns))})",
+                f"REPLACE INTO {temp_table} ({', '.join(columns)}) VALUES ({', '.join(['%s']*len(columns))})",
                 [tuple(str(item[col]) for col in columns) for item in data]
             )
             

@@ -132,7 +132,7 @@ class Point:
         return hash((self.lat, self.lon))
 
     def distance_to(self, other):
-        return cal_distance([self.x_utm, self.y_utm], [other.x_utm, other.y_utm])
+        return cal_distance([self.x_utm, self.y_utm, self.z], [other.x_utm, other.y_utm, other.z])
 
     def vector_xy(self, other):
         return np.array([other.x_utm - self.x_utm, other.y_utm - self.y_utm])
@@ -148,6 +148,14 @@ class Point:
             return self.lon < other.lon
         else:
             return self.lat < other.lat
+    
+    def get_interpolation_point(self, target, ratio):
+        assert self.wgs84_str == target.wgs84_str, "Points must be in the same UTM zone"
+        x_utm = self.x_utm + (target.x_utm - self.x_utm) * ratio
+        y_utm = self.y_utm + (target.y_utm - self.y_utm) * ratio
+        z = self.z + (target.z - self.z) * ratio
+        return Point.from_xy_utm(self.wgs84_str, x_utm, y_utm, z)
+
 
 
 class ObjManager:
