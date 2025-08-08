@@ -11,7 +11,7 @@ def auto_reconnect(func):
             try:
                 return func(self, *args, **kwargs)
             except Exception as e:
-                if "Duplicate entry" in e.msg:
+                if "Duplicate entry" in str(e):
                     logger.warning(f" @@ Duplicate entry: {e}.")
                     break
                 if attempt < retries - 1:
