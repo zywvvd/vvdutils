@@ -416,6 +416,12 @@ def paint_words(img, display_str, left=0, top=0, fontsize=20, color=tuple([0, 0,
     res_img = np.asarray(pil_image)
     return res_img
 
+def cv_paint_word(img, text, position, font_scale = 1.5, color = (0, 255, 0), thickness = 2, line_type = cv2.LINE_AA, font = cv2.FONT_HERSHEY_SIMPLEX):
+
+    # position 文字左下角坐标
+    # font 字体类型
+    cv2.putText(img, text, position, font, font_scale, color, thickness, line_type)
+
 def img_rotate(img,
              angle,
              center=None,
