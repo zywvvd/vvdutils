@@ -77,18 +77,19 @@ def get_wgs84_str_from_utm_zone_str(utm_zone_str):
 
 class Point:
     def __init__(self, lat, lon, z=0, utm_zone=None):
-        assert lat >= -90 and lat <= 90, "Latitude must be between -90 and 90"
-        assert lon >= -180 and lon <= 180, "Longitude must be between -180 and 180"
+        self.lat = round(float(lat), 12)
+        self.lon = round(float(lon), 12)
+
+        assert self.lat >= -90 and self.lat <= 90, "Latitude must be between -90 and 90"
+        assert self.lon >= -180 and self.lon <= 180, "Longitude must be between -180 and 180"
 
         if utm_zone is None:
-            self.utm_zone_str = get_utm_zone_from_lon_lat(lon, lat)
+            self.utm_zone_str = get_utm_zone_from_lon_lat(self.lon, self.lat)
             self.wgs84_str = get_wgs84_str_from_utm_zone_str(self.utm_zone_str)
         else:
             self.utm_zone_str = get_utm_zone_from_wgs84_str(utm_zone)
             self.wgs84_str = utm_zone
 
-        self.lat = round(float(lat), 12)
-        self.lon = round(float(lon), 12)
 
         self.x, self.y = trans_4326_to_4538(self.lat, self.lon)
         self.x_utm, self.y_utm = proj_transformer_manager.transform(self.lon, self.lat, "4326", self.utm_zone_str)
@@ -154,6 +155,12 @@ class Point:
         x_utm = self.x_utm + (target.x_utm - self.x_utm) * ratio
         y_utm = self.y_utm + (target.y_utm - self.y_utm) * ratio
         z = self.z + (target.z - self.z) * ratio
+        return Point.from_xy_utm(self.wgs84_str, x_utm, y_utm, z)
+    
+    def move(self, dx, dy, dz=0):
+        x_utm = self.x_utm + dx
+        y_utm = self.y_utm + dy
+        z = self.z + dz
         return Point.from_xy_utm(self.wgs84_str, x_utm, y_utm, z)
 
 

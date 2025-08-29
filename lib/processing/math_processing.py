@@ -236,7 +236,7 @@ def point_rotate(point, center, alpha=0, rotate_matrix=None, radian_mode=True):
     return new_point
 
 
-def polygon_rotate(polygon, center, alpha=0, rotate_matrix=None, radian_mode=True):
+def polygon_rotate(polygon, center, alpha=0, rotate_matrix=None, radian_mode=True, list_mode=True):
     if len(polygon):
         polygon_matrix = np.array(polygon) - center
     else:
@@ -250,7 +250,10 @@ def polygon_rotate(polygon, center, alpha=0, rotate_matrix=None, radian_mode=Tru
 
     rotated_polygon = np.matmul(polygon_matrix, rotate_matrix) + center
 
-    return rotated_polygon.tolist()
+    if list_mode:
+        return rotated_polygon.tolist()
+    else:
+        return rotated_polygon
 
 
 def gaussian_2D(x, y, x0, y0, sigma_x, sigma_y, rho, e=1e-7):
