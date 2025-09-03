@@ -9,3 +9,4 @@ from .mario import *
 from .tools import *
 from .database import *
 from .communication import *
+from .curves_generator import *
