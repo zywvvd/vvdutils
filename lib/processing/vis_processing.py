@@ -8,9 +8,7 @@ from . import is_polygon
 from . import is_line
 from . import is_point
 from . import is_circle
-from .. import ceil
-
-# import vvdutils as vv
+from ..utils import ceil
 
 
 
