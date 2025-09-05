@@ -5,6 +5,19 @@ from ..utils import iterable
 from ..utils import is_number
 
 
+def normalize_radians(radians, epsilon=1e-10):
+    """将角度规范化到 [0, 2π) 范围内，处理浮点精度问题"""
+    two_pi = 2 * np.pi
+    normalized = radians % two_pi
+    
+    # 处理由于浮点精度导致的结果略微超出范围的情况
+    if abs(normalized - two_pi) < epsilon:
+        return 0.0
+    elif normalized < -epsilon:
+        return normalized + two_pi
+    else:
+        return normalized
+
 def calculate_mode(data):
     count_dict = {}
     for num in data:
@@ -212,7 +225,7 @@ def make_rotate_matrix_2d(alpha, radian_mode=True):
     return matrix
 
 
-def point_rotate(point, center, alpha=0, rotate_matrix=None, radian_mode=True):
+def point_rotate(point, center=[0, 0], alpha=0, rotate_matrix=None, radian_mode=True):
     """_summary_
 
     Args:
@@ -254,6 +267,9 @@ def polygon_rotate(polygon, center, alpha=0, rotate_matrix=None, radian_mode=Tru
         return rotated_polygon.tolist()
     else:
         return rotated_polygon
+
+def cal_length(vector):
+    return np.sqrt(np.sum(np.square(vector)))
 
 
 def gaussian_2D(x, y, x0, y0, sigma_x, sigma_y, rho, e=1e-7):

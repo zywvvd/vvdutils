@@ -1457,6 +1457,35 @@ def draw_polygons(mask, polygons, color=None, thickness=5, fill=False, draw_spli
 
     return mask
 
+def draw_lines(mask, points, color=(0, 255, 255), thickness=3):
+
+    mask = cv2.polylines(mask, [np.array(points).astype('int32')], False, color=color, thickness=thickness)
+    return mask
+
+def draw_arc(mask, center, radius, start_angle, end_angle, color=(0, 255, 255), thickness=3, in_radians=True):
+    # draw arc on the mask in clockwise direction
+    if in_radians:
+        start_angle = start_angle / np.pi * 180
+        end_angle = end_angle / np.pi * 180
+
+    mask = cv2.ellipse(mask, center, (radius, radius), 0, start_angle, end_angle, color=color, thickness=thickness)
+    return mask
+
+def draw_arrow(img, u, v, yaw, length=20, color=(0, 0, 255), thickness=2):
+    """
+    Draw an arrow on the image.
+    x, y: the starting point of the arrow
+    yaw: the direction of the arrow in radians
+    length: the length of the arrow
+    color: the color of the arrow
+    thickness: the thickness of the arrow
+    """
+    end_x = int(u + length * np.cos(yaw))
+    end_y = int(v - length * np.sin(yaw))
+
+    img = cv2.arrowedLine(img, (int(u), int(v)), (end_x, end_y), color, thickness, tipLength=0.3)
+    return img
+
 def xyxy_to_yolo_label(bbox, class_id, image_width, image_height):
     x1, y1, x2, y2 = bbox
     x_center = (x1 + x2) / (2 * image_width)
