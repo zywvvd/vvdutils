@@ -1,5 +1,7 @@
 import math
 import numpy as np
+from shapely.geometry import LineString
+
 from ..utils import cal_distance
 from ..utils import iterable
 from ..utils import is_number
@@ -96,6 +98,16 @@ def cal_vector_degree_by_X_axis(vector_xy):
     if vector_xy[1] < 0:
         degree = 360 - degree
     return degree
+
+# 使用Ramer-Douglas-Peucker算法简化路径
+def simplify_path_rdp(points, tolerance=0.1):
+    """
+    使用Ramer-Douglas-Peucker算法简化路径
+    tolerance: 容差值，越小保留细节越多
+    """
+    line = LineString(points)
+    simplified_line = line.simplify(tolerance, preserve_topology=True)
+    return list(simplified_line.coords)
 
 
 class LogicOp:

@@ -1420,21 +1420,28 @@ def get_shapes_from_mask(mask, epsilon=None, drop_small_polygon=False):
 
 def is_polygon(item):
     data = np.array(item)
-    assert data.ndim == 2 and len(data) > 2, 'polygon should be a list of points'
+    if data.ndim == 2 and len(data) > 2:
+        return True
+    return False
 
 def is_line(item):
     data = np.array(item)
-    assert data.ndim == 2 and len(data) > 1, 'line should be a list of points'
+    if data.ndim == 2 and len(data) > 1:
+        return True
+    return False
 
 def is_point(item):
     data = np.array(item)
-    assert data.ndim == 1 and len(data) == 2, 'point should be a list of 2 points'
+    if data.ndim == 1 and len(data) == 2:
+        return True
+    return False
 
 def is_circle(item):
     # x, y, r
     data = np.array(item)
-    assert data.ndim == 1 and len(data) == 3, 'circle should be a list of 3 points'
-    assert data[2] > 0, 'circle radius should > 0'
+    if  data.ndim == 1 and len(data) == 3 and data[2] > 0:
+        return True
+    return False
 
 def draw_polygons(mask, polygons, color=None, thickness=5, fill=False, draw_split=False):
     mask = mask.copy()

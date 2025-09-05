@@ -17,7 +17,7 @@ class DrawItem:
         self.item_list = item_list
         
         assert len(color) == 3, "Color must be a tuple of 3 values"
-        self.color = np.clip(color, 0, 255).astype(np.uint8)
+        self.color = tuple(np.clip(color, 0, 255).astype(np.uint8).tolist())
 
         self.data_check()
         self.item_type
@@ -121,6 +121,10 @@ class LineItem(DrawItem):
 
 
 class PointItem(DrawItem):
+    def __init__(self, item_list: list, color, radius=3):
+        super().__init__(item_list, color)
+        self.radius = radius
+    
     def data_check(self):
         # check if the item_list is a list of tuples
         assert isinstance(self.item_list, list), "item_list must be a list"
@@ -140,6 +144,16 @@ class PointItem(DrawItem):
             x_max = max(x_max, item[0])
             y_max = max(y_max, item[1])
         return (x_min, y_min, x_max, y_max)
+
+    def draw(self, img, coor_to_uv, thickness=1):
+        logger.info(f"Drawing {len(self.item_list)} {self.item_type}s")
+        uv_point_list = list()
+        for item in self.item_list:
+            uv_point_list.append(coor_to_uv(item[0], item[1]))
+        
+        for uv in uv_point_list:
+            cv2.circle(img, (int(uv[0]), int(uv[1])), radius=self.radius, color=self.color, thickness=-1)
+        return img
 
 
 class CircleItem(DrawItem):
@@ -167,6 +181,8 @@ class CircleItem(DrawItem):
 
 class ItemDrawer:
     def __init__(self, draw_item_obj_list: List[DrawItem], image_size = 8000, margin = 20):
+        if not isinstance(draw_item_obj_list, list):
+            draw_item_obj_list = [draw_item_obj_list]
         self.draw_item_obj_list = draw_item_obj_list
         self.x_min, self.y_min, self.x_max, self.y_max = self.get_coor_edges()
         self.image_size = image_size
