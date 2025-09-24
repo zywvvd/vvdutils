@@ -6,7 +6,7 @@ from . import draw
 
 # parameters initiation
 STEP_SIZE = 0.2
-MAX_LENGTH = 10000.0
+MAX_LENGTH = 1000000.0
 PI = math.pi
 
 
@@ -73,8 +73,8 @@ def set_path(paths, lengths, ctypes):
     if path.L >= MAX_LENGTH:
         return paths
 
-    assert path.L >= 0.01
-    paths.append(path)
+    if path.L >= 1e-5:
+        paths.append(path)
 
     return paths
 

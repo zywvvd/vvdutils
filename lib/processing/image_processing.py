@@ -1469,6 +1469,11 @@ def draw_lines(mask, points, color=(0, 255, 255), thickness=3):
     mask = cv2.polylines(mask, [np.array(points).astype('int32')], False, color=color, thickness=thickness)
     return mask
 
+def draw_points(mask, points, color=(0, 255, 255), radius=3):
+    for point in points:
+        mask = cv2.circle(mask, tuple(point), radius, color, -1)
+    return mask
+
 def draw_arc(mask, center, radius, start_angle, end_angle, color=(0, 255, 255), thickness=3, in_radians=True):
     # draw arc on the mask in clockwise direction
     if in_radians:

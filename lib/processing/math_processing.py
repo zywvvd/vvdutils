@@ -87,6 +87,9 @@ def get_angle_from_vector(vector, degree=False):
     else:
         return radians
 
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
 def cal_vector_degree_by_X_axis(vector_xy):
     # cal counterclockwise degree from vector_start [1, 0] to vector_end
     if cal_length(vector_xy) == 0:
@@ -100,15 +103,25 @@ def cal_vector_degree_by_X_axis(vector_xy):
     return degree
 
 # 使用Ramer-Douglas-Peucker算法简化路径
-def simplify_path_rdp(points, tolerance=0.1):
+def simplify_path_rdp(points, tolerance=0.1, verbose=False):
     """
     使用Ramer-Douglas-Peucker算法简化路径
     tolerance: 容差值，越小保留细节越多
     """
     line = LineString(points)
     simplified_line = line.simplify(tolerance, preserve_topology=True)
+
+    if verbose:
+        print(f"Original line length: {line.length}, point num {len(line.coords)} / Simplified line length: {simplified_line.length}, point num {len(simplified_line.coords)}.")
+
     return list(simplified_line.coords)
 
+def sort_point_by_angle(point_list):
+    center_point = np.mean(point_list, axis=0)
+    def make_angle(point):
+        return np.arctan2(point[1] - center_point[1], point[0] - center_point[0])
+    point_list.sort(key=make_angle)
+    pass
 
 class LogicOp:
     @staticmethod
