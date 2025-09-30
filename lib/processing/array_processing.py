@@ -60,6 +60,11 @@ def find_longest_start_end(arr):
     obj = re.search(substr, str(arr))
     return obj.start(), obj.end()
 
+def point_interplate(p1, p2, step_length):
+    length = np.linalg.norm(np.array(p1) - np.array(p2))
+    inter_point_num = int(length / step_length)
+    inter_points = np.linspace(p1, p2, inter_point_num + 1)
+    return inter_points
 
 def get_longest_part(signal):
     signal = np.array(signal)

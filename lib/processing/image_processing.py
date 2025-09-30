@@ -138,6 +138,12 @@ def get_grey_level_gravity_center(image, mask=None):
     image_gravity_center = np.sum(value * np.arange(256)) / max(np.sum(value), 1)
     return image_gravity_center
 
+def to_01_uint8_image(image, to255=False):
+    temp_img = (image != 0).astype('uint8')
+    if to255:
+        temp_img = temp_img * 255
+    return temp_img
+
 def gravity_center_xy(image):
     bool_mask = to_gray_image(image) !=0
 
