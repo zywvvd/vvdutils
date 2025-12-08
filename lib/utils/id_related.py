@@ -35,11 +35,11 @@ class Snowflake:
     snowflake = Snowflake(worker_id, data_center_id)  
     snowflake.next_id()
     '''
-    def __init__(self, worker_id, data_center_id):  
+    def __init__(self, worker_id=0, data_center_id=0):  
         ### 机器标识ID
         self.worker_id = worker_id  
         ### 数据中心ID
-        self.data_center_id = data_center_id  
+        self.data_center_id = data_center_id % 16 # 该 ID 大于32时会产生大量重复 ID，故取余
         ### 计数序列号
         self.sequence = 0  
         ### 时间戳
