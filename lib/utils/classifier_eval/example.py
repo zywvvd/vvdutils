@@ -1,5 +1,5 @@
-from eval_metrics import ClassifierEvalBinary, ClassifierEvalMulticlass, ClassifierEvalMultilabel
-from utils import label_to_onehot
+from .eval_metrics import ClassifierEvalBinary, ClassifierEvalMulticlass, ClassifierEvalMultilabel
+from .utils import label_to_onehot
 import pickle as pkl
 
 

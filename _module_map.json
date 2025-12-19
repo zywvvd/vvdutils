@@ -1,0 +1,2956 @@
+{
+  "attributes": {
+    "MongoGridFSConnection": {
+      "module": "lib.database",
+      "type": "class",
+      "defined_in": "lib.database.mongofs.connect"
+    },
+    "MysqlConnection": {
+      "module": "lib.database",
+      "type": "class",
+      "defined_in": "lib.database.mysql.connect"
+    },
+    "connect": {
+      "module": "lib.database",
+      "type": "module",
+      "defined_in": "lib.database"
+    },
+    "mongofs": {
+      "module": "lib.database",
+      "type": "module",
+      "defined_in": "lib.database"
+    },
+    "mysql": {
+      "module": "lib.database",
+      "type": "module",
+      "defined_in": "lib.database"
+    },
+    "ClassifierEvalBinary": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "ClassifierEvalMulticlass": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "ClassifierEvalMultilabel": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "Image": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "Iterable": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "collections.abc"
+    },
+    "KDPoints": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "ListOrderedDict": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "Loger_printer": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "MyEncoder": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "OS_basename": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "posixpath"
+    },
+    "OS_dirname": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "posixpath"
+    },
+    "OS_exists": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "genericpath"
+    },
+    "OS_isdir": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "genericpath"
+    },
+    "OS_isfile": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "genericpath"
+    },
+    "OS_join": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "posixpath"
+    },
+    "OrderedDict": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "collections"
+    },
+    "Path": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "pathlib"
+    },
+    "Path2": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "pathlib2"
+    },
+    "Registry": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.register"
+    },
+    "Snowflake": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.id_related"
+    },
+    "Sys_Logger": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "TickTock": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "UruLogConfig": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "lib.utils.utils"
+    },
+    "add_utils": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "cal_distance": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "ceil": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "change_file_name_for_path": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "chinese_str_to_pinyin": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "class_timer": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "classifier_eval": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "coding_related": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "concat_generator": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "create_tmp_file": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.path_related"
+    },
+    "create_uuid": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "cuda": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "current_split_char": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "current_system": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "cv": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "cv2": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "data_show": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "datetime": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "decimal": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "decode_distribution": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.coding_related"
+    },
+    "decode_labelme_shape": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.coding_related"
+    },
+    "dir_check": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "display_class_property": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "draw_RG_map": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "dump_csv": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "dump_yaml": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "encode_chinese_to_unicode": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "encode_distribution": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.coding_related"
+    },
+    "encode_labelme_shape": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.coding_related"
+    },
+    "encode_path": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "epsilon_equal": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "eva_utils": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "eval_map": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "exists": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "extract_file_to": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "file_read_lines": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "file_rename": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "file_write_lines": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "find_all_numbers": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "find_lcseque": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "find_lcsubstr": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "find_sub_string": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "floor": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_TFPN": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.eva_utils"
+    },
+    "get_cwd": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_date_str": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_dir_file_list": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_dir_hash_code": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_file_create_time": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_file_hash_code": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_file_line_number": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_file_size_M": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_file_time": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_function_name": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_gpu_str_as_you_wish": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_hash_code": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.id_related"
+    },
+    "get_line_info": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_list_from_list": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_mac_address": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_main_file_name": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_path_name": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_path_parent": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_path_stem": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_pc_mac": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_segments": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_single_gpu_id": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "get_suffix": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "glob": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "glob"
+    },
+    "glob_images": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "glob_recursively": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "glob_videos": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "hardlink": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "has_chinese_char": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "hashlib": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "histogram": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "id_related": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "image_process_cuda": {
+      "module": "lib.utils",
+      "type": "variable",
+      "defined_in": "lib.utils.add_utils"
+    },
+    "inspect": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "is_black_distribution": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.id_related"
+    },
+    "is_bool": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_float": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_generator": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_integer": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_number": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_path_obj": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "is_valid_identifier": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "isdir": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "isfile": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "genericpath"
+    },
+    "islink": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "iterable": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "join_substring": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "json": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "json_load": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "json_save": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "lazy_import": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.loader"
+    },
+    "line_cross": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "line_merge": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "line_profiling_deco": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.add_utils"
+    },
+    "link": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "load_csv": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "load_xml": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "load_yaml": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "log_init": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "logger": {
+      "module": "lib.utils",
+      "type": "variable",
+      "defined_in": "loguru._logger"
+    },
+    "logging": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "make_time": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "md5": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "mean_ap": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "merge_project_files": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "np": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "os": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "osp": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "parse_time_str": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "path_insert_content": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "path_related": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "path_with_name": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "path_with_suffix": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "pickle": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "pickle_load": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "pickle_save": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "platform": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "plt": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "popular_image_extensions": {
+      "module": "lib.utils",
+      "type": "variable",
+      "defined_in": "lib.utils"
+    },
+    "random": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "random_color": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "random_sample": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "random_string": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "re": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "reduce": {
+      "module": "lib.utils",
+      "type": "builtin",
+      "defined_in": "_functools"
+    },
+    "register": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "remove_chinese_for_file_names": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "remove_dir": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "remove_file": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "remove_small_components": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "retry_with_backoff": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "rm_r": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "round": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "save_file_path_check": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "save_xml": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "scan_folder": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.path_related"
+    },
+    "segment_intersection": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "shutil": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "sleep_count": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "smart_copy": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "str_connection": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "string": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "string_hash": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "strip_path_slash": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "strong_printing": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "surface_blur_gray": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.add_utils"
+    },
+    "symlink": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "sys": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "threading": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "time": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "time_reduce": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "time_stamp": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "time_string": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "timer_vvd": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "tqdm": {
+      "module": "lib.utils",
+      "type": "class",
+      "defined_in": "tqdm.std"
+    },
+    "try_exc_handler": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "try_to_import": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.loader"
+    },
+    "two_way_dictionary": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "uniform_split_char": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "unify_data_to_python_type": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "unzip_dir": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "utils": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "uuid": {
+      "module": "lib.utils",
+      "type": "module",
+      "defined_in": "lib.utils"
+    },
+    "vvd_ceil": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "vvd_floor": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "vvd_round": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "whether_divisible_by": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "wraps": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "functools"
+    },
+    "xor": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "zip_dir": {
+      "module": "lib.utils",
+      "type": "function",
+      "defined_in": "lib.utils.utils"
+    },
+    "DataManager": {
+      "module": "lib.data",
+      "type": "class",
+      "defined_in": "lib.data.class_mapper"
+    },
+    "DatamanagerBuilder": {
+      "module": "lib.data",
+      "type": "class",
+      "defined_in": "lib.data.builder"
+    },
+    "CCC": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "CCCC": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "CCSC": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "CCSCC": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "CSC": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRL": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRLRn": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRLRp": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRSL": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRSLR": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LRSR": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LSL": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "LSR": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "M": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "MAX_LENGTH": {
+      "module": "lib.curves_generator",
+      "type": "variable",
+      "defined_in": "lib.curves_generator"
+    },
+    "PATH": {
+      "module": "lib.curves_generator",
+      "type": "class",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "PI": {
+      "module": "lib.curves_generator",
+      "type": "variable",
+      "defined_in": "lib.curves_generator"
+    },
+    "R": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "SCS": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "SLS": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "STEP_SIZE": {
+      "module": "lib.curves_generator",
+      "type": "variable",
+      "defined_in": "lib.curves_generator"
+    },
+    "calc_all_paths": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "calc_curvature": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "calc_optimal_path": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "calc_tauOmega": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "check_path": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "draw": {
+      "module": "lib.curves_generator",
+      "type": "module",
+      "defined_in": "lib.curves_generator"
+    },
+    "generate_local_course": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "generate_path": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "generate_real_path": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "get_label": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "interpolate": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "main": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "math": {
+      "module": "lib.curves_generator",
+      "type": "module",
+      "defined_in": "lib.curves_generator"
+    },
+    "pi_2_pi": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "reeds_shepp": {
+      "module": "lib.curves_generator",
+      "type": "module",
+      "defined_in": "lib.curves_generator"
+    },
+    "set_path": {
+      "module": "lib.curves_generator",
+      "type": "function",
+      "defined_in": "lib.curves_generator.reeds_shepp"
+    },
+    "Labelme": {
+      "module": "lib.labelme",
+      "type": "class",
+      "defined_in": "lib.labelme.labelme"
+    },
+    "Polygon": {
+      "module": "lib.labelme",
+      "type": "class",
+      "defined_in": "lib.labelme.polygon"
+    },
+    "cv_rgb_imread": {
+      "module": "lib.labelme",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "labelme": {
+      "module": "lib.labelme",
+      "type": "module",
+      "defined_in": "lib.labelme"
+    },
+    "make_ok_labelme_for_dir": {
+      "module": "lib.labelme",
+      "type": "function",
+      "defined_in": "lib.labelme.utils"
+    },
+    "make_ok_labelme_json": {
+      "module": "lib.labelme",
+      "type": "function",
+      "defined_in": "lib.labelme.utils"
+    },
+    "make_ok_labelme_obj": {
+      "module": "lib.labelme",
+      "type": "function",
+      "defined_in": "lib.labelme.utils"
+    },
+    "polygon": {
+      "module": "lib.labelme",
+      "type": "module",
+      "defined_in": "lib.labelme"
+    },
+    "BBoxItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "CircleItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "Compression": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "rasterio.enums"
+    },
+    "ConicFunctions": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "DrawItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "EllipseError": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "EllipseNormError": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "FigureCanvasAgg": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "matplotlib.backends.backend_agg"
+    },
+    "FitEllipse_RANSAC": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "Geometric2Conic": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "ItemDrawer": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "KDTree": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "scipy.spatial._kdtree"
+    },
+    "LineItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "LineString": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "shapely.geometry.linestring"
+    },
+    "List": {
+      "module": "lib.processing",
+      "type": "variable",
+      "defined_in": "typing"
+    },
+    "LogicOp": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "Manager": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "multiprocessing.context"
+    },
+    "MemoryFile": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "rasterio.io"
+    },
+    "MultiProcessManager": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.multi_processing"
+    },
+    "ObjManager": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "OnnxSimpleRelease": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.onnx_processing"
+    },
+    "OverlayRANSACFit": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "PIS": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "Point": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "PointItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "PolygonItem": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.vis_processing"
+    },
+    "Pool": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "multiprocessing.context"
+    },
+    "ProjTransformerManager": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "ShapelyPoint": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "shapely.geometry.point"
+    },
+    "ThreadPoolExecutor": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "concurrent.futures.thread"
+    },
+    "UndistortProcessor": {
+      "module": "lib.processing",
+      "type": "class",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "adjust_bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "apply_gimp_brightness_contrast": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "array_md5": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "array_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "bbox2polygon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "bilinear_by_meshgrid": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "bilinear_by_meshgrid_gray": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "bilinear_interpolate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "bounding_bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "box_area": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "box_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "boxes_painter": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "cal_length": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "cal_triangle_area_by_point": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "cal_triangle_area_by_side_length": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "cal_vector_degree_by_X_axis": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "cal_vector_length": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "calculate_mode": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "calculate_rectangle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "cartesian_to_polar": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "ceil_bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "center_crop": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "circle_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "close": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "close_connected_area": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "close_op": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "colorful_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "compute_box_box_iou": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "connected_filter": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "contour_center": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "convert_materials_to_jpeg": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "convert_plt_to_rgb_image": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "create_tiff_file": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "crop_by_cycle_x_min_max": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "crop_by_cycle_y_min_max": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "crop_data_around_boxes": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "crop_tilted_rectangle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cross_box_roi": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "cv_bgr_imwrite": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cv_image_show": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cv_paint_word": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cv_rgb_bgr_convert": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cv_rgb_imwrite": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "cxcywh2xyxy": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "cycle_move": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "data_L_n_normalize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "dilate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "dilate_op": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "distortion_calibration": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "distortion_calibration_to_map": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_arc": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_arrow": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_boxes": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_ellipse": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "draw_hist": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_lines": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_points": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "draw_polygons": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "ellipse2bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "erode": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "erode_op": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "extend_image_channel": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "feature_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "fill_sector": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "find_longest_start_end": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "fit_gaussian_2D": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "floor_bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "from_origin": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "rasterio.transform"
+    },
+    "gamma_transform": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "gaussian_2D": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "gaussian_mask_2d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_ORB_fea": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.feature_processing"
+    },
+    "get_SIFT_fea": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.feature_processing"
+    },
+    "get_Several_MinMax_Array": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "get_angle_from_vector": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_bool_gravity_center": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_center_bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_connect_components": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_contours_from_img": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_convexHull": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_cycle_num": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "get_degree_by_lat_lon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_destination_by_lat_lon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_distance_by_lat_lon_1": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_distance_by_lat_lon_2": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_ellipse_param": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "get_gpu_device_count": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.onnx_processing"
+    },
+    "get_grey_level_gravity_center": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_hu_fea": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.feature_processing"
+    },
+    "get_image_size": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_kernal": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_longest_part": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "get_non_zero_parts": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "get_polar_ring": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_polygons_from_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_rectangle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "get_shapes_from_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_start_and_end": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "get_utm_zone_from_lon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "get_utm_zone_from_lon_lat": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "get_utm_zone_from_wgs84_str": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "get_utm_zone_from_zone_num": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "get_wgs84_str_from_utm_zone_str": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "get_xyxy": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "get_xyxy_from_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_xyxys_from_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "get_z_from_xy_on_plane_ABC_3d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "get_zero_parts": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "gravity_center_xy": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "gray_map_to_color_map": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "huge_image_load": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_border_move": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_center_paste": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_center_rotate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_flip_lr": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_flip_ud": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_format_transfer": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_merge": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "image_read": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_resize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_rotate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_rotate_180": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_rotate_270": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_rotate_90": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_show": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "image_show_from_path": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "img2video": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "img_normalize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "img_rotate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "imgpath2video": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "io": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "is_box": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "is_circle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "is_line": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "is_point": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "is_polygon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "is_triangle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "jpeg_noise": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "loadDMAP": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.mvs_processing"
+    },
+    "loadMVSInterface": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.mvs_processing"
+    },
+    "load_mtl": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "load_obj": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "local_normalization": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "lstsq": {
+      "module": "lib.processing",
+      "type": "variable",
+      "defined_in": "numpy.linalg"
+    },
+    "make_box": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "make_histgram": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "make_rotate_matrix_2d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "make_voronoi_grad_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "make_voronoi_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "mask_on_mask": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "math_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "matplotlib": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "median_transfer": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "min_max_normalize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "morphology_op": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "multi_process": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.multi_processing"
+    },
+    "multi_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "multiprocessing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "mvs_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "net_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "normalize_radians": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "obj2glb": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "onnx_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "open": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "open_op": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "outer_pts_collect": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.circle_processing"
+    },
+    "paddedBuffer": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "paint_words": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "parseDMAP": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.mvs_processing"
+    },
+    "percentile_normalize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "pil_rgb_imwrite": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "plt_image_show": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "point_in_triangle_2d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "point_interplate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.array_processing"
+    },
+    "point_rotate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "polar_move": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "polar_to_cartesian": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "polygon2bbox": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "polygon_interpolation": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "polygon_rotate": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "popular_image_suffixes": {
+      "module": "lib.processing",
+      "type": "variable",
+      "defined_in": "lib.processing"
+    },
+    "proj_transformer_manager": {
+      "module": "lib.processing",
+      "type": "variable",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "puzzle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "pygltflib": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "rasterio": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "read_mongodb_image": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "rectangle2polygon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "resize": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "skimage.transform._warps"
+    },
+    "ring_degree": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "saveDMAP": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.mvs_processing"
+    },
+    "saveMVSInterface": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.mvs_processing"
+    },
+    "scatter2d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "scatter3d": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "show_hist": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "sigmoid": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "simplify_path_rdp": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "single_process": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.multi_processing"
+    },
+    "sort_point_by_angle": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.math_processing"
+    },
+    "superimpose_map": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "to_01_uint8_image": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "to_colorful_image": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "to_gray_image": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "trans_4326_to_4538": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "trans_4538_to_4326": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "transform_coordinates_zup_to_yup": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.v3d_processing"
+    },
+    "undistort_with_map_result": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "url_validity_check": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.net_processing"
+    },
+    "v3d_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "video_process": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "vis_processing": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "vvd_image_preprocess": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "warnings": {
+      "module": "lib.processing",
+      "type": "module",
+      "defined_in": "lib.processing"
+    },
+    "xywh2xyxy": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "xyxy2polygon": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "xyxy2xywh": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.box_processing"
+    },
+    "xyxy_to_yolo_label": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "zero_padding": {
+      "module": "lib.processing",
+      "type": "function",
+      "defined_in": "lib.processing.image_processing"
+    },
+    "PointSelector": {
+      "module": "lib.tools",
+      "type": "class",
+      "defined_in": "lib.tools.gui"
+    },
+    "display_image": {
+      "module": "lib.tools",
+      "type": "function",
+      "defined_in": "lib.tools.gui"
+    },
+    "gui": {
+      "module": "lib.tools",
+      "type": "module",
+      "defined_in": "lib.tools"
+    },
+    "PubClient": {
+      "module": "lib.communication",
+      "type": "class",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "SubClient": {
+      "module": "lib.communication",
+      "type": "class",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "XPubClient": {
+      "module": "lib.communication",
+      "type": "class",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "XPubSubServer": {
+      "module": "lib.communication",
+      "type": "class",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "XSubClient": {
+      "module": "lib.communication",
+      "type": "class",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "check_port": {
+      "module": "lib.communication",
+      "type": "function",
+      "defined_in": "lib.communication.zmq.x_pub_sub_server"
+    },
+    "socket": {
+      "module": "lib.communication",
+      "type": "module",
+      "defined_in": "lib.communication"
+    },
+    "x_pub_sub_server": {
+      "module": "lib.communication",
+      "type": "module",
+      "defined_in": "lib.communication"
+    },
+    "zmq": {
+      "module": "lib.communication",
+      "type": "module",
+      "defined_in": "lib.communication"
+    },
+    "ClassificationEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.multi_label"
+    },
+    "ClassificationMultiClassEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.multi_class"
+    },
+    "ClassificationMultiLabelEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.multi_label"
+    },
+    "DetectionEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.detection"
+    },
+    "MultiClassEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.multi_class"
+    },
+    "MultiLabelEvaluator": {
+      "module": "lib.evaluator",
+      "type": "class",
+      "defined_in": "lib.evaluator.multi_label"
+    },
+    "base": {
+      "module": "lib.evaluator",
+      "type": "module",
+      "defined_in": "lib.evaluator"
+    },
+    "detection": {
+      "module": "lib.evaluator",
+      "type": "module",
+      "defined_in": "lib.evaluator"
+    },
+    "multi_class": {
+      "module": "lib.evaluator",
+      "type": "module",
+      "defined_in": "lib.evaluator"
+    },
+    "multi_label": {
+      "module": "lib.evaluator",
+      "type": "module",
+      "defined_in": "lib.evaluator"
+    },
+    "eval_metrics": {
+      "module": "lib.utils.classifier_eval",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval"
+    },
+    "ObjectId": {
+      "module": "lib.database.mongofs.connect",
+      "type": "class",
+      "defined_in": "bson.objectid"
+    },
+    "make_mongo_connect_url": {
+      "module": "lib.database.mongofs.connect",
+      "type": "function",
+      "defined_in": "lib.database.mongofs.connect"
+    },
+    "SafeCursor": {
+      "module": "lib.database.mysql.connect",
+      "type": "class",
+      "defined_in": "lib.database.mysql.connect"
+    },
+    "auto_reconnect": {
+      "module": "lib.database.mysql.connect",
+      "type": "function",
+      "defined_in": "lib.database.mysql.connect"
+    },
+    "confusion_matrix": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "function",
+      "defined_in": "sklearn.metrics._classification"
+    },
+    "datasets": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval.plot_confusion_matrix"
+    },
+    "plot_confusion_matrix": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "function",
+      "defined_in": "lib.utils.classifier_eval.plot_confusion_matrix"
+    },
+    "svm": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval.plot_confusion_matrix"
+    },
+    "train_test_split": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "function",
+      "defined_in": "sklearn.model_selection._split"
+    },
+    "unique_labels": {
+      "module": "lib.utils.classifier_eval.plot_confusion_matrix",
+      "type": "function",
+      "defined_in": "sklearn.utils.multiclass"
+    },
+    "label_to_onehot": {
+      "module": "lib.utils.classifier_eval.tmp_file",
+      "type": "function",
+      "defined_in": "lib.utils.classifier_eval.utils"
+    },
+    "pkl": {
+      "module": "lib.utils.classifier_eval.tmp_file",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval.tmp_file"
+    },
+    "ClassifierEval": {
+      "module": "lib.utils.classifier_eval.eval_metrics",
+      "type": "class",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "metrics": {
+      "module": "lib.utils.classifier_eval.eval_metrics",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "mpimg": {
+      "module": "lib.utils.classifier_eval.eval_metrics",
+      "type": "module",
+      "defined_in": "lib.utils.classifier_eval.eval_metrics"
+    },
+    "onehot_to_label": {
+      "module": "lib.utils.classifier_eval.eval_metrics",
+      "type": "function",
+      "defined_in": "lib.utils.classifier_eval.utils"
+    },
+    "average_precision": {
+      "module": "lib.utils.mean_ap",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "bbox_overlaps": {
+      "module": "lib.utils.mean_ap",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "get_cls_results": {
+      "module": "lib.utils.mean_ap",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "tpfp_default": {
+      "module": "lib.utils.mean_ap",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "tpfp_imagenet": {
+      "module": "lib.utils.mean_ap",
+      "type": "function",
+      "defined_in": "lib.utils.mean_ap"
+    },
+    "abc": {
+      "module": "lib.utils.register",
+      "type": "module",
+      "defined_in": "lib.utils.register"
+    },
+    "is_seq_of": {
+      "module": "lib.utils.register",
+      "type": "function",
+      "defined_in": "lib.utils.register"
+    },
+    "partial": {
+      "module": "lib.utils.register",
+      "type": "class",
+      "defined_in": "functools"
+    },
+    "DataManagerFormater": {
+      "module": "lib.data.info",
+      "type": "class",
+      "defined_in": "lib.data.format"
+    },
+    "DataManagerInfoExtractor": {
+      "module": "lib.data.info",
+      "type": "class",
+      "defined_in": "lib.data.info"
+    },
+    "copy": {
+      "module": "lib.data.info",
+      "type": "module",
+      "defined_in": "lib.data.info"
+    },
+    "DataManagerSaver": {
+      "module": "lib.data.saver",
+      "type": "class",
+      "defined_in": "lib.data.saver"
+    },
+    "DataManagerBase": {
+      "module": "lib.data.format",
+      "type": "class",
+      "defined_in": "lib.data.base"
+    },
+    "DataManagerClassManipulator": {
+      "module": "lib.data.class_mapper",
+      "type": "class",
+      "defined_in": "lib.data.class_mapper"
+    },
+    "approximate_b_spline_path": {
+      "module": "lib.curves_generator.bspline_curve",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bspline_curve"
+    },
+    "cs": {
+      "module": "lib.curves_generator.bspline_curve",
+      "type": "module",
+      "defined_in": "lib.curves_generator.bspline_curve"
+    },
+    "interpolate_b_spline_path": {
+      "module": "lib.curves_generator.bspline_curve",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bspline_curve"
+    },
+    "scipy_interpolate": {
+      "module": "lib.curves_generator.bspline_curve",
+      "type": "module",
+      "defined_in": "lib.curves_generator.bspline_curve"
+    },
+    "Spline": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "class",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "Spline2D": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "class",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "bisect": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "module",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "calc_spline_course": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "function",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "test_spline": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "function",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "test_spline2d": {
+      "module": "lib.curves_generator.cubic_spline",
+      "type": "function",
+      "defined_in": "lib.curves_generator.cubic_spline"
+    },
+    "Arrow": {
+      "module": "lib.curves_generator.draw",
+      "type": "class",
+      "defined_in": "lib.curves_generator.draw"
+    },
+    "Car": {
+      "module": "lib.curves_generator.draw",
+      "type": "class",
+      "defined_in": "lib.curves_generator.draw"
+    },
+    "QuarticPolynomial": {
+      "module": "lib.curves_generator.quartic_polynomial",
+      "type": "class",
+      "defined_in": "lib.curves_generator.quartic_polynomial"
+    },
+    "QuinticPolynomial": {
+      "module": "lib.curves_generator.quintic_polynomial",
+      "type": "class",
+      "defined_in": "lib.curves_generator.quintic_polynomial"
+    },
+    "Trajectory": {
+      "module": "lib.curves_generator.quintic_polynomial",
+      "type": "class",
+      "defined_in": "lib.curves_generator.quintic_polynomial"
+    },
+    "simulation": {
+      "module": "lib.curves_generator.quintic_polynomial",
+      "type": "function",
+      "defined_in": "lib.curves_generator.quintic_polynomial"
+    },
+    "Comb": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "bezier": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "bezier_derivatives_control_points": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "calc_4points_bezier_path": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "calc_bezier_path": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "comb": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "scipy.special._basic"
+    },
+    "curvature": {
+      "module": "lib.curves_generator.bezier_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.bezier_path"
+    },
+    "RLR": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "RSL": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "RSR": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "Rot": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "class",
+      "defined_in": "scipy.spatial.transform._rotation"
+    },
+    "calc_dubins_path": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "mod2pi": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "planning_from_origin": {
+      "module": "lib.curves_generator.dubins_path",
+      "type": "function",
+      "defined_in": "lib.curves_generator.dubins_path"
+    },
+    "encoder": {
+      "module": "lib.labelme.labelme",
+      "type": "module",
+      "defined_in": "lib.labelme.labelme"
+    },
+    "EvaluatorBase": {
+      "module": "lib.evaluator.multi_class",
+      "type": "class",
+      "defined_in": "lib.evaluator.base"
+    },
+    "pd": {
+      "module": "lib.evaluator.multi_class",
+      "type": "module",
+      "defined_in": "lib.evaluator.multi_class"
+    },
+    "Any": {
+      "module": "lib.loader",
+      "type": "class",
+      "defined_in": "typing"
+    },
+    "Dict": {
+      "module": "lib.loader",
+      "type": "variable",
+      "defined_in": "typing"
+    },
+    "LazyLoader": {
+      "module": "lib.loader",
+      "type": "class",
+      "defined_in": "lib.loader"
+    },
+    "Optional": {
+      "module": "lib.loader",
+      "type": "variable",
+      "defined_in": "typing"
+    },
+    "Tuple": {
+      "module": "lib.loader",
+      "type": "variable",
+      "defined_in": "typing"
+    },
+    "importlib": {
+      "module": "lib.loader",
+      "type": "module",
+      "defined_in": "lib.loader"
+    }
+  },
+  "version": "1.0.0",
+  "generated_at": "2025-12-19T17:09:13.847703"
+}

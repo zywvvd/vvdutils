@@ -9,7 +9,7 @@ author: Atsushi Sakai (@Atsushi_twi)
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as scipy_interpolate
-import cubic_spline as cs
+from . import cubic_spline as cs
 
 
 def approximate_b_spline_path(x, y, n_path_points, degree=3):

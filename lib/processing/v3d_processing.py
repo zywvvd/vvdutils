@@ -18,22 +18,28 @@ from numpy.linalg import lstsq
 from scipy.spatial import KDTree
 from shapely.geometry import Polygon
 from shapely.geometry import Point as ShapelyPoint
-from pyproj import Transformer
 
+from ..loader import try_to_import
+try_to_import("rasterio", "please install rasterio by `pip install rasterio` if you want to use this function")
+
+import rasterio
 from rasterio.transform import from_origin
 from rasterio.enums import Compression
-import rasterio
 
 from rasterio.io import MemoryFile
 import warnings
+
+try_to_import("pygltflib", "please install pygltflib by `pip install pygltflib` if you want to use this function")
 import pygltflib
 
 
 class ProjTransformerManager:
     def __init__(self):
         self.transformer_dict = dict()
+        try_to_import('pyproj', "please install pyproj by `pip install pyproj` if you want to use this function")
 
     def get_transformer(self, src_crs, dst_crs):
+        from pyproj import Transformer
         if (src_crs, dst_crs) not in self.transformer_dict:
             self.transformer_dict[(src_crs, dst_crs)] = Transformer.from_crs(src_crs, dst_crs, always_xy=True)
         return self.transformer_dict[(src_crs, dst_crs)]

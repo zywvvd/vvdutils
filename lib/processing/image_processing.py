@@ -28,7 +28,7 @@ from tqdm import tqdm
 from pathlib import Path
 from pathlib2 import Path as Path2
 
-from numpy.lib.function_base import iterable
+from numpy import iterable
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from .array_processing import get_Several_MinMax_Array
 

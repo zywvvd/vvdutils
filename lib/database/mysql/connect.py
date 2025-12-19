@@ -1,5 +1,5 @@
 import time
-from ...utils import lazy_import
+from ...loader import lazy_import
 from loguru import logger
 import hashlib
 

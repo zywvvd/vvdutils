@@ -23,7 +23,6 @@ import decimal
 import shutil
 import string
 import datetime
-import importlib
 
 import numpy as np
 from loguru import logger
@@ -46,7 +45,9 @@ from tqdm import tqdm
 from collections import OrderedDict
 from functools import wraps
 from functools import reduce
-from func_timeout import func_set_timeout, FunctionTimedOut
+
+from ..loader import try_to_import
+from ..loader import lazy_import
 
 try:
     from collections.abc import Iterable
@@ -140,10 +141,6 @@ def get_line_info():
     error_line = f"{file_name}:{function_name}:{line_number}, "
     
     return error_line
-
-def lazy_import(module_name):
-    # print(f'Lazy import: {module_name}')
-    return importlib.import_module(module_name)
 
 def exists(input):
     if isinstance(input, list):
@@ -1297,6 +1294,9 @@ def get_segments(data):
 
 
 def try_exc_handler(try_func, exc_func, developer_mode=False):
+    try_to_import('func_timeout', 'pip install func-timeout to use try_exc_handler with timeout support')
+
+    from func_timeout import FunctionTimedOut
     except_result = try_result = None
 
     def exception_handler(e, exc_func):
@@ -1624,6 +1624,7 @@ def chinese_str_to_pinyin(input_str: str, join_char='_') -> str:
     Returns:
         str: processed string
     """
+    try_to_import('pypinyin', "please install pypinyin to use this function: pip install pypinyin")
     import pypinyin
     pinyin_str =  pypinyin.pinyin(input_str, style=pypinyin.NORMAL)
     pinyin_str_list = get_list_from_list(pinyin_str, lambda x: x[0])

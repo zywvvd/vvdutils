@@ -2,14 +2,16 @@ import os
 import io
 
 from os.path import exists
-from bson import ObjectId
+
 import pickle
 import time
 import json
 from loguru import logger
 import random 
 
-from ...utils import lazy_import
+from bson import ObjectId
+
+from ...loader import lazy_import
 from ...utils import dir_check
 from ...utils import get_suffix
 from ...utils import get_file_hash_code

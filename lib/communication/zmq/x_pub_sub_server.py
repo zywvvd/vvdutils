@@ -1,3 +1,6 @@
+from ...loader import try_to_import
+try_to_import('zmq', "please install pyzmq by 'pip install pyzmq'. ")
+
 import zmq
 import time
 from loguru import logger

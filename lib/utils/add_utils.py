@@ -3,16 +3,15 @@
 # @Date:   2020-08-12 17:39:40
 # @Last Modified by:   Zhang Yiwei
 # @Last Modified time: 2020-08-12 17:39:41
-import line_profiler
 from functools import wraps
-from . import to_gray_image
-from . import vvd_ceil
-import numpy as np
-from numba import cuda
+import cv2
+from .utils import vvd_ceil
+from ..loader import try_to_import
 
 
 # Line Profiler Decorator
 def line_profiling_deco(func):
+    line_profiler = try_to_import('line_profiler', "pip install line_profiler")
     @wraps(func)
     def wrapped(*args, **kwargs):
         pr = line_profiler.LineProfiler(func)
@@ -24,7 +23,8 @@ def line_profiling_deco(func):
 
     return wrapped
 
-
+try_to_import('numba', "pip install numba")
+from numba import cuda
 
 @cuda.jit
 def image_process_cuda(img_cuda, result_img_cuda, y_size, x_size, radius=8, thre=18):
@@ -51,8 +51,9 @@ def image_process_cuda(img_cuda, result_img_cuda, y_size, x_size, radius=8, thre
 
 
 def surface_blur_gray(image, radius=8, thre=18):
+    from numba import cuda
     BLOCK_SIZE = 16
-    image = to_gray_image(image)
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     
     y_size, x_size = image.shape[:2]
     

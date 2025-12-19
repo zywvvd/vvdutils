@@ -11,3 +11,4 @@ from .mean_ap import eval_map
 from .classifier_eval import ClassifierEvalBinary, ClassifierEvalMulticlass, ClassifierEvalMultilabel
 from .eva_utils import get_TFPN
 from .register import Registry
+from .add_utils import *

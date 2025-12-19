@@ -1,7 +1,10 @@
 import sys
 sys.path.append('.')
+from ...lib.loader import try_to_import
 
+try_to_import('pytest', 'pip install pytest to run mtutils_test')
 import pytest
+
 from lib.data import DataManager
 from lib.utils import decode_distribution
 

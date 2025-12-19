@@ -3,6 +3,9 @@
 # and all the functions in this file needs onnxruntime
 import numpy as np
 import cv2
+from ..loader import try_to_import
+
+try_to_import('skimage', "please install scikit-image by `pip install scikit-image` if you want to use OnnxSimpleRelease")
 from skimage.transform import resize
 from ..utils import get_gpu_str_as_you_wish
 
@@ -44,6 +47,7 @@ class OnnxSimpleRelease:
     ]
 
     def __init__(self, model_path, specific_wh=None, mean=None, std=None, model_type='float32', gpu=True, device_id=None, bgr=False):
+        try_to_import('onnxruntime', "please install onnxruntime by `pip install onnxruntime` if you want to use OnnxSimpleRelease")
         import onnxruntime
         try:
             import pynvml

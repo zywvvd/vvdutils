@@ -1,5 +1,5 @@
-from eval_metrics import ClassifierEvalMultilabel
-from utils import label_to_onehot
+from .eval_metrics import ClassifierEvalMultilabel
+from .utils import label_to_onehot
 import numpy as np
 import pickle as pkl
 import matplotlib.pyplot as plt

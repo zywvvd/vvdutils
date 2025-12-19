@@ -1,5 +1,5 @@
 import numpy as np
-from numpy.lib.function_base import iterable
+from numpy import iterable
 from ..utils import current_system, get_list_from_list
 from ..utils import is_number
 
